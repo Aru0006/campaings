@@ -227,9 +227,13 @@
   .foot-copy{width:100%;border-top:1px solid rgba(255,255,255,.12);margin-top:24px;padding-top:18px;font-size:12.5px;color:rgba(255,255,255,.55)}
 
   @media print{
-    header.nav,.unlocked-bar,.gate-cta,.hero-glow{display:none!important}
+    html,body{background:#fff}
+    *{-webkit-print-color-adjust:exact!important;print-color-adjust:exact!important}
+    .unlocked-bar,.gate-cta,.hero-glow,.cover-cta,.hero::after{display:none!important}
     .gated.locked .gated-inner{max-height:none;overflow:visible;-webkit-mask-image:none;mask-image:none}
-    body{background:#fff}
+    .hero{background:radial-gradient(120% 95% at 12% 0%,#0B3576 0%,#072047 46%,#03192E 100%)!important}
+    figure.chart,.section-head,.zimfact,.concludes,.tile,.tile-dark,.tile-light,.tbl-wrap,.where,.where-card,.founder,.donut-card,.callout,.about-box{break-inside:avoid}
+    .barrow,.srow{break-inside:avoid}
   }
 </style>
 </head>
@@ -259,11 +263,6 @@
       <div class="cstat" style="--x:#335AFF"><div class="n">69.1%</div><div class="l">make HR decisions without structured employee data</div></div>
       <div class="cstat" style="--x:#0085FF"><div class="n">78.4%</div><div class="l">overall offer-to-join rate across organisations analysed</div></div>
       <div class="cstat" style="--x:#DD4F24"><div class="n">46.6%</div><div class="l">of organisations are not yet Labour Code ready</div></div>
-    </div>
-    <p class="cover-note">Responses are confidential. Data is published only in aggregate.</p>
-    <div class="cover-cta">
-      <a class="btn btn-primary btn-lg" href="#report">Read the full report ↓</a>
-      <span class="launch-inline" id="launch">Public launch <b>23 Sep 2026</b> · <span class="cd" id="cdMini">—</span></span>
     </div>
   </div>
 </section>
