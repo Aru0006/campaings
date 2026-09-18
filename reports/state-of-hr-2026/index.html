@@ -242,9 +242,9 @@
       </div>
       <form id="leadForm" novalidate>
         <div class="field" id="f-email">
-          <label for="email">Enter your email to read the report</label>
+          <label for="email">Enter your work email to read the report</label>
           <input id="email" name="email" type="email" autocomplete="email" placeholder="you@company.com" required>
-          <div class="err">Please enter a valid email address.</div>
+          <div class="err">Please use your work email — Gmail/Yahoo aren't accepted.</div>
         </div>
         <button class="btn btn-primary btn-lg btn-block" type="submit">Read the full report →</button>
       </form>
@@ -391,9 +391,9 @@
     <p class="sub">You're reading the free preview. Enter your work email to unlock all five sections, every chart, and the PDF — free.</p>
     <form id="gateForm" novalidate>
       <div class="field" id="gf-email">
-        <label for="gemail">Enter your email to read the report</label>
+        <label for="gemail">Enter your work email to read the report</label>
         <input id="gemail" name="email" type="email" autocomplete="email" placeholder="you@company.com" required>
-        <div class="err">Please enter a valid email address.</div>
+        <div class="err">Please use your work email — Gmail/Yahoo aren't accepted.</div>
       </div>
       <button class="btn btn-primary btn-lg btn-block" type="submit">Read the full report →</button>
     </form>
@@ -428,11 +428,14 @@
 (function(){
   "use strict";
 
-  /* ============================================================
-     LEADS: paste your form endpoint here (Formspree/Getform/Basin,
-     or a HubSpot/Zoho web-to-lead URL). Leave "" to run gate-only.
-     ============================================================ */
-  var FORM_ENDPOINT = "";   // e.g. "https://formspree.io/f/abcdwxyz"
+  /* ===== ZIMYO CRM LEAD INGEST =====
+     One-time: in admin.zimyo.us → Tracker Sites, register the origin
+     https://zim-programs.onrender.com and paste the Site ID (UUID) below.
+     Leads land in admin → Leads. Until SITE_ID is set the gate still
+     unlocks but no lead is sent. ===== */
+  var LEADS_ENDPOINT = "https://api.zimyo.us/api/v1/leads/ingest";
+  var SITE_ID = ""; // <-- paste Tracker Site UUID here to start capturing leads
+  var REPORT_NAME = "State of HR in India 2026";
 
   var STORE_KEY = "zimyo-report-sohr2026-unlocked";
   var FREE_EMAIL = ["gmail.com","yahoo.com","yahoo.in","hotmail.com","outlook.com","live.com","icloud.com","aol.com","proton.me","protonmail.com","rediffmail.com","ymail.com","mail.com","gmx.com"];
@@ -449,20 +452,27 @@
   if(isUnlocked()){ doUnlock(true); }
 
   function fieldOf(el){ return el && el.closest('.field'); }
+  function isWorkEmail(v){ var d=(v.split('@')[1]||'').toLowerCase(); return emailOk(v) && FREE_EMAIL.indexOf(d)===-1; }
   function validate(f){
     var e=f.querySelector('[name=email]');
     var email=((e&&e.value)||'').trim();
-    var eb=!emailOk(email);
+    var eb=!isWorkEmail(email);
     if(fieldOf(e)) fieldOf(e).classList.toggle('invalid',eb);
     return eb?null:{email:email};
+  }
+  function sendLead(email){
+    if(!SITE_ID) return;
+    var body={ siteId:SITE_ID, lead:{ email:email, formName:REPORT_NAME, leadType:"LP",
+      rawPayload:{ report_name:REPORT_NAME, source:"zim-programs-gated-report", submitted_at:new Date().toISOString() } },
+      journey:{ landingPath:location.pathname, landingPageUrl:location.href, referrerUrl:document.referrer||undefined, utmSource:"gated-report", utmMedium:"content", utmCampaign:"state-of-hr-2026" } };
+    try{ fetch(LEADS_ENDPOINT,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify(body),keepalive:true}).catch(function(){}); }catch(e){}
   }
   function wire(f){
     if(!f) return;
     f.addEventListener('submit',function(ev){
       ev.preventDefault();
       var d=validate(f); if(!d) return;
-      var payload={email:d.email,report:"State of HR in India 2026",source:"reports.zimyo.com"};
-      if(FORM_ENDPOINT){ try{ fetch(FORM_ENDPOINT,{method:"POST",headers:{"Content-Type":"application/json","Accept":"application/json"},body:JSON.stringify(payload)}).catch(function(){}); }catch(err){} }
+      sendLead(d.email);
       remember(); doUnlock(true);
     });
   }
