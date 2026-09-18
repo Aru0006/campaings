@@ -1,0 +1,9 @@
+services:
+  - type: web
+    name: zimyo-reports
+    runtime: static
+    staticPublishPath: .
+    headers:
+      - path: /*
+        name: X-Robots-Tag
+        value: noindex, nofollow
