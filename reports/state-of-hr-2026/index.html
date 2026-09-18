@@ -148,18 +148,18 @@
   .callout .q{font-size:18px;font-weight:600;letter-spacing:-.01em}
   .callout .who{color:var(--muted);font-size:13.5px;margin-top:8px}
 
-  /* GATED wrapper + lock */
+  /* GATED — Medium-style fade-out + centered CTA */
   .gated{position:relative}
-  .gated.locked .gated-inner{max-height:560px;overflow:hidden;filter:blur(.5px)}
-  .gated.locked .gated-inner::after{content:""}
-  .lock{display:none;position:absolute;left:0;right:0;bottom:0;top:300px;
-    background:linear-gradient(to bottom,rgba(246,248,255,0) 0%,var(--ground) 42%,var(--ground) 100%);
-    align-items:flex-end;justify-content:center;padding-bottom:20px;z-index:5}
-  .gated.locked .lock{display:flex}
-  .lock-card{text-align:center;max-width:460px;background:var(--surface);border:1px solid var(--border);border-radius:20px;padding:34px 30px;box-shadow:0 24px 60px rgba(var(--shadow),.18)}
-  .lock-card .ic{width:54px;height:54px;border-radius:15px;background:var(--grad);display:grid;place-items:center;margin:0 auto 16px;font-size:24px;color:#fff;box-shadow:0 10px 24px rgba(51,90,255,.4)}
-  .lock-card h3{font-size:23px;letter-spacing:-.02em}
-  .lock-card p{color:var(--muted);margin-top:10px;font-size:15px}
+  .gated.locked .gated-inner{max-height:440px;overflow:hidden;
+    -webkit-mask-image:linear-gradient(to bottom,#000 50%,transparent 100%);
+    mask-image:linear-gradient(to bottom,#000 50%,transparent 100%)}
+  .gate-cta{display:none;max-width:540px;margin:0 auto;text-align:center;padding:0 0 8px}
+  .gated.locked .gate-cta{display:block}
+  .gate-cta .ic{width:52px;height:52px;border-radius:15px;background:var(--grad);display:grid;place-items:center;margin:0 auto 18px;font-size:22px;color:#fff;box-shadow:0 10px 24px rgba(51,90,255,.4)}
+  .gate-cta h3{font-size:clamp(26px,3.6vw,38px);letter-spacing:-.02em}
+  .gate-cta .sub{color:var(--muted);margin-top:12px;font-size:16px}
+  .gate-cta form{margin-top:24px;text-align:left;background:var(--surface);border:1px solid var(--border);border-radius:20px;padding:24px;box-shadow:0 22px 55px rgba(var(--shadow),.16)}
+  .gate-cta .fine{font-size:12px;color:var(--muted);margin-top:12px}
 
   .unlocked-bar{display:none;position:sticky;top:0;z-index:40;background:color-mix(in srgb,var(--green) 12%,var(--surface));border-bottom:1px solid color-mix(in srgb,var(--green) 30%,transparent);
     padding:12px 0}
@@ -192,11 +192,11 @@
 
 <header class="nav" id="nav">
   <div class="wrap nav-in">
-    <a class="brand" href="index.html" aria-label="Zimyo Programs">
-      <img src="zimyo-logo.png" alt="Zimyo" width="98" height="28">
+    <a class="brand" href="../../index.html" aria-label="Zimyo Programs">
+      <img src="../../zimyo-logo.png" alt="Zimyo" width="98" height="28">
       <span class="tag">Programs</span>
     </a>
-    <a class="nav-back" href="index.html">← All programs</a>
+    <a class="nav-back" href="../../index.html">← All programs</a>
     <div class="nav-cta"><a class="btn btn-primary" href="#get">Get the report</a></div>
   </div>
 </header>
@@ -401,14 +401,30 @@
     </section>
 
   </div>
-  <!-- lock overlay -->
-  <div class="lock">
-    <div class="lock-card">
-      <div class="ic">🔒</div>
-      <h3>Unlock the full 2026 report</h3>
-      <p>Enter your work email above to read all five sections, 42 charts, and get the PDF — free.</p>
-      <button class="btn btn-primary btn-lg" type="button" id="unlockScroll" style="margin-top:18px">Get instant access →</button>
-    </div>
+  <!-- Medium-style gate CTA -->
+  <div class="gate-cta">
+    <div class="ic">🔒</div>
+    <h3>Read the full State of HR 2026</h3>
+    <p class="sub">You're reading the free preview. Enter your work email to unlock all five sections, every chart, and the PDF — free.</p>
+    <form id="gateForm" novalidate>
+      <div class="field" id="gf-name">
+        <label for="gname">Full name</label>
+        <input id="gname" name="name" type="text" autocomplete="name" placeholder="Priya Sharma" required>
+        <div class="err">Please enter your name.</div>
+      </div>
+      <div class="field" id="gf-email">
+        <label for="gemail">Work email</label>
+        <input id="gemail" name="email" type="email" autocomplete="email" placeholder="priya@company.com" required>
+        <div class="err">Please use a valid work email (not Gmail/Yahoo).</div>
+      </div>
+      <div class="field" id="gf-company">
+        <label for="gcompany">Company</label>
+        <input id="gcompany" name="company" type="text" autocomplete="organization" placeholder="Company name" required>
+        <div class="err">Please enter your company.</div>
+      </div>
+      <button class="btn btn-primary btn-lg btn-block" type="submit">Unlock the full report →</button>
+    </form>
+    <p class="fine">🔒 We never share your email · Unsubscribe anytime</p>
   </div>
 </div>
 
@@ -424,10 +440,10 @@
 <footer>
   <div class="wrap">
     <div class="foot-in">
-      <a class="brand" href="index.html"><img src="zimyo-logo.png" alt="Zimyo" width="92" height="26" style="filter:brightness(0) invert(1)"></a>
+      <a class="brand" href="../../index.html"><img src="../../zimyo-logo.png" alt="Zimyo" width="92" height="26" style="filter:brightness(0) invert(1)"></a>
       <div class="foot-links">
-        <a href="index.html">All programs</a>
-        <a href="index.html#reports">More reports</a>
+        <a href="../../index.html">All programs</a>
+        <a href="../../index.html#reports">More reports</a>
         <a href="#get">Get the PDF</a>
       </div>
     </div>

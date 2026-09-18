@@ -7,14 +7,16 @@ Deploys to Render (or Netlify/Cloudflare Pages/any static host). Does NOT touch 
 ## Files
 - `index.html`   — the **homepage** (hero, live program grid with filters, report-launch
   countdown, "Coming soon" states, impact numbers, launch playbook, subscribe CTA). Self-contained.
-- `report.html`  — a **gated report** page (teaser → lead form → unlock), themed as
-  *State of HR in India 2026*. Self-contained.
+- `reports/hr-pulse-report-2026/index.html` — gated **HR Pulse Report 2026** (teaser → lead
+  form → unlock), served at `/reports/hr-pulse-report-2026`. Launches 23 Sep 2026.
+- `reports/state-of-hr-2026/index.html`     — gated **State of HR in India 2026**,
+  served at `/reports/state-of-hr-2026`.
 - `zimyo-logo.png` — official Zimyo logo (referenced by both pages).
 - `robots.txt`   — allows crawl so search engines can read the noindex meta.
 - `render.yaml`  — Render static-site config; also sends `X-Robots-Tag: noindex` (Blueprint deploys only).
 
 ## 1. Send leads somewhere (no backend needed)
-Open `report.html`, find near the bottom of the `<script>`:
+Open a report's `index.html` (e.g. `reports/hr-pulse-report-2026/index.html`), find near the bottom of the `<script>`:
 
     var FORM_ENDPOINT = "";   // <-- paste your endpoint here
 
