@@ -12,42 +12,41 @@
 <style>
   :root{
     color-scheme:light;
-    --azure:#0085FF; --green:#00CD37; --green-2:#0AA23A; --flame:#DD4F24; --jonquil:#F9C804;
+    --azure:#0085FF; --blue:#1F6BFF; --indigo:#3D5AFF; --green:#00CD37; --green-2:#0AA23A; --flame:#DD4F24; --jonquil:#F9C804;
     --primary:#335AFF; --primary-2:#5B7BFF; --oxford:#03192E;
-    --ground:#F6F8FF; --surface:#FFFFFF; --surface-2:#EEF2FF;
+    --ground:#F6F8FF; --surface:#FFFFFF; --surface-2:#EEF2FF; --lav:#EFF3FF;
     --ink:#03192E; --ink-2:#33465B; --muted:#657488;
     --border:#E2E8F5; --border-strong:#CED9EE;
     --shadow:12 40 120; --shadow-a:.12;
     --grad:linear-gradient(100deg,var(--azure) 0%,var(--primary) 100%);
-    --maxw:1120px; --r-lg:24px; --r-md:16px; --ease:cubic-bezier(.22,1,.36,1);
+    --maxw:1120px; --r-lg:20px; --r-md:14px; --ease:cubic-bezier(.22,1,.36,1);
     --font:"Poppins",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
   }
   *{box-sizing:border-box}
   html{scroll-behavior:smooth}
   body{margin:0;background:var(--ground);color:var(--ink);font-family:var(--font);font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
   @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
-  h1,h2,h3,h4{font-family:var(--font);font-weight:700;line-height:1.08;letter-spacing:-.02em;margin:0;text-wrap:balance}
+  h1,h2,h3,h4{font-family:var(--font);font-weight:700;line-height:1.1;letter-spacing:-.02em;margin:0;text-wrap:balance}
   p{margin:0}
   a{color:inherit;text-decoration:none}
   img{max-width:100%;display:block}
   ::selection{background:var(--primary);color:#fff}
   .wrap{max-width:var(--maxw);margin-inline:auto;padding-inline:24px}
-  @media (max-width:520px){.wrap{padding-inline:18px}}
+  @media (max-width:520px){.wrap{padding-inline:16px}}
   :focus-visible{outline:2.5px solid var(--primary);outline-offset:3px;border-radius:6px}
-  .kicker{color:var(--primary);display:flex;align-items:center;gap:10px;font-weight:700;font-size:12.5px;letter-spacing:.14em;text-transform:uppercase}
-  .kicker::before{content:"";width:24px;height:2px;background:var(--grad);border-radius:2px}
+  .tabnums{font-variant-numeric:tabular-nums}
 
   /* NAV */
   header.nav{position:fixed;inset:0 0 auto 0;z-index:60;transition:background .35s var(--ease),box-shadow .35s,border-color .35s;border-bottom:1px solid transparent;padding-top:env(safe-area-inset-top,0px);
     --nav-ink:#fff;--nav-dim:rgba(255,255,255,.78);--nav-line:rgba(255,255,255,.3);--nav-hover:rgba(255,255,255,.12)}
-  header.nav.scrolled{background:color-mix(in srgb,var(--surface) 85%,transparent);backdrop-filter:blur(16px) saturate(140%);-webkit-backdrop-filter:blur(16px) saturate(140%);border-bottom-color:var(--border);box-shadow:0 6px 30px rgba(var(--shadow),calc(var(--shadow-a)*.6));
+  header.nav.scrolled{background:color-mix(in srgb,var(--surface) 88%,transparent);backdrop-filter:blur(16px) saturate(140%);-webkit-backdrop-filter:blur(16px) saturate(140%);border-bottom-color:var(--border);box-shadow:0 6px 30px rgba(var(--shadow),calc(var(--shadow-a)*.6));
     --nav-ink:var(--ink);--nav-dim:var(--muted);--nav-line:var(--border-strong);--nav-hover:var(--surface-2)}
-  .nav-in{display:flex;align-items:center;gap:18px;height:66px}
+  .nav-in{display:flex;align-items:center;gap:16px;height:64px}
   .brand{display:flex;align-items:center;gap:11px}
-  .brand img{height:28px;width:auto;display:block}
+  .brand img{height:27px;width:auto;display:block}
   header.nav:not(.scrolled) .brand img{filter:brightness(0) invert(1)}
   .brand .tag{font-size:10px;font-weight:700;letter-spacing:.16em;padding:3px 9px;border-radius:20px;border:1px solid var(--nav-line);color:var(--nav-dim);text-transform:uppercase}
-  .nav-back{margin-left:6px;font-weight:600;font-size:14px;color:var(--nav-dim);transition:color .2s}
+  .nav-back{margin-left:4px;font-weight:600;font-size:14px;color:var(--nav-dim);transition:color .2s}
   .nav-back:hover{color:var(--nav-ink)}
   .nav-cta{margin-left:auto}
   .btn{font-family:inherit;font-weight:600;font-size:15px;border:0;cursor:pointer;border-radius:12px;padding:11px 20px;display:inline-flex;align-items:center;gap:8px;transition:transform .18s var(--ease),box-shadow .25s,background .25s,color .2s;white-space:nowrap}
@@ -59,104 +58,173 @@
   .btn-outline{background:transparent;border:1.5px solid var(--border-strong);color:var(--ink)}
   .btn-outline:hover{border-color:var(--ink);background:var(--surface-2)}
 
-  /* COVER (matches reference) */
+  /* COVER */
   .hero{position:relative;overflow:hidden;color:#fff;background:radial-gradient(120% 95% at 12% 0%,#0B3576 0%,#072047 46%,#03192E 100%)}
   .hero::after{content:"";position:absolute;inset:0;pointer-events:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.5'/%3E%3C/svg%3E");opacity:.05;mix-blend-mode:overlay}
   .hero-glow{position:absolute;border-radius:50%;filter:blur(80px);z-index:0}
-  .g1{width:36vw;height:36vw;left:-6vw;top:-8vw;background:radial-gradient(circle,var(--primary),transparent 68%);opacity:.6}
-  .g2{width:26vw;height:26vw;right:-4vw;bottom:-12vh;background:radial-gradient(circle,var(--azure),transparent 66%);opacity:.5}
-  .cover{position:relative;z-index:1;padding-block:118px 74px}
-  .cover-top{display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;margin-bottom:44px}
+  .g1{width:36vw;height:36vw;left:-6vw;top:-8vw;background:radial-gradient(circle,var(--primary),transparent 68%);opacity:.55}
+  .g2{width:24vw;height:24vw;right:-4vw;bottom:-12vh;background:radial-gradient(circle,var(--azure),transparent 66%);opacity:.5}
+  .cover{position:relative;z-index:1;padding-block:112px 66px}
+  .cover-top{display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;margin-bottom:40px}
   .cover-top .brand img{height:30px;filter:brightness(0) invert(1)}
-  .cover-eyebrow{font-weight:700;font-size:12.5px;letter-spacing:.18em;text-transform:uppercase;color:#84A0FF}
-  .cover h1{font-size:clamp(46px,8.4vw,104px);font-weight:800;letter-spacing:-.04em;line-height:.94;max-width:11ch}
-  .cover-sub{color:#84A0FF;font-weight:700;font-size:clamp(22px,3.4vw,34px);margin-top:20px;letter-spacing:-.02em}
-  .cover-desc{color:rgba(255,255,255,.82);font-size:clamp(16px,2vw,19px);margin-top:22px;max-width:54ch}
-  .cover-window{color:rgba(255,255,255,.62);font-size:14px;margin-top:12px}
-  .cover-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:22px;margin-top:46px}
-  @media(max-width:820px){.cover-stats{grid-template-columns:1fr 1fr;gap:26px 22px}}
-  @media(max-width:480px){.cover-stats{grid-template-columns:1fr}}
-  .cstat{border-top:3px solid var(--x,#fff);padding-top:16px}
-  .cstat .n{font-weight:800;font-size:clamp(34px,4.6vw,50px);letter-spacing:-.03em;line-height:1;font-variant-numeric:tabular-nums}
-  .cstat .l{color:rgba(255,255,255,.8);font-size:14px;margin-top:12px;line-height:1.45}
-  .cover-note{color:rgba(255,255,255,.55);font-size:13px;margin-top:38px;border-top:1px solid rgba(255,255,255,.14);padding-top:20px}
-  .cover-cta{margin-top:26px;display:flex;align-items:center;gap:20px 26px;flex-wrap:wrap}
-  .launch-inline{display:flex;align-items:center;gap:12px;color:rgba(255,255,255,.72);font-size:14px;font-weight:500}
+  .cover-eyebrow{font-weight:700;font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:#84A0FF}
+  .cover h1{font-size:clamp(44px,8.4vw,92px);font-weight:800;letter-spacing:-.04em;line-height:.94}
+  .cover-sub{color:#5B8CFF;font-weight:700;font-size:clamp(20px,3.2vw,30px);margin-top:16px;letter-spacing:-.02em}
+  .cover-desc{color:rgba(255,255,255,.85);font-size:clamp(15px,2vw,18px);margin-top:20px;max-width:52ch}
+  .cover-window{color:rgba(255,255,255,.6);font-size:13.5px;margin-top:8px}
+  .cover-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;margin-top:40px}
+  @media(max-width:720px){.cover-stats{grid-template-columns:1fr 1fr;gap:24px 20px}}
+  @media(max-width:430px){.cover-stats{grid-template-columns:1fr}}
+  .cstat{border-top:3px solid var(--x,#fff);padding-top:14px}
+  .cstat .n{font-weight:800;font-size:clamp(30px,4.4vw,44px);letter-spacing:-.03em;line-height:1;font-variant-numeric:tabular-nums}
+  .cstat .l{color:rgba(255,255,255,.78);font-size:13px;margin-top:10px;line-height:1.45}
+  .cover-note{color:rgba(255,255,255,.52);font-size:12.5px;margin-top:34px;border-top:1px solid rgba(255,255,255,.14);padding-top:18px}
+  .cover-cta{margin-top:24px;display:flex;align-items:center;gap:18px 24px;flex-wrap:wrap}
+  .launch-inline{display:flex;align-items:center;gap:10px;color:rgba(255,255,255,.72);font-size:14px}
   .launch-inline .cd{font-weight:700;color:#fff;font-variant-numeric:tabular-nums}
   .launch-inline .live{display:inline-flex;align-items:center;gap:7px;color:#fff;font-weight:700}
   .launch-inline .live .d{width:8px;height:8px;border-radius:50%;background:var(--green);box-shadow:0 0 0 0 rgba(0,205,55,.7);animation:pulse 2s infinite}
   @keyframes pulse{70%{box-shadow:0 0 0 8px rgba(0,205,55,0)}100%{box-shadow:0 0 0 0 rgba(0,205,55,0)}}
 
-  /* SECTIONS */
-  .sec{padding-block:66px}
-  @media (max-width:760px){.sec{padding-block:46px}}
-  .sec h2{font-size:clamp(26px,3.6vw,38px);margin-top:14px;max-width:22ch}
-  .sec .lead{color:var(--ink-2);margin-top:16px;max-width:68ch;font-size:17px}
-  .sec .lead + .lead{margin-top:14px}
+  /* FREE INTRO SECTIONS */
+  .sec{padding-block:40px}
+  .sec h2{font-size:clamp(22px,3vw,30px)}
+  .sec .lead{color:var(--ink-2);margin-top:14px;font-size:16px}
+  .sec .lead + .lead{margin-top:12px}
+  .kicker{color:var(--primary);font-weight:700;font-size:12px;letter-spacing:.14em;text-transform:uppercase;display:flex;align-items:center;gap:10px}
+  .kicker::before{content:"";width:22px;height:2px;background:var(--grad);border-radius:2px}
+  .note-box{background:#FDF3F0;border:1px solid #F6D6CC;border-left:4px solid var(--flame);border-radius:12px;padding:16px 20px;margin-top:22px;color:#8A3B22;font-size:14px}
+  .note-box b{color:#6E2C15}
 
-  .chart-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--r-lg);padding:28px;margin-top:28px}
-  .chart-card h3{font-size:19px}
-  .chart-card .cap{color:var(--muted);font-size:13.5px;margin-top:4px}
-  .bars{margin-top:24px;display:grid;gap:16px}
-  .bar-row{display:grid;grid-template-columns:170px 1fr 56px;align-items:center;gap:14px}
-  @media (max-width:560px){.bar-row{grid-template-columns:120px 1fr 46px;gap:10px}}
-  .bar-row .rl{font-size:13.5px;font-weight:600;color:var(--ink-2)}
-  .bar-track{height:14px;border-radius:8px;background:var(--surface-2);overflow:hidden}
-  .bar-fill{height:100%;border-radius:8px;background:var(--grad);transform-origin:left;animation:grow 1s var(--ease) both}
-  .bar-fill.c2{background:linear-gradient(100deg,#00CD37,#0AA23A)}
-  .bar-fill.c3{background:linear-gradient(100deg,#F9C804,#F0A500)}
-  .bar-fill.c4{background:linear-gradient(100deg,#DD4F24,#C13A16)}
+  /* REPORT SECTIONS */
+  .rsec{padding-top:44px}
+  .section-head{position:relative;background:linear-gradient(180deg,#0C2748,#03192E);border-radius:14px;padding:22px 26px;overflow:hidden}
+  .section-head::before{content:"";position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--flame),var(--jonquil))}
+  .section-head .se{color:#5B8CFF;font-weight:700;font-size:11px;letter-spacing:.2em;text-transform:uppercase}
+  .section-head h2{color:#fff;font-size:clamp(20px,2.8vw,28px);margin-top:8px}
+  .intro{color:var(--ink-2);font-size:15.5px;margin-top:20px}
+  .subh{font-size:17px;font-weight:700;margin-top:30px}
+  .subnote{color:var(--muted);font-size:14px;margin-top:8px}
+
+  /* CHARTS */
+  figure.chart{margin:22px 0 0;background:var(--surface);border:1px solid var(--border);border-radius:var(--r-md);padding:22px}
+  .ctitle{text-align:center;font-weight:700;font-size:15px;margin-bottom:18px;color:var(--ink)}
+  .bars{display:grid;gap:12px}
+  .barrow{display:grid;grid-template-columns:minmax(110px,196px) 1fr 52px;align-items:center;gap:12px}
+  @media (max-width:560px){.barrow{grid-template-columns:104px 1fr 44px;gap:8px}}
+  .blabel{font-size:12.5px;font-weight:600;color:var(--ink-2);line-height:1.25;text-align:right}
+  .btrack{height:16px;border-radius:5px;background:var(--surface-2);overflow:hidden}
+  .bfill{height:100%;border-radius:5px;transform-origin:left;animation:grow .9s var(--ease) both;background:var(--blue)}
   @keyframes grow{from{transform:scaleX(0)}}
-  .bar-row .rv{font-weight:700;font-size:14px;text-align:right;font-variant-numeric:tabular-nums}
-  .split{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:28px}
-  @media (max-width:760px){.split{grid-template-columns:1fr}}
-  .tiles{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:28px}
-  @media (max-width:760px){.tiles{grid-template-columns:1fr 1fr}}
-  .tile{background:var(--surface);border:1px solid var(--border);border-radius:var(--r-md);padding:22px}
-  .tile .n{font-weight:800;font-size:clamp(28px,3.6vw,38px);letter-spacing:-.03em;line-height:1;font-variant-numeric:tabular-nums;background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
-  .tile .l{font-size:13.5px;color:var(--ink-2);margin-top:10px;font-weight:600}
-  .donut-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--r-lg);padding:28px;display:flex;gap:26px;align-items:center;flex-wrap:wrap;margin-top:28px}
-  .donut{--val:0;width:150px;height:150px;border-radius:50%;flex:0 0 auto;background:conic-gradient(var(--primary) calc(var(--val)*1%),var(--surface-2) 0);display:grid;place-items:center;position:relative}
-  .donut::after{content:"";position:absolute;inset:18px;border-radius:50%;background:var(--surface)}
-  .donut .dv{position:relative;z-index:1;font-weight:800;font-size:28px;letter-spacing:-.02em;font-variant-numeric:tabular-nums}
-  .donut-card h3{font-size:19px}
-  .donut-card p{color:var(--muted);font-size:14px;margin-top:8px}
-  .callout{background:linear-gradient(120deg,color-mix(in srgb,var(--primary) 9%,var(--surface)),var(--surface));border:1px solid var(--border);border-left:4px solid var(--primary);border-radius:var(--r-md);padding:22px 24px;margin-top:24px}
-  .callout .q{font-size:18px;font-weight:600;letter-spacing:-.01em}
-  .callout .who{color:var(--muted);font-size:13.5px;margin-top:8px}
+  .bval{font-weight:700;font-size:13px;text-align:left;font-variant-numeric:tabular-nums}
+  .bars .barrow:nth-child(6n+1) .bfill{background:#1F6BFF}
+  .bars .barrow:nth-child(6n+2) .bfill{background:#3D5AFF}
+  .bars .barrow:nth-child(6n+3) .bfill{background:#03192E}
+  .bars .barrow:nth-child(6n+4) .bfill{background:#00CD37}
+  .bars .barrow:nth-child(6n+5) .bfill{background:#F9C804}
+  .bars .barrow:nth-child(6n+6) .bfill{background:#DD4F24}
+  .axis{text-align:center;color:var(--muted);font-size:11.5px;margin-top:16px}
 
-  /* GATED — Medium-style fade + centered CTA */
+  /* STACKED */
+  .srow{display:grid;grid-template-columns:minmax(90px,150px) 1fr;align-items:center;gap:12px;margin-bottom:10px}
+  @media (max-width:560px){.srow{grid-template-columns:88px 1fr;gap:8px}}
+  .strack{display:flex;height:22px;border-radius:5px;overflow:hidden;background:var(--surface-2)}
+  .sseg{display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;min-width:0;overflow:hidden;white-space:nowrap}
+  .legend{display:flex;gap:16px;flex-wrap:wrap;justify-content:center;margin-top:14px}
+  .lg{display:inline-flex;align-items:center;gap:7px;font-size:12.5px;color:var(--ink-2);font-weight:600}
+  .ld{width:12px;height:12px;border-radius:3px}
+
+  /* ZIMFACT */
+  .zimfact{background:linear-gradient(180deg,#0C2748,#03192E);border-radius:14px;padding:22px 26px;margin-top:24px;position:relative;overflow:hidden}
+  .zimfact::before{content:"";position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--flame),var(--jonquil))}
+  .zimfact .zl{display:inline-flex;align-items:center;gap:8px;color:var(--green);font-weight:700;font-size:11px;letter-spacing:.18em;text-transform:uppercase}
+  .zimfact p{color:rgba(255,255,255,.9);font-size:15px;margin-top:12px}
+
+  /* ZIMYO CONCLUDES */
+  .concludes{background:var(--lav);border:1px solid var(--border);border-radius:14px;padding:24px 26px;margin-top:24px}
+  .concludes h4{font-size:16px}
+  .concludes ul{list-style:none;padding:0;margin:16px 0 0;display:grid;gap:14px}
+  .concludes li{position:relative;padding-left:26px;font-size:14.5px;color:var(--ink-2);line-height:1.55}
+  .concludes li::before{content:"";position:absolute;left:0;top:8px;width:12px;height:6px;border-radius:3px}
+  .concludes li:nth-child(4n+1)::before{background:#1F6BFF}
+  .concludes li:nth-child(4n+2)::before{background:#00CD37}
+  .concludes li:nth-child(4n+3)::before{background:#F9C804}
+  .concludes li:nth-child(4n+4)::before{background:#DD4F24}
+
+  /* STAT TILES */
+  .tiles-dark{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:22px}
+  @media(max-width:520px){.tiles-dark{grid-template-columns:1fr}}
+  .tile-dark{background:linear-gradient(180deg,#0C2748,#03192E);border-radius:14px;padding:24px}
+  .tile-dark .tl{color:rgba(255,255,255,.66);font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase}
+  .tile-dark .tn{font-weight:800;font-size:44px;letter-spacing:-.03em;margin-top:12px;line-height:1;font-variant-numeric:tabular-nums}
+  .tiles-light{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:22px}
+  @media(max-width:640px){.tiles-light{grid-template-columns:1fr}}
+  .tile-light{background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:22px}
+  .tile-light .tn{font-weight:800;font-size:34px;letter-spacing:-.03em;line-height:1;font-variant-numeric:tabular-nums}
+  .tile-light .tl{color:var(--ink-2);font-size:13.5px;margin-top:10px;font-weight:500}
+
+  /* TABLE */
+  .tbl-wrap{overflow-x:auto;margin-top:22px;border:1px solid var(--border);border-radius:14px}
+  table.data{width:100%;border-collapse:collapse;font-size:14px;min-width:460px}
+  table.data th{background:var(--oxford);color:#fff;text-align:left;padding:13px 16px;font-weight:600;font-size:12.5px}
+  table.data td{padding:12px 16px;border-top:1px solid var(--border);color:var(--ink-2);font-variant-numeric:tabular-nums}
+  table.data tr:nth-child(even) td{background:var(--surface-2)}
+
+  /* WHERE TO GO */
+  .where{background:linear-gradient(180deg,#0C2748,#03192E);border-radius:18px;padding:34px 30px;margin-top:44px;position:relative;overflow:hidden}
+  .where::before{content:"";position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--flame),var(--jonquil))}
+  .where h2{color:#fff;font-size:clamp(24px,3.2vw,32px)}
+  .where .wl{color:rgba(255,255,255,.78);margin-top:14px;font-size:15px}
+  .where-grid{display:grid;gap:14px;margin-top:24px}
+  .where-card{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-left:3px solid var(--green);border-radius:12px;padding:18px 20px}
+  .where-card h4{color:#fff;font-size:16px}
+  .where-card p{color:rgba(255,255,255,.72);font-size:14px;margin-top:8px}
+  .where .close{color:rgba(255,255,255,.62);font-size:13.5px;margin-top:22px}
+
+  /* ABOUT + FOUNDERS */
+  .about-box{background:var(--lav);border:1px solid var(--border);border-radius:16px;padding:28px;margin-top:24px}
+  .about-box h3{font-size:20px}
+  .about-box p{color:var(--ink-2);font-size:15px;margin-top:14px}
+  .founders{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:20px}
+  @media(max-width:560px){.founders{grid-template-columns:1fr}}
+  .founder{background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:20px}
+  .founder .fh{display:flex;align-items:center;gap:12px}
+  .avatar{width:46px;height:46px;border-radius:50%;flex:0 0 auto;display:grid;place-items:center;color:#fff;font-weight:700;font-size:16px;background:var(--grad)}
+  .founder .fn{font-weight:700;font-size:16px}
+  .founder .fr{color:var(--green-2);font-weight:600;font-size:13px}
+  .founder p{color:var(--ink-2);font-size:13.5px;margin-top:14px}
+
+  /* GATE (Medium-style) */
   .gated{position:relative}
-  .gated.locked .gated-inner{max-height:420px;overflow:hidden;
-    -webkit-mask-image:linear-gradient(to bottom,#000 48%,transparent 100%);
-    mask-image:linear-gradient(to bottom,#000 48%,transparent 100%)}
-  .gate-cta{display:none;max-width:540px;margin:0 auto;text-align:center;padding:0 0 8px}
+  .gated.locked .gated-inner{max-height:430px;overflow:hidden;
+    -webkit-mask-image:linear-gradient(to bottom,#000 46%,transparent 100%);
+    mask-image:linear-gradient(to bottom,#000 46%,transparent 100%)}
+  .gate-cta{display:none;max-width:520px;margin:8px auto 0;text-align:center}
   .gated.locked .gate-cta{display:block}
   .gate-cta .ic{width:52px;height:52px;border-radius:15px;background:var(--grad);display:grid;place-items:center;margin:0 auto 18px;font-size:22px;color:#fff;box-shadow:0 10px 24px rgba(51,90,255,.4)}
-  .gate-cta h3{font-size:clamp(26px,3.6vw,38px);letter-spacing:-.02em}
-  .gate-cta .sub{color:var(--muted);margin-top:12px;font-size:16px}
-  .gate-cta form{margin-top:24px;text-align:left;background:var(--surface);border:1px solid var(--border);border-radius:20px;padding:24px;box-shadow:0 22px 55px rgba(var(--shadow),.16)}
+  .gate-cta h3{font-size:clamp(24px,3.4vw,34px);letter-spacing:-.02em}
+  .gate-cta .sub{color:var(--muted);margin-top:12px;font-size:15.5px}
+  .gate-cta form{margin-top:22px;text-align:left;background:var(--surface);border:1px solid var(--border);border-radius:18px;padding:22px;box-shadow:0 22px 55px rgba(var(--shadow),.16)}
   .gate-cta .fine{font-size:12px;color:var(--muted);margin-top:12px}
-  .field{margin-bottom:12px}
   .field label{display:block;font-size:12.5px;font-weight:600;color:var(--ink-2);margin-bottom:6px}
-  .field input{width:100%;font:inherit;font-size:15px;padding:12px 14px;border:1.5px solid var(--border-strong);border-radius:11px;background:var(--surface);color:var(--ink);outline:none;transition:border-color .2s,box-shadow .2s}
+  .field input{width:100%;font:inherit;font-size:15px;padding:12px 14px;border:1.5px solid var(--border-strong);border-radius:11px;background:var(--surface);color:var(--ink);outline:none;transition:border-color .2s,box-shadow .2s;margin-bottom:12px}
   .field input:focus{border-color:var(--primary);box-shadow:0 0 0 3px color-mix(in srgb,var(--primary) 18%,transparent)}
-  .field .err{display:none;color:var(--flame);font-size:12.5px;margin-top:6px;font-weight:600}
+  .field .err{display:none;color:var(--flame);font-size:12.5px;margin:-6px 0 12px;font-weight:600}
   .field.invalid input{border-color:var(--flame)}
   .field.invalid .err{display:block}
 
-  .unlocked-bar{display:none;position:sticky;top:0;z-index:40;background:color-mix(in srgb,var(--green) 12%,var(--surface));border-bottom:1px solid color-mix(in srgb,var(--green) 30%,transparent);padding:12px 0}
+  .unlocked-bar{display:none;position:sticky;top:0;z-index:40;background:color-mix(in srgb,var(--green) 12%,var(--surface));border-bottom:1px solid color-mix(in srgb,var(--green) 30%,transparent);padding:11px 0}
   .unlocked-bar.show{display:block}
   .ub-in{display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap}
   .ub-in .msg{display:flex;align-items:center;gap:10px;font-weight:600;color:var(--green-2)}
 
-  footer{background:var(--oxford);color:rgba(255,255,255,.72);padding-block:44px 34px}
+  footer{background:var(--oxford);color:rgba(255,255,255,.72);padding-block:40px 32px;margin-top:44px}
   .foot-in{display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap}
   footer .brand img{height:26px;filter:brightness(0) invert(1)}
   footer a{color:rgba(255,255,255,.8)}
   footer a:hover{color:#fff}
-  .foot-links{display:flex;gap:20px;font-size:14px;flex-wrap:wrap}
-  .foot-copy{width:100%;border-top:1px solid rgba(255,255,255,.12);margin-top:26px;padding-top:20px;font-size:13px;color:rgba(255,255,255,.55)}
+  .foot-links{display:flex;gap:18px;font-size:14px;flex-wrap:wrap}
+  .foot-copy{width:100%;border-top:1px solid rgba(255,255,255,.12);margin-top:24px;padding-top:18px;font-size:12.5px;color:rgba(255,255,255,.55)}
 
   @media print{
     header.nav,.unlocked-bar,.gate-cta,.hero-glow{display:none!important}
@@ -170,7 +238,7 @@
 <header class="nav" id="nav">
   <div class="wrap nav-in">
     <a class="brand" href="../../index.html" aria-label="Zimyo Programs">
-      <img src="../../zimyo-logo.png" alt="Zimyo" width="98" height="28">
+      <img src="../../zimyo-logo.png" alt="Zimyo" width="98" height="27">
       <span class="tag">Programs</span>
     </a>
     <a class="nav-back" href="../../index.html">← All programs</a>
@@ -197,16 +265,13 @@
     <p class="cover-sub">Metrics That Matter in HR Tech</p>
     <p class="cover-desc">Based on 4,117 verified responses from HR and business leaders across India and the GCC market.</p>
     <p class="cover-window">Collection window: 1 June – 6 August 2026</p>
-
     <div class="cover-stats">
       <div class="cstat" style="--x:#00CD37"><div class="n">59.3%</div><div class="l">cite attrition &amp; retention as their top challenge</div></div>
       <div class="cstat" style="--x:#335AFF"><div class="n">69.1%</div><div class="l">make HR decisions without structured employee data</div></div>
       <div class="cstat" style="--x:#0085FF"><div class="n">78.4%</div><div class="l">overall offer-to-join rate across organisations analysed</div></div>
       <div class="cstat" style="--x:#DD4F24"><div class="n">46.6%</div><div class="l">of organisations are not yet Labour Code ready</div></div>
     </div>
-
     <p class="cover-note">Responses are confidential. Data is published only in aggregate.</p>
-
     <div class="cover-cta">
       <a class="btn btn-primary btn-lg" href="#report">Read the full report ↓</a>
       <span class="launch-inline" id="launch">Public launch <b>23 Sep 2026</b> · <span class="cd" id="cdMini">—</span></span>
@@ -214,113 +279,284 @@
   </div>
 </section>
 
-<!-- ABOUT (free) -->
-<section class="sec wrap" id="report">
+<!-- FREE: About + Methodology -->
+<section class="sec wrap" id="report" style="padding-top:48px">
   <span class="kicker">About this report</span>
-  <h2>The state of Indian HR, measured — not guessed</h2>
+  <h2 style="margin-top:14px">The state of Indian HR, measured — not guessed</h2>
   <p class="lead">This report summarises findings from the India HR Pulse 2026 survey, a community initiative by Zimyo Research to benchmark how HR and business leaders across India — and select GCC markets — are experiencing attrition, leadership, data maturity, and the changing shape of HR's mandate.</p>
-  <p class="lead">The picture that emerges is a profession under pressure to modernise: retention is the number-one worry, most decisions are still made without structured data, and nearly half of organisations aren't yet ready for the new Labour Codes. The full breakdown — with sector cuts and the levers that move each metric — is below.</p>
 </section>
 
-<!-- METHODOLOGY (free) -->
 <section class="sec wrap" style="padding-top:0">
   <span class="kicker">Methodology</span>
-  <h2 style="font-size:clamp(24px,3vw,32px)">How the pulse was taken</h2>
+  <h2 style="margin-top:14px;font-size:clamp(20px,2.6vw,26px)">How the pulse was taken</h2>
   <p class="lead"><b>Sample size:</b> 4,117 verified, anonymous responses collected between 1 June and 6 August 2026. Respondents span organisations of varying size, industry, and geography across India and select GCC markets.</p>
-  <p class="lead">Figures are reported as medians or shares of respondents unless stated otherwise; sector and size cuts require a minimum sample of 30 organisations. No individual person or company is identifiable — data is published only in aggregate.</p>
+  <p class="lead">This is a community-sourced pulse check rather than a statistically representative national survey. Figures should be read as directional signals from an engaged HR leadership community, not as population-level estimates.</p>
+  <div class="note-box"><b>Note on sample size:</b> with 4,117 responses, individual percentages can shift meaningfully with just one or two additional responses. We call this out transparently rather than implying a larger base, and will update this report as the dataset grows.</div>
 </section>
 
-<!-- GATED FINDINGS -->
-<div class="gated locked" id="gated">
+<!-- GATED: the full report -->
+<div class="wrap gated locked" id="gated">
   <div class="gated-inner">
 
-    <section class="sec wrap">
-      <span class="kicker">01 · Attrition &amp; retention</span>
-      <h2>Retention is HR's number-one challenge — by a distance</h2>
-      <p class="lead">59.3% of leaders named attrition and retention their single biggest challenge for the year — ahead of hiring, cost, and compliance. The pain is sharpest in organisations without a clear growth path for employees.</p>
-      <div class="chart-card">
-        <h3>Top HR challenge for 2026</h3>
-        <p class="cap">Share of leaders selecting each as their #1 challenge.</p>
-        <div class="bars">
-          <div class="bar-row"><span class="rl">Attrition &amp; retention</span><div class="bar-track"><div class="bar-fill c2" style="width:100%"></div></div><span class="rv">59.3%</span></div>
-          <div class="bar-row"><span class="rl">Hiring quality talent</span><div class="bar-track"><div class="bar-fill" style="width:71%"></div></div><span class="rv">42.1%</span></div>
-          <div class="bar-row"><span class="rl">Cost &amp; productivity</span><div class="bar-track"><div class="bar-fill" style="width:53%"></div></div><span class="rv">31.4%</span></div>
-          <div class="bar-row"><span class="rl">Compliance</span><div class="bar-track"><div class="bar-fill c3" style="width:41%"></div></div><span class="rv">24.6%</span></div>
-          <div class="bar-row"><span class="rl">Engagement</span><div class="bar-track"><div class="bar-fill c3" style="width:36%"></div></div><span class="rv">21.2%</span></div>
-        </div>
+    <!-- 01 -->
+    <section class="rsec">
+      <div class="section-head"><div class="se">Section 01</div><h2>Respondent Profile</h2></div>
+      <h3 class="subh">Where these responses come from, by company size</h3>
+      <figure class="chart"><div class="ctitle">Respondent Profile: Organisation Size</div>
+        <div class="rows" data-axis="Share of Respondents (%)" data-bars='[["Under 100 employees",54.2],["100–250 employees",27.5],["Above 250 employees",18.3]]'></div></figure>
+      <h3 class="subh">Geography</h3>
+      <p class="subnote">Respondents were based across the following locations:</p>
+      <figure class="chart"><div class="ctitle">Respondent Profile: Geography</div>
+        <div class="rows" data-axis="Share of Respondents (%)" data-bars='[["Delhi NCR",33.3],["Mumbai",14.8],["Bangalore",13.4],["Middle East",11.1],["Vadodara, Surat",6.8],["Chennai",6.2],["Other Region",5.2],["Pune",3.9],["Hyderabad",3.7],["Bhubaneswar",2.6]]'></div></figure>
+      <h3 class="subh">Years in a Leadership Role</h3>
+      <figure class="chart"><div class="ctitle">Respondent Profile: Years in a Leadership Role</div>
+        <div class="rows" data-axis="Share of Respondents (%)" data-bars='[["Under 2 years",32.6],["2–6 years",29.4],["5–10 years",26.1],["10+ years",14.8]]'></div></figure>
+    </section>
+
+    <!-- 02 -->
+    <section class="rsec">
+      <div class="section-head"><div class="se">Section 02</div><h2>HR's Strategic Standing</h2></div>
+      <p class="intro">Respondents were asked how much influence HR currently has on strategic decisions in their organisation.</p>
+      <figure class="chart"><div class="ctitle">HR's Strategic Standing</div>
+        <div class="rows" data-axis="Share of Respondents (%)" data-bars='[["HR sets strategy, not just people policy",40.7],["HR is asked for input, but doesn’t decide",33.4],["HR only runs processes (hiring, payroll, compliance)",25.9]]'></div></figure>
+      <div class="zimfact"><span class="zl">✦ Zimfact</span><p>The HR seat at the table isn't enough — HR needs a vote. Today, nearly 60% say their role is still reactive or advisory rather than truly strategic.</p></div>
+    </section>
+
+    <!-- 03 -->
+    <section class="rsec">
+      <div class="section-head"><div class="se">Section 03</div><h2>Data-Driven Decision-Making — Maturity</h2></div>
+      <p class="intro">In the AI era, data-driven HR is becoming essential for smarter, faster and more predictive people decisions. But how many HR teams are actually using dashboards and analytics, and how many are still relying on spreadsheets?</p>
+      <figure class="chart"><div class="ctitle">Data-Driven Decision-Making — Maturity</div>
+        <div class="rows" data-axis="Share of Respondents (%)" data-bars='[["Runs on dashboards and predictive analytics",29.6],["Has data but decisions still rely on gut",22.2],["Doesn’t track HR data in a structured way",18.5],["Uses data but it’s not always timely",18.5],["Mostly relies on spreadsheets and instinct",11.1]]'></div></figure>
+    </section>
+
+    <!-- 04 -->
+    <section class="rsec">
+      <div class="section-head"><div class="se">Section 04</div><h2>Attrition Benchmark</h2></div>
+      <p class="intro">Annual attrition remains a significant concern, with 55.5% of organisations reporting attrition above 10% or not tracking it precisely.</p>
+      <figure class="chart"><div class="ctitle">Annual Attrition Rate, Best Estimate</div>
+        <div class="rows" data-axis="Share of Respondents (%)" data-bars='[["2–5%",14.8],["5–10%",37.0],["Above 10%",18.5],["Don’t track this precisely",29.6]]'></div></figure>
+      <h3 class="subh">Workforce Attrition by Company Size</h3>
+      <figure class="chart"><div class="ctitle">Headcount Attrition Rate by Company Size</div>
+        <div class="rows" data-axis="Headcount Attrition Rate (%)" data-bars='[["Under 100",12.6],["100–250",8.4],["250–1000",7.6],["Enterprise (1000+)",7.3]]'></div></figure>
+      <h3 class="subh">What's Actually Driving Attrition</h3>
+      <p class="subnote">Respondents were allowed to select more than one driver; percentages reflect the share of respondents citing each factor.</p>
+      <figure class="chart"><div class="ctitle">What's Actually Driving Attrition (Multi-Select)</div>
+        <div class="rows" data-axis="Share of Respondents Citing Each Factor (%)" data-bars='[["Compensation, losing the pay war",44.4],["Career growth, no visible path",25.9],["Early exits, people leave before they settle in",22.2],["Don’t dig into this enough to know",18.5],["Manager relationships, not the company",18.5],["Work-life balance / burnout",7.4]]'></div></figure>
+    </section>
+
+    <!-- 05 -->
+    <section class="rsec">
+      <div class="section-head"><div class="se">Section 05</div><h2>Top HR Challenges Keeping Leaders Up At Night</h2></div>
+      <p class="intro">Respondents were allowed to select more than one challenge; percentages reflect the share of respondents citing each challenge.</p>
+      <figure class="chart"><div class="ctitle">Top HR Challenges Keeping Leaders Up At Night (Multi-Select)</div>
+        <div class="rows" data-axis="Share of Respondents (%)" data-bars='[["Attrition & retention",59.3],["Leadership development",37.0],["Compliance & labour law",37.0],["Manager capability gaps",33.3],["AI adoption in HR",29.6],["Compensation benchmarking",29.6],["Culture in hybrid/remote setups",25.9],["HR tech ROI",18.5],["Mental health & burnout",14.8],["GenZ as future workforce",11.1]]'></div></figure>
+      <div class="zimfact"><span class="zl">✦ Zimfact</span><p>While attrition and retention top the list, the attrition-rate graph reveals a glaring operational paradox: roughly 30% of organisations still fail to track these metrics with precision. Without precise tracking, addressing the root causes of turnover remains an uphill battle.</p></div>
+    </section>
+
+    <!-- 06 -->
+    <section class="rsec">
+      <div class="section-head"><div class="se">Section 06</div><h2>The Execution Gap: What HR Promises vs. What It Delivers</h2></div>
+      <p class="intro">Respondents were allowed to select more than one statement; percentages reflect the share of respondents citing each statement.</p>
+      <figure class="chart"><div class="ctitle">What HR Promises vs. What It Delivers</div>
+        <div class="rows" data-axis="Share of Respondents (%)" data-bars='[["Promise a great experience, people don’t feel it",40.7],["All of the above, honestly",29.6],["Preach wellness, workloads never ease",22.2],["Celebrate performance, appraisals feel unfair",14.8],["Champion inclusion, decisions don’t show it",11.1]]'></div></figure>
+    </section>
+
+    <!-- 07 -->
+    <section class="rsec">
+      <div class="section-head"><div class="se">Section 07</div><h2>HR Practices That Now Feel Broken or Ineffective</h2></div>
+      <p class="intro">Respondents were allowed to select more than one practice; percentages reflect the share of respondents citing each practice.</p>
+      <figure class="chart"><div class="ctitle">HR Practices That Now Feel Broken or Ineffective</div>
+        <div class="rows" data-axis="Share of Respondents (%)" data-bars='[["Rigid 9-to-5 attendance policies",40.7],["One-size-fits-all onboarding",33.3],["Exit interviews that go nowhere",25.9],["Appraisal-linked increments, no mid-year correction",23.4],["Annual performance reviews",22.2],["Hiring based on degrees over skills",21.0]]'></div></figure>
+      <div class="zimfact"><span class="zl">✦ Zimfact</span><p>4 in 10 HR professionals say rigid 9-to-5 attendance is a practice that no longer works. Are HR leaders measuring presence or productivity?</p></div>
+    </section>
+
+    <!-- 08 -->
+    <section class="rsec">
+      <div class="section-head"><div class="se">Section 08</div><h2>Readiness to Lead Through Change</h2></div>
+      <p class="intro">Only 18.5% of HR teams call themselves very prepared to lead through change over the next 12 months. The remaining 81.5% are still building the plan, the capability, or both — most are figuring it out as they go rather than executing from a position of strength.</p>
+      <figure class="chart"><div class="ctitle">Readiness to Lead Through Change</div>
+        <div class="rows" data-axis="Share of Respondents (%)" data-bars='[["Somewhat prepared, figuring it out as we go",40.7],["Fairly prepared, plan exists, execution uncertain",33.3],["Very prepared, clear plan and capability",18.5],["Not very prepared, reactive more than proactive",7.4]]'></div></figure>
+    </section>
+
+    <!-- 09 -->
+    <section class="rsec">
+      <div class="section-head"><div class="se">Section 09</div><h2>Conversations HR Leaders in India Need to Have More Openly</h2></div>
+      <p class="intro">Mental health of HR professionals themselves tops the list, well ahead of every other conversation leaders feel goes unspoken. Respondents were allowed to select more than one conversation; percentages reflect the share of respondents citing each topic.</p>
+      <figure class="chart"><div class="ctitle">Conversations HR Leaders in India Need to Have More Openly</div>
+        <div class="rows" data-axis="Share of Respondents (%)" data-bars='[["Mental health of HR professionals themselves",59.3],["The real cost of bad managers",55.6],["What employees actually think of HR",51.9],["Pay transparency",48.1],["Succession planning that never gets implemented",48.1],["HR’s role in layoff decisions",40.7],["Diversity that actually works vs. diversity theatre",14.8],["How HR tech is oversold",7.4]]'></div></figure>
+    </section>
+
+    <!-- 10 -->
+    <section class="rsec">
+      <div class="section-head"><div class="se">Section 10</div><h2>Offer-to-Join Ratio</h2></div>
+      <div class="tiles-dark">
+        <div class="tile-dark"><div class="tl">Overall Offer-to-Join Rate</div><div class="tn" style="color:#00CD37">78.4%</div></div>
+        <div class="tile-dark"><div class="tl">Overall Offer Drop-off Rate</div><div class="tn" style="color:#FF6A3D">21.6%</div></div>
       </div>
-      <div class="callout">
-        <div class="q">“We can hire. Keeping people past year one is the real fight.”</div>
-        <div class="who">— CHRO, IT services (2,200 employees)</div>
+      <p class="intro">Offer-to-join rates vary sharply by company size, with the steepest drop showing up in the 250–1,000 employee band. Roughly 1 in 5 accepted offers do not convert into an actual joining, on average, across the organisations analysed.</p>
+      <figure class="chart"><div class="ctitle">Offer-to-Join Rate by Company Size</div>
+        <div class="rows" data-axis="Offer-to-Join Rate (%)" data-bars='[["Under 100",84.7],["100–250",91.2],["250–1000",71.5],["Enterprise (1000+)",78.6]]'></div></figure>
+      <div class="zimfact"><span class="zl">✦ Zimfact</span><p>The offer letter may be signed, but the talent is still in the market. Long notice periods give competitors and counter-offers time to rewrite the hiring outcome.</p></div>
+    </section>
+
+    <!-- 11 -->
+    <section class="rsec">
+      <div class="section-head"><div class="se">Section 11</div><h2>Work Model Mix: WFO / Hybrid / WFH</h2></div>
+      <p class="intro">Remote work is no longer a debate — it's a default consideration for every organisation post-COVID. Here's what our benchmark reveals about where companies have landed.</p>
+      <figure class="chart"><div class="ctitle">Work Model Mix, India HR Pulse Survey Findings</div>
+        <div class="rows" data-axis="Approx. % of Indian Organisations" data-bars='[["Complete WFO",50,"35%–50%"],["Hybrid",60,"45%–60%"],["Complete WFH",10,"5%–10%"]]'></div></figure>
+      <div class="concludes"><h4>Zimyo Concludes</h4><ul>
+        <li>Hybrid is the dominant working model reported by Indian organisations, at 45%–60% — the single largest category by a clear margin.</li>
+        <li>Complete WFO remains substantial at 35%–50%, indicating a significant share of organisations have not adopted any form of remote flexibility.</li>
+        <li>Complete WFH remains the least common model, at just 5%–10% — fully remote organisations are still the exception rather than the norm.</li>
+        <li>Taken together, over 80%–90% of organisations report operating on-site or hybrid, confirming that some in-office presence remains the default expectation across most of India's corporate landscape.</li>
+      </ul></div>
+      <div class="zimfact"><span class="zl">✦ Zimfact</span><p>Around 34% of Indian organisations now provide a dedicated one-time home-office setup allowance, reflecting the growing shift towards supporting productive hybrid and remote work environments.</p></div>
+    </section>
+
+    <!-- 12 -->
+    <section class="rsec">
+      <div class="section-head"><div class="se">Section 12</div><h2>How Much Does Your HR Team Use Data &amp; Insights?</h2></div>
+      <div class="tiles-light">
+        <div class="tile-light"><div class="tn">30.9%</div><div class="tl">Organisations using data &amp; insights to inform HR decisions</div></div>
+        <div class="tile-light"><div class="tn">69.1%</div><div class="tl">Organisations making decisions without structured employee data</div></div>
+        <div class="tile-light"><div class="tn">8.9</div><div class="tl">Average surveys run per data-driven organisation</div></div>
+      </div>
+      <p class="subnote" style="margin-top:16px">Note: even where data-driven decision-making exists, it's often shallow — over half of adopters (53.5%) gathered data once and never returned to it.</p>
+      <h3 class="subh">Usage Cadence by Company Size</h3>
+      <p class="subnote">Among organisations that do use data, cadence is classified as Yearly (1–2 surveys over the ~15-month period), Quarterly (3–9 surveys), or Monthly (10+ surveys).</p>
+      <div class="tbl-wrap"><table class="data">
+        <tr><th>Segment</th><th>Yearly</th><th>Quarterly</th><th>Monthly</th></tr>
+        <tr><td>Under 100</td><td>75.4%</td><td>18.1%</td><td>6.5%</td></tr>
+        <tr><td>100–250</td><td>70.0%</td><td>16.7%</td><td>13.3%</td></tr>
+        <tr><td>250–1000</td><td>47.2%</td><td>25.0%</td><td>27.8%</td></tr>
+        <tr><td>Enterprise (1000+)</td><td>16.0%</td><td>4.5%</td><td>79.5%</td></tr>
+      </table></div>
+      <figure class="chart"><div class="ctitle">Survey Usage Cadence by Company Size (Among Adopters)</div>
+        <div class="stack" data-axis="Share of Adopting Organisations (%)" data-legend='["Yearly","Quarterly","Monthly"]' data-colors='["#1F6BFF","#F9C804","#03192E"]' data-rows='[["Under 100",[75.4,18.1,6.5]],["100–250",[70.0,16.7,13.3]],["250–1000",[47.2,25.0,27.8]],["Enterprise (1000+)",[16.0,4.5,79.5]]]'></div></figure>
+      <div class="concludes"><h4>Zimyo Concludes</h4><ul>
+        <li>Nearly 7 in 10 organisations (69.1%) make HR decisions without any structured employee data at all — primarily a habit and activation gap, not a retention problem.</li>
+        <li>Reliance on data rises sharply with company size: from 25.8% in Under-100 organisations to 73.3% in Enterprise (1000+).</li>
+        <li>Enterprise organisations that do use data run a small but meaningful quarterly cadence alongside a dominant monthly practice, versus smaller organisations that lean on an annual, one-off check.</li>
+        <li>Even among organisations that start using data, more than half (53.5%) never return after their first attempt.</li>
+      </ul></div>
+    </section>
+
+    <!-- 13 -->
+    <section class="rsec">
+      <div class="section-head"><div class="se">Section 13</div><h2>Gender Diversity in Leadership</h2></div>
+      <figure class="chart"><div class="ctitle">Gender Diversity in Leadership by Company Size</div>
+        <div class="stack" data-axis="Share of Leadership Roles (%)" data-legend='["Male","Female","LGBTQ+"]' data-colors='["#C9D6F0","#1F6BFF","#DD4F24"]' data-rows='[["Under 100",[82,17,1]],["100–250",[77,21,2]],["250–1000",[71,26,3]],["Enterprise (1000+)",[65,32,3]]]'></div></figure>
+      <h3 class="subh">Women in Leadership</h3>
+      <p class="subnote">Even at the highest end, women hold less than a third of leadership positions. Here's how female representation shifts by company size:</p>
+      <figure class="chart"><div class="ctitle">Women in Leadership by Company Size</div>
+        <div class="rows" data-axis="Women in Leadership (%)" data-bars='[["Under 100",17.0],["100–250",21.0],["250–1000",26.0],["Enterprise (1000+)",32.0]]'></div></figure>
+      <div class="concludes"><h4>Zimyo Concludes</h4><ul>
+        <li>Female leadership representation rises with company size, from 17% (Under 100) to 32% (Enterprise 1000+).</li>
+        <li>LGBTQ+ representation in leadership is minimal throughout (1%–3%) and essentially flat past the 100–250 band — the least movement of the three groups as company size increases.</li>
+      </ul></div>
+    </section>
+
+    <!-- 14 -->
+    <section class="rsec">
+      <div class="section-head"><div class="se">Section 14</div><h2>Work-Life Balance: Paternity &amp; Short Leave</h2></div>
+      <h3 class="subh">Paternity Leave Adoption</h3>
+      <figure class="chart"><div class="ctitle">Paternity Leave Adoption by Company Size</div>
+        <div class="rows" data-axis="Organisations Offering Paternity Leave (%)" data-bars='[["Under 100",25],["100–250",30],["250–1000",45],["Enterprise (1000+)",57]]'></div></figure>
+      <h3 class="subh">Short Leave Policy Adoption</h3>
+      <figure class="chart"><div class="ctitle">Short Leave Policy Adoption by Company Size</div>
+        <div class="rows" data-axis="Organisations Offering Short Leave (%)" data-bars='[["Under 100",50,"45%–50%"],["100–250",60,"55%–60%"],["250–1000",70,"65%–70%"],["Enterprise (1000+)",90,"85%–90%"]]'></div></figure>
+      <h3 class="subh">Combined View: Work-Life Balance Benefit Maturity</h3>
+      <div class="tbl-wrap"><table class="data">
+        <tr><th>Segment</th><th>Paternity Leave</th><th>Short Leave (Mid)</th><th>Benefit Maturity Score</th></tr>
+        <tr><td>Under 100 employees</td><td>25%</td><td>47.5%</td><td>36.2</td></tr>
+        <tr><td>100–250 employees</td><td>30%</td><td>57.5%</td><td>43.8</td></tr>
+        <tr><td>250–1000 employees</td><td>45%</td><td>67.5%</td><td>56.3</td></tr>
+        <tr><td>Enterprise (1,000+)</td><td>57%</td><td>87.5%</td><td>72.3</td></tr>
+      </table></div>
+      <figure class="chart"><div class="ctitle">Work-Life Balance Benefit Maturity by Company Size</div>
+        <div class="rows" data-axis="Benefit Maturity Score" data-bars='[["Under 100",36.2],["100–250",43.8],["250–1000",56.3],["Enterprise (1000+)",72.3]]'></div></figure>
+      <div class="concludes"><h4>Zimyo Concludes</h4><ul>
+        <li>Benefit maturity scales consistently with company size, from 36.2 (Under 100) to 72.3 (Enterprise 1,000+) — the largest organisations are roughly twice as mature on work-life balance benefits as the smallest.</li>
+        <li>The jump from 100–250 to 250–1,000 employees is the sharpest single step — the inflection point where organisations formalise these benefits.</li>
+      </ul></div>
+      <div class="zimfact"><span class="zl">✦ Zimfact</span><p>Only around 1 in 3 organisations currently offer paternity leave, highlighting a significant opportunity to strengthen flexible and family-friendly work-life balance policies.</p></div>
+    </section>
+
+    <!-- 15 -->
+    <section class="rsec">
+      <div class="section-head"><div class="se">Section 15</div><h2>HR Team Size Ratio</h2></div>
+      <p class="intro">HR staffing ratio moves in the opposite direction to every other parameter in this report: it falls as company size increases, from 3–4 HR staff per 100 employees (Under 100) down to just 1.5–2 (Enterprise 1000+). It's a useful lens for benchmarking: an organisation whose HR ratio sits meaningfully outside its segment's range may be under- or over-staffed relative to peers of similar size.</p>
+      <figure class="chart"><div class="ctitle">HR Team Size Ratio Per 100 Employees</div>
+        <div class="rows" data-max="5" data-axis="HR Staff per 100 Employees" data-bars='[["Under 100",4,"3–4"],["100–250",3.5,"2.75–3.5"],["250–1000",2.75,"2.5–2.75"],["Enterprise (1000+)",2,"1.5–2"]]'></div></figure>
+      <div class="concludes"><h4>Zimyo Concludes</h4><ul>
+        <li>A roughly 2x difference between the smallest and largest organisations — smaller organisations carry a proportionally heavier HR overhead per employee.</li>
+        <li>The decline is steady across every segment step, reflecting classic economies of scale.</li>
+        <li>For smaller organisations, HR staff are likely generalists handling a broad range of functions, while larger organisations can afford more specialised HR roles.</li>
+      </ul></div>
+    </section>
+
+    <!-- 16 -->
+    <section class="rsec">
+      <div class="section-head"><div class="se">Section 16</div><h2>Hiring Method Preference for Top Talent</h2></div>
+      <p class="intro">Referrals and direct sourcing dominate how organisations try to land top talent, while traditional channels like job portals and campus hiring lag well behind.</p>
+      <figure class="chart"><div class="ctitle">Hiring Method Preference for Top Talent</div>
+        <div class="rows" data-axis="Indicative Preference for Hiring Top 5% Talent (%)" data-bars='[["Employee / leadership referrals",25],["Direct sourcing of passive candidates",22],["Industry / CXO network",15],["Targeted LinkedIn outreach",14],["Specialist executive search",10],["Internal talent / succession",7],["Job portals",5],["Campus hiring",2]]'></div></figure>
+      <div class="zimfact"><span class="zl">✦ Zimfact</span><p>The best talent may not be applying at all. Nearly 1 in 2 HR professionals prefer referrals or direct sourcing to find top talent.</p></div>
+    </section>
+
+    <!-- 17 -->
+    <section class="rsec">
+      <div class="section-head"><div class="se">Section 17</div><h2>New Labour Code Readiness</h2></div>
+      <p class="intro">Readiness for the new Labour Codes climbs steadily with company size, but exposure remains widespread even at the top end.</p>
+      <figure class="chart"><div class="ctitle">New Labour Code Readiness by Company Size</div>
+        <div class="stack" data-axis="Share of Organisations (%)" data-legend='["Ready","Partially Ready","Not Yet Ready"]' data-colors='["#00CD37","#F9C804","#DD4F24"]' data-rows='[["Under 100 (N=337)",[25,25,50]],["100–250 (N=98)",[32,25,43]],["250–1,000 (N=56)",[42,24,34]],["Enterprise 1000+ (N=9)",[55,22,23]]]'></div></figure>
+      <div class="concludes"><h4>Zimyo Concludes</h4><ul>
+        <li>Half of all Under-100 organisations (169 of 337, 50%) are not ready for the new Labour Codes — the single largest exposure pocket in this report, in absolute organisation count.</li>
+        <li>Readiness rises steadily with company size, from 25% (Under 100) to 55% (Enterprise 1,000+) — but even at the top end, nearly half of Enterprise organisations (45%) are only partially ready or not ready at all.</li>
+        <li>Enterprise organisations are more than 2x as likely to be fully ready as Under-100 organisations (55% vs. 25%).</li>
+        <li>Combining "Partially Ready" and "Not Yet Ready": 75% of Under-100, 68% of 100–250, 58% of 250–1,000, and 45% of Enterprise organisations have not fully completed their transition.</li>
+      </ul></div>
+      <div class="zimfact"><span class="zl">✦ Zimfact</span><p>Size doesn't guarantee compliance. Even among Enterprise organisations, 45% are still not fully ready for the new Labour Codes.</p></div>
+    </section>
+
+    <!-- WHERE TO GO -->
+    <div class="where">
+      <h2>Where To Go From Here</h2>
+      <p class="wl">The India HR Pulse 2026 findings point to a consistent story: HR leaders know where the gaps are — in data, in retention, in compliance — and the challenge is closing them at scale. A few suggested next steps:</p>
+      <div class="where-grid">
+        <div class="where-card"><h4>Move from one-off surveys to continuous listening</h4><p>69.1% of organisations still decide without structured employee data. Standing up always-on pulse surveys and dashboards, rather than annual check-ins, is the fastest way to close this gap.</p></div>
+        <div class="where-card"><h4>Get ahead of Labour Code compliance now</h4><p>With 46.6% of organisations not yet ready, a structured readiness audit today avoids scrambling once enforcement timelines tighten.</p></div>
+        <div class="where-card"><h4>Treat attrition as a tracked metric, not a feeling</h4><p>Nearly 3 in 10 organisations don't track attrition precisely at all. Consistent, benchmarked tracking is the first step to fixing retention, not just discussing it.</p></div>
+        <div class="where-card"><h4>Benchmark before you budget</h4><p>HR team ratios, offer-to-join rates, and benefit adoption all vary sharply by company size. Knowing where your organisation sits against size-matched peers sharpens every HR budget conversation.</p></div>
+      </div>
+      <p class="close">Zimyo works with HR and business leaders globally to bring exactly this kind of structured, benchmarked visibility into everyday HR decisions — from attendance and payroll to engagement and compliance.</p>
+    </div>
+
+    <!-- ABOUT ZIMYO -->
+    <section class="rsec">
+      <span class="kicker">About Zimyo</span>
+      <div class="about-box">
+        <h3>An AI-powered HR &amp; payroll platform</h3>
+        <p>Zimyo is an AI-powered HR and payroll software platform built for mid-sized companies, serving 2,500+ customers and over 1 million employees across 40+ countries.</p>
+        <p>The platform brings together 60+ modules spanning core HR, payroll, time &amp; attendance, performance management, recruitment, employee engagement, and learning — helping organisations automate HR operations, run compliant payroll, and build a better employee experience, all from a single system.</p>
+        <p>Zimyo Research produces ongoing benchmark studies like the India HR Pulse to give HR and business leaders a clearer, data-backed view of how their peers are navigating attrition, compliance, leadership, and the changing shape of work.</p>
       </div>
     </section>
 
-    <section class="sec wrap">
-      <span class="kicker">02 · The data gap</span>
-      <h2>Most HR decisions are still made on gut, not data</h2>
-      <p class="lead">69.1% of leaders admit they make key HR decisions without structured employee data. The organisations that have closed this gap report materially lower attrition and faster hiring.</p>
-      <div class="donut-card">
-        <div class="donut" style="--val:69"><span class="dv">69.1%</span></div>
-        <div>
-          <h3>decide without structured data</h3>
-          <p>Only 30.9% say their people decisions are consistently backed by data they trust. Among the data-mature minority, attrition runs ~7 points lower and offer-to-join is ~9 points higher — the clearest ROI signal in this year's survey.</p>
+    <!-- FOUNDERS -->
+    <section class="rsec" style="padding-bottom:8px">
+      <span class="kicker">About the founders</span>
+      <div class="founders">
+        <div class="founder">
+          <div class="fh"><span class="avatar">KM</span><div><div class="fn">Kumar Mayank</div><div class="fr">Founder &amp; CEO</div></div></div>
+          <p>Leads Zimyo's overall vision and strategy, with a focus on strengthening the company's position in international markets while continuing to serve the Indian SMB and mid-market segment.</p>
         </div>
-      </div>
-    </section>
-
-    <section class="sec wrap">
-      <span class="kicker">03 · Hiring &amp; offer-to-join</span>
-      <h2>Offers convert well — but the drop-off is sector-specific</h2>
-      <p class="lead">The overall offer-to-join rate across organisations analysed was 78.4%. Technology and BFSI convert best; manufacturing and retail lose the most candidates between offer and joining.</p>
-      <div class="chart-card">
-        <h3>Offer-to-join rate by sector</h3>
-        <p class="cap">Share of accepted offers that resulted in a joiner.</p>
-        <div class="bars">
-          <div class="bar-row"><span class="rl">Technology</span><div class="bar-track"><div class="bar-fill" style="width:100%"></div></div><span class="rv">86.2%</span></div>
-          <div class="bar-row"><span class="rl">BFSI</span><div class="bar-track"><div class="bar-fill" style="width:95%"></div></div><span class="rv">82.0%</span></div>
-          <div class="bar-row"><span class="rl">Healthcare</span><div class="bar-track"><div class="bar-fill" style="width:90%"></div></div><span class="rv">78.4%</span></div>
-          <div class="bar-row"><span class="rl">Manufacturing</span><div class="bar-track"><div class="bar-fill c3" style="width:83%"></div></div><span class="rv">71.9%</span></div>
-          <div class="bar-row"><span class="rl">Retail</span><div class="bar-track"><div class="bar-fill c4" style="width:77%"></div></div><span class="rv">66.5%</span></div>
+        <div class="founder">
+          <div class="fh"><span class="avatar">NG</span><div><div class="fn">Naresh Gupta</div><div class="fr">Co-Founder &amp; CFO</div></div></div>
+          <p>A Chartered Accountant by background, leading Zimyo's financial and operational strategy — including fundraising — alongside customer success, product marketing, and growth.</p>
         </div>
-      </div>
-    </section>
-
-    <section class="sec wrap">
-      <span class="kicker">04 · Compliance</span>
-      <h2>Nearly half aren't Labour Code ready</h2>
-      <p class="lead">46.6% of organisations say they are not yet ready for India's new Labour Codes. Readiness rises sharply with company size — but even among large enterprises, a third are still working through it.</p>
-      <div class="split">
-        <div class="chart-card" style="margin-top:0">
-          <h3>Labour Code readiness</h3>
-          <p class="cap">Self-reported readiness across all respondents.</p>
-          <div class="bars">
-            <div class="bar-row"><span class="rl">Ready</span><div class="bar-track"><div class="bar-fill c2" style="width:53%"></div></div><span class="rv">31.8%</span></div>
-            <div class="bar-row"><span class="rl">In progress</span><div class="bar-track"><div class="bar-fill c3" style="width:36%"></div></div><span class="rv">21.6%</span></div>
-            <div class="bar-row"><span class="rl">Not ready</span><div class="bar-track"><div class="bar-fill c4" style="width:78%"></div></div><span class="rv">46.6%</span></div>
-          </div>
-        </div>
-        <div class="chart-card" style="margin-top:0">
-          <h3>Readiness by company size</h3>
-          <p class="cap">Share reporting they are "ready".</p>
-          <div class="bars">
-            <div class="bar-row"><span class="rl">1,000+</span><div class="bar-track"><div class="bar-fill" style="width:100%"></div></div><span class="rv">67%</span></div>
-            <div class="bar-row"><span class="rl">201–1,000</span><div class="bar-track"><div class="bar-fill" style="width:69%"></div></div><span class="rv">46%</span></div>
-            <div class="bar-row"><span class="rl">51–200</span><div class="bar-track"><div class="bar-fill c3" style="width:43%"></div></div><span class="rv">29%</span></div>
-            <div class="bar-row"><span class="rl">1–50</span><div class="bar-track"><div class="bar-fill c4" style="width:27%"></div></div><span class="rv">18%</span></div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="sec wrap">
-      <span class="kicker">05 · Leadership &amp; AI</span>
-      <h2>HR's mandate is widening — and AI is filling the gap</h2>
-      <p class="lead">Leaders increasingly own culture, workforce planning and cost — not just administration. To cope, adoption of AI in core HR workflows has jumped, even as formal governance lags behind.</p>
-      <div class="tiles">
-        <div class="tile"><div class="n">64%</div><div class="l">Use AI in ≥1 HR workflow weekly</div></div>
-        <div class="tile"><div class="n">3.2×</div><div class="l">Growth in AI use vs. 2025</div></div>
-        <div class="tile"><div class="n">41%</div><div class="l">Sit on the leadership team</div></div>
-        <div class="tile"><div class="n">13%</div><div class="l">Have a written AI policy</div></div>
       </div>
     </section>
 
@@ -330,7 +566,7 @@
   <div class="gate-cta">
     <div class="ic">🔒</div>
     <h3>Read the full India HR Pulse 2026</h3>
-    <p class="sub">You're reading the free preview. Enter your email to unlock all five findings and every chart — free, before the 23 Sep public launch.</p>
+    <p class="sub">You're reading the free preview. Enter your email to unlock all 17 sections and every chart — free, before the 23 Sep public launch.</p>
     <form id="gateForm" novalidate>
       <div class="field" id="gf-email">
         <label for="gemail">Enter your email to read the report</label>
@@ -350,10 +586,10 @@
       <div class="foot-links">
         <a href="../../index.html">All programs</a>
         <a href="../../index.html#reports">More reports</a>
-        <a href="#report">Read the report</a>
+        <a href="mailto:support@zimyo.com">support@zimyo.com</a>
       </div>
     </div>
-    <div class="foot-copy">© 2026 Zimyo Research. India HR Pulse 2026 launches 23 September 2026. Data published only in aggregate. Made loud in India. 🇮🇳</div>
+    <div class="foot-copy">India HR Pulse · © 2026 Zimyo. All rights reserved. To explore how Zimyo can bring structured HR benchmarking into your organisation, reach out to support@zimyo.com or visit zimyo.com.</div>
   </div>
 </footer>
 
@@ -361,32 +597,62 @@
 (function(){
   "use strict";
 
-  /* ============================================================
-     LEADS ENDPOINT — paste your Microsoft Power Automate HTTP URL
-     (or Formspree/Getform) here. Leave "" to unlock without capture.
-     ============================================================ */
+  /* ===== LEADS ENDPOINT — paste your Microsoft Power Automate / Formspree URL. Leave "" for gate-only. ===== */
   var FORM_ENDPOINT = "";
 
   var STORE_KEY = "zimyo-hrpulse-2026-unlocked";
   var LAUNCH = new Date('2026-09-23T10:00:00+05:30').getTime();
+  var LIGHT_SEG = ["#F9C804","#C9D6F0"]; // segments that need dark text
+
+  /* charts render even while gated (visible in the fade + on unlock) */
+  function pct(v,max){ return Math.max(1.5,(v/max)*100); }
+  document.querySelectorAll('.rows[data-bars]').forEach(function(el){
+    var data=JSON.parse(el.getAttribute('data-bars'));
+    var axis=el.getAttribute('data-axis')||'';
+    var max=parseFloat(el.getAttribute('data-max'))||Math.max.apply(null,data.map(function(d){return d[1];}));
+    var h='<div class="bars">';
+    data.forEach(function(d){
+      var disp=(d[2]!=null?d[2]:d[1]+'%');
+      h+='<div class="barrow"><span class="blabel">'+d[0]+'</span><span class="btrack"><span class="bfill" style="width:'+pct(d[1],max)+'%"></span></span><span class="bval">'+disp+'</span></div>';
+    });
+    h+='</div>'; if(axis) h+='<div class="axis">'+axis+'</div>';
+    el.innerHTML=h;
+  });
+  document.querySelectorAll('.stack[data-rows]').forEach(function(el){
+    var rows=JSON.parse(el.getAttribute('data-rows'));
+    var legend=JSON.parse(el.getAttribute('data-legend'));
+    var colors=JSON.parse(el.getAttribute('data-colors'));
+    var axis=el.getAttribute('data-axis')||'';
+    var h='<div>';
+    rows.forEach(function(r){
+      h+='<div class="srow"><span class="blabel">'+r[0]+'</span><span class="strack">';
+      r[1].forEach(function(v,i){
+        if(v>0){
+          var dark=LIGHT_SEG.indexOf(colors[i])>-1;
+          h+='<span class="sseg" style="width:'+v+'%;background:'+colors[i]+';color:'+(dark?'#03192E':'#fff')+'">'+(v>=8?v+'%':'')+'</span>';
+        }
+      });
+      h+='</span></div>';
+    });
+    h+='</div><div class="legend">'+legend.map(function(l,i){return '<span class="lg"><span class="ld" style="background:'+colors[i]+'"></span>'+l+'</span>';}).join('')+'</div>';
+    if(axis) h+='<div class="axis">'+axis+'</div>';
+    el.innerHTML=h;
+  });
 
   var nav=document.getElementById('nav');
   function onScroll(){ nav.classList.toggle('scrolled', window.scrollY>20); }
   onScroll(); window.addEventListener('scroll',onScroll,{passive:true});
 
-  /* compact launch countdown in the cover */
   var cdMini=document.getElementById('cdMini');
   function tick(){
     if(!cdMini) return;
     var diff=LAUNCH-Date.now();
     if(diff<=0){ cdMini.innerHTML='<span class="live"><span class="d"></span>Live now</span>'; return; }
-    var d=Math.floor(diff/8.64e7), h=Math.floor(diff%8.64e7/3.6e6), m=Math.floor(diff%3.6e6/6e4);
-    cdMini.textContent='in '+d+'d '+h+'h '+m+'m';
-    setTimeout(tick, 30000);
+    var d=Math.floor(diff/8.64e7), hh=Math.floor(diff%8.64e7/3.6e6), m=Math.floor(diff%3.6e6/6e4);
+    cdMini.textContent='in '+d+'d '+hh+'h '+m+'m'; setTimeout(tick,30000);
   }
   tick();
 
-  /* gate */
   var gated=document.getElementById('gated'), ubar=document.getElementById('ubar');
   function isUnlocked(){ try{return localStorage.getItem(STORE_KEY)==="1"}catch(e){return false} }
   function remember(){ try{localStorage.setItem(STORE_KEY,"1")}catch(e){} }
@@ -394,24 +660,19 @@
   function doUnlock(showBar){ gated.classList.remove('locked'); if(showBar) ubar.classList.add('show'); }
   if(isUnlocked()){ doUnlock(true); }
 
-  function wire(f){
-    if(!f) return;
-    var input=f.querySelector('[name=email]'), field=input&&input.closest('.field');
-    f.addEventListener('submit',function(ev){
+  var form=document.getElementById('gateForm');
+  if(form){
+    var input=form.querySelector('[name=email]'), field=input&&input.closest('.field');
+    form.addEventListener('submit',function(ev){
       ev.preventDefault();
       var email=((input&&input.value)||'').trim(), bad=!emailOk(email);
       if(field) field.classList.toggle('invalid',bad);
       if(bad) return;
       var payload={email:email,report:"India HR Pulse 2026",source:"reports.zimyo.com",ts:new Date().toISOString()};
-      if(FORM_ENDPOINT){
-        try{ fetch(FORM_ENDPOINT,{method:"POST",mode:"no-cors",headers:{"Content-Type":"text/plain;charset=utf-8"},body:JSON.stringify(payload)}).catch(function(){}); }catch(err){}
-      }
+      if(FORM_ENDPOINT){ try{ fetch(FORM_ENDPOINT,{method:"POST",mode:"no-cors",headers:{"Content-Type":"text/plain;charset=utf-8"},body:JSON.stringify(payload)}).catch(function(){}); }catch(err){} }
       remember(); doUnlock(true);
-      gated.scrollIntoView({behavior:'smooth',block:'start'});
     });
   }
-  wire(document.getElementById('gateForm'));
-
   var pb=document.getElementById('printBtn'); if(pb) pb.addEventListener('click',function(){ window.print(); });
 })();
 </script>
