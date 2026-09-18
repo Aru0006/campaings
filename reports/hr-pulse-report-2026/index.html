@@ -113,8 +113,8 @@
   .barrow{display:grid;grid-template-columns:minmax(110px,196px) 1fr 52px;align-items:center;gap:12px}
   @media (max-width:560px){.barrow{grid-template-columns:104px 1fr 44px;gap:8px}}
   .blabel{font-size:12.5px;font-weight:600;color:var(--ink-2);line-height:1.25;text-align:right}
-  .btrack{height:16px;border-radius:5px;background:var(--surface-2);overflow:hidden}
-  .bfill{height:100%;border-radius:5px;transform-origin:left;animation:grow .9s var(--ease) both;background:var(--blue)}
+  .btrack{display:block;height:16px;border-radius:5px;background:var(--surface-2);overflow:hidden}
+  .bfill{display:block;height:100%;border-radius:5px;transform-origin:left;animation:grow .9s var(--ease) both;background:var(--blue)}
   @keyframes grow{from{transform:scaleX(0)}}
   .bval{font-weight:700;font-size:13px;text-align:left;font-variant-numeric:tabular-nums}
   .bars .barrow:nth-child(6n+1) .bfill{background:#1F6BFF}
