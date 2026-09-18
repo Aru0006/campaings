@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>HR Pulse Report 2026</title>
-<meta name="description" content="Zimyo's HR Pulse Report 2026 — a snapshot of what 14,000+ employees and HR leaders across India really feel right now. Launching 23 Sep 2026. Get early access.">
+<title>India HR Pulse 2026</title>
+<meta name="description" content="India HR Pulse 2026 by Zimyo Research — metrics that matter in HR tech, based on 4,117 verified responses from HR and business leaders across India and the GCC. Launching 23 Sep 2026.">
 <meta name="robots" content="noindex, nofollow">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -19,8 +19,7 @@
     --border:#E2E8F5; --border-strong:#CED9EE;
     --shadow:12 40 120; --shadow-a:.12;
     --grad:linear-gradient(100deg,var(--azure) 0%,var(--primary) 100%);
-    --maxw:1120px; --r-lg:24px; --r-md:16px; --r-sm:10px;
-    --ease:cubic-bezier(.22,1,.36,1);
+    --maxw:1120px; --r-lg:24px; --r-md:16px; --ease:cubic-bezier(.22,1,.36,1);
     --font:"Poppins",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
   }
   *{box-sizing:border-box}
@@ -37,7 +36,6 @@
   :focus-visible{outline:2.5px solid var(--primary);outline-offset:3px;border-radius:6px}
   .kicker{color:var(--primary);display:flex;align-items:center;gap:10px;font-weight:700;font-size:12.5px;letter-spacing:.14em;text-transform:uppercase}
   .kicker::before{content:"";width:24px;height:2px;background:var(--grad);border-radius:2px}
-  .grad-text{background:linear-gradient(100deg,#5BA8FF,#84A0FF);-webkit-background-clip:text;background-clip:text;color:transparent}
 
   /* NAV */
   header.nav{position:fixed;inset:0 0 auto 0;z-index:60;transition:background .35s var(--ease),box-shadow .35s,border-color .35s;border-bottom:1px solid transparent;padding-top:env(safe-area-inset-top,0px);
@@ -61,79 +59,47 @@
   .btn-outline{background:transparent;border:1.5px solid var(--border-strong);color:var(--ink)}
   .btn-outline:hover{border-color:var(--ink);background:var(--surface-2)}
 
-  /* HERO */
+  /* COVER (matches reference) */
   .hero{position:relative;overflow:hidden;color:#fff;background:radial-gradient(120% 95% at 12% 0%,#0B3576 0%,#072047 46%,#03192E 100%)}
   .hero::after{content:"";position:absolute;inset:0;pointer-events:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.5'/%3E%3C/svg%3E");opacity:.05;mix-blend-mode:overlay}
   .hero-glow{position:absolute;border-radius:50%;filter:blur(80px);z-index:0}
-  .g1{width:38vw;height:38vw;left:-6vw;top:-8vw;background:radial-gradient(circle,var(--primary),transparent 68%);opacity:.7}
-  .g2{width:30vw;height:30vw;right:-4vw;bottom:-14vh;background:radial-gradient(circle,var(--azure),transparent 66%);opacity:.6}
-  .g3{width:18vw;height:18vw;right:26vw;top:-6vh;background:radial-gradient(circle,var(--flame),transparent 64%);opacity:.34}
-  .hero-in{position:relative;z-index:1;padding-block:126px 80px;display:grid;grid-template-columns:1.15fr .85fr;gap:56px;align-items:start}
-  @media (max-width:900px){.hero-in{grid-template-columns:1fr;gap:32px;padding-block:104px 52px}}
-  .hero-eyebrow{display:inline-flex;align-items:center;gap:10px;color:rgba(255,255,255,.82);font-weight:600;font-size:13px;letter-spacing:.04em}
-  .hero-eyebrow .badge{background:var(--grad);color:#fff;font-size:11px;font-weight:700;letter-spacing:.1em;padding:5px 11px;border-radius:30px;text-transform:uppercase}
-  h1.hero-h{font-size:clamp(40px,6vw,72px);font-weight:800;margin-top:20px;letter-spacing:-.035em;max-width:13ch}
-  .hero-sub{margin-top:20px;font-size:clamp(16px,2vw,19px);color:rgba(255,255,255,.8);max-width:50ch}
-
-  /* countdown */
-  .launch{margin-top:30px}
-  .launch .lbl{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.6);font-weight:600;margin-bottom:10px}
-  .countdown{display:flex;gap:12px}
-  .cd-cell{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.16);border-radius:14px;padding:12px 6px;min-width:74px;text-align:center;backdrop-filter:blur(4px)}
-  .cd-cell .cv{font-weight:800;font-size:32px;line-height:1;font-variant-numeric:tabular-nums}
-  .cd-cell .cl{font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.6);margin-top:6px}
-  .cd-live{display:inline-flex;align-items:center;gap:8px;background:color-mix(in srgb,var(--green) 22%,transparent);border:1px solid color-mix(in srgb,var(--green) 45%,transparent);color:#fff;font-weight:700;padding:10px 16px;border-radius:30px}
-  .cd-live .d{width:8px;height:8px;border-radius:50%;background:var(--green);box-shadow:0 0 0 0 rgba(0,205,55,.7);animation:pulse 2s infinite}
+  .g1{width:36vw;height:36vw;left:-6vw;top:-8vw;background:radial-gradient(circle,var(--primary),transparent 68%);opacity:.6}
+  .g2{width:26vw;height:26vw;right:-4vw;bottom:-12vh;background:radial-gradient(circle,var(--azure),transparent 66%);opacity:.5}
+  .cover{position:relative;z-index:1;padding-block:118px 74px}
+  .cover-top{display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;margin-bottom:44px}
+  .cover-top .brand img{height:30px;filter:brightness(0) invert(1)}
+  .cover-eyebrow{font-weight:700;font-size:12.5px;letter-spacing:.18em;text-transform:uppercase;color:#84A0FF}
+  .cover h1{font-size:clamp(46px,8.4vw,104px);font-weight:800;letter-spacing:-.04em;line-height:.94;max-width:11ch}
+  .cover-sub{color:#84A0FF;font-weight:700;font-size:clamp(22px,3.4vw,34px);margin-top:20px;letter-spacing:-.02em}
+  .cover-desc{color:rgba(255,255,255,.82);font-size:clamp(16px,2vw,19px);margin-top:22px;max-width:54ch}
+  .cover-window{color:rgba(255,255,255,.62);font-size:14px;margin-top:12px}
+  .cover-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:22px;margin-top:46px}
+  @media(max-width:820px){.cover-stats{grid-template-columns:1fr 1fr;gap:26px 22px}}
+  @media(max-width:480px){.cover-stats{grid-template-columns:1fr}}
+  .cstat{border-top:3px solid var(--x,#fff);padding-top:16px}
+  .cstat .n{font-weight:800;font-size:clamp(34px,4.6vw,50px);letter-spacing:-.03em;line-height:1;font-variant-numeric:tabular-nums}
+  .cstat .l{color:rgba(255,255,255,.8);font-size:14px;margin-top:12px;line-height:1.45}
+  .cover-note{color:rgba(255,255,255,.55);font-size:13px;margin-top:38px;border-top:1px solid rgba(255,255,255,.14);padding-top:20px}
+  .cover-cta{margin-top:26px;display:flex;align-items:center;gap:20px 26px;flex-wrap:wrap}
+  .launch-inline{display:flex;align-items:center;gap:12px;color:rgba(255,255,255,.72);font-size:14px;font-weight:500}
+  .launch-inline .cd{font-weight:700;color:#fff;font-variant-numeric:tabular-nums}
+  .launch-inline .live{display:inline-flex;align-items:center;gap:7px;color:#fff;font-weight:700}
+  .launch-inline .live .d{width:8px;height:8px;border-radius:50%;background:var(--green);box-shadow:0 0 0 0 rgba(0,205,55,.7);animation:pulse 2s infinite}
   @keyframes pulse{70%{box-shadow:0 0 0 8px rgba(0,205,55,0)}100%{box-shadow:0 0 0 0 rgba(0,205,55,0)}}
-  @media (max-width:520px){.cd-cell{min-width:60px}.cd-cell .cv{font-size:25px}}
-
-  /* GATE */
-  .gate{background:var(--surface);color:var(--ink);border-radius:22px;padding:28px;box-shadow:0 30px 70px rgba(3,10,40,.45)}
-  .gate .cover{display:flex;align-items:center;gap:12px;margin-bottom:18px}
-  .gate .cover .thumb{width:52px;height:66px;border-radius:8px;background:radial-gradient(120% 120% at 100% 0%,#1E48C9,#03192E);display:grid;place-items:center;color:#fff;font-weight:800;font-size:10px;text-align:center;line-height:1.15;padding:6px;box-shadow:0 8px 20px rgba(51,90,255,.35)}
-  .gate h2{font-size:21px;letter-spacing:-.02em}
-  .gate .cover p{font-size:13px;color:var(--muted);margin-top:3px}
-  .field{margin-bottom:12px}
-  .field label{display:block;font-size:12.5px;font-weight:600;color:var(--ink-2);margin-bottom:6px}
-  .field input,.field select{width:100%;font:inherit;font-size:15px;padding:12px 14px;border:1.5px solid var(--border-strong);border-radius:11px;background:var(--surface);color:var(--ink);outline:none;transition:border-color .2s,box-shadow .2s}
-  .field input:focus,.field select:focus{border-color:var(--primary);box-shadow:0 0 0 3px color-mix(in srgb,var(--primary) 18%,transparent)}
-  .field .err{display:none;color:var(--flame);font-size:12.5px;margin-top:6px;font-weight:600}
-  .field.invalid input{border-color:var(--flame)}
-  .field.invalid .err{display:block}
-  .gate .fine{font-size:12px;color:var(--muted);margin-top:14px;text-align:center;line-height:1.5}
-  .gate .trust{display:flex;align-items:center;justify-content:center;gap:8px;margin-top:14px;font-size:12px;color:var(--muted);font-weight:600}
-  .gate.done{text-align:center;padding-block:44px}
-  .gate .success{display:none}
-  .gate.done .success{display:block}
-  .gate.done form,.gate.done .cover .txt p{display:none}
-  .success .check{width:60px;height:60px;border-radius:50%;background:color-mix(in srgb,var(--green) 16%,transparent);color:var(--green-2);display:grid;place-items:center;margin:0 auto 16px;font-size:30px}
 
   /* SECTIONS */
-  .sec{padding-block:74px}
-  @media (max-width:760px){.sec{padding-block:50px}}
-  .sec h2{font-size:clamp(26px,3.6vw,40px);margin-top:14px;max-width:20ch}
-  .sec .lead{color:var(--muted);margin-top:14px;max-width:60ch;font-size:17px}
+  .sec{padding-block:66px}
+  @media (max-width:760px){.sec{padding-block:46px}}
+  .sec h2{font-size:clamp(26px,3.6vw,38px);margin-top:14px;max-width:22ch}
+  .sec .lead{color:var(--ink-2);margin-top:16px;max-width:68ch;font-size:17px}
+  .sec .lead + .lead{margin-top:14px}
 
-  /* PEEK teaser cards (curiosity) */
-  .peek{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:36px}
-  @media (max-width:860px){.peek{grid-template-columns:1fr 1fr}}
-  @media (max-width:480px){.peek{grid-template-columns:1fr}}
-  .pcard{background:var(--surface);border:1px solid var(--border);border-radius:var(--r-md);padding:22px;position:relative;overflow:hidden}
-  .pcard .n{font-weight:800;font-size:clamp(30px,4vw,42px);letter-spacing:-.03em;line-height:1;font-variant-numeric:tabular-nums;background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
-  .pcard .l{font-size:14px;color:var(--ink-2);margin-top:12px;font-weight:600;line-height:1.4}
-  .pcard.locked .n{filter:blur(11px);user-select:none;-webkit-user-select:none}
-  .pcard.locked{border-style:dashed}
-  .pcard .lockpill{position:absolute;top:14px;right:14px;display:inline-flex;align-items:center;gap:5px;font-size:11px;font-weight:700;color:var(--primary);background:color-mix(in srgb,var(--primary) 12%,transparent);padding:4px 9px;border-radius:20px}
-  .peek-cta{margin-top:30px;display:flex;align-items:center;gap:16px;flex-wrap:wrap}
-  .peek-cta .txt{color:var(--muted);font-size:15px}
-
-  /* charts */
   .chart-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--r-lg);padding:28px;margin-top:28px}
   .chart-card h3{font-size:19px}
   .chart-card .cap{color:var(--muted);font-size:13.5px;margin-top:4px}
   .bars{margin-top:24px;display:grid;gap:16px}
-  .bar-row{display:grid;grid-template-columns:150px 1fr 52px;align-items:center;gap:14px}
-  @media (max-width:560px){.bar-row{grid-template-columns:108px 1fr 44px;gap:10px}}
+  .bar-row{display:grid;grid-template-columns:170px 1fr 56px;align-items:center;gap:14px}
+  @media (max-width:560px){.bar-row{grid-template-columns:120px 1fr 46px;gap:10px}}
   .bar-row .rl{font-size:13.5px;font-weight:600;color:var(--ink-2)}
   .bar-track{height:14px;border-radius:8px;background:var(--surface-2);overflow:hidden}
   .bar-fill{height:100%;border-radius:8px;background:var(--grad);transform-origin:left;animation:grow 1s var(--ease) both}
@@ -152,18 +118,18 @@
   .donut-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--r-lg);padding:28px;display:flex;gap:26px;align-items:center;flex-wrap:wrap;margin-top:28px}
   .donut{--val:0;width:150px;height:150px;border-radius:50%;flex:0 0 auto;background:conic-gradient(var(--primary) calc(var(--val)*1%),var(--surface-2) 0);display:grid;place-items:center;position:relative}
   .donut::after{content:"";position:absolute;inset:18px;border-radius:50%;background:var(--surface)}
-  .donut .dv{position:relative;z-index:1;font-weight:800;font-size:30px;letter-spacing:-.02em;font-variant-numeric:tabular-nums}
+  .donut .dv{position:relative;z-index:1;font-weight:800;font-size:28px;letter-spacing:-.02em;font-variant-numeric:tabular-nums}
   .donut-card h3{font-size:19px}
   .donut-card p{color:var(--muted);font-size:14px;margin-top:8px}
   .callout{background:linear-gradient(120deg,color-mix(in srgb,var(--primary) 9%,var(--surface)),var(--surface));border:1px solid var(--border);border-left:4px solid var(--primary);border-radius:var(--r-md);padding:22px 24px;margin-top:24px}
   .callout .q{font-size:18px;font-weight:600;letter-spacing:-.01em}
   .callout .who{color:var(--muted);font-size:13.5px;margin-top:8px}
 
-  /* GATED — Medium-style fade-out + centered CTA */
+  /* GATED — Medium-style fade + centered CTA */
   .gated{position:relative}
-  .gated.locked .gated-inner{max-height:440px;overflow:hidden;
-    -webkit-mask-image:linear-gradient(to bottom,#000 50%,transparent 100%);
-    mask-image:linear-gradient(to bottom,#000 50%,transparent 100%)}
+  .gated.locked .gated-inner{max-height:420px;overflow:hidden;
+    -webkit-mask-image:linear-gradient(to bottom,#000 48%,transparent 100%);
+    mask-image:linear-gradient(to bottom,#000 48%,transparent 100%)}
   .gate-cta{display:none;max-width:540px;margin:0 auto;text-align:center;padding:0 0 8px}
   .gated.locked .gate-cta{display:block}
   .gate-cta .ic{width:52px;height:52px;border-radius:15px;background:var(--grad);display:grid;place-items:center;margin:0 auto 18px;font-size:22px;color:#fff;box-shadow:0 10px 24px rgba(51,90,255,.4)}
@@ -171,26 +137,30 @@
   .gate-cta .sub{color:var(--muted);margin-top:12px;font-size:16px}
   .gate-cta form{margin-top:24px;text-align:left;background:var(--surface);border:1px solid var(--border);border-radius:20px;padding:24px;box-shadow:0 22px 55px rgba(var(--shadow),.16)}
   .gate-cta .fine{font-size:12px;color:var(--muted);margin-top:12px}
+  .field{margin-bottom:12px}
+  .field label{display:block;font-size:12.5px;font-weight:600;color:var(--ink-2);margin-bottom:6px}
+  .field input{width:100%;font:inherit;font-size:15px;padding:12px 14px;border:1.5px solid var(--border-strong);border-radius:11px;background:var(--surface);color:var(--ink);outline:none;transition:border-color .2s,box-shadow .2s}
+  .field input:focus{border-color:var(--primary);box-shadow:0 0 0 3px color-mix(in srgb,var(--primary) 18%,transparent)}
+  .field .err{display:none;color:var(--flame);font-size:12.5px;margin-top:6px;font-weight:600}
+  .field.invalid input{border-color:var(--flame)}
+  .field.invalid .err{display:block}
 
   .unlocked-bar{display:none;position:sticky;top:0;z-index:40;background:color-mix(in srgb,var(--green) 12%,var(--surface));border-bottom:1px solid color-mix(in srgb,var(--green) 30%,transparent);padding:12px 0}
   .unlocked-bar.show{display:block}
   .ub-in{display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap}
   .ub-in .msg{display:flex;align-items:center;gap:10px;font-weight:600;color:var(--green-2)}
 
-  .method{background:var(--surface-2);border-block:1px solid var(--border)}
-  .method .body{color:var(--muted);max-width:70ch;margin-top:12px;font-size:15px}
-
   footer{background:var(--oxford);color:rgba(255,255,255,.72);padding-block:44px 34px}
   .foot-in{display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap}
-  footer .brand img{height:26px}
+  footer .brand img{height:26px;filter:brightness(0) invert(1)}
   footer a{color:rgba(255,255,255,.8)}
   footer a:hover{color:#fff}
   .foot-links{display:flex;gap:20px;font-size:14px;flex-wrap:wrap}
   .foot-copy{width:100%;border-top:1px solid rgba(255,255,255,.12);margin-top:26px;padding-top:20px;font-size:13px;color:rgba(255,255,255,.55)}
 
   @media print{
-    header.nav,.unlocked-bar,.gate,.lock,.hero-glow{display:none!important}
-    .gated.locked .gated-inner{max-height:none;overflow:visible;filter:none}
+    header.nav,.unlocked-bar,.gate-cta,.hero-glow{display:none!important}
+    .gated.locked .gated-inner{max-height:none;overflow:visible;-webkit-mask-image:none;mask-image:none}
     body{background:#fff}
   }
 </style>
@@ -204,7 +174,7 @@
       <span class="tag">Programs</span>
     </a>
     <a class="nav-back" href="../../index.html">← All programs</a>
-    <div class="nav-cta"><a class="btn btn-primary" href="#get">Get early access</a></div>
+    <div class="nav-cta"><a class="btn btn-primary" href="#report">Read the report</a></div>
   </div>
 </header>
 
@@ -215,180 +185,152 @@
   </div>
 </div>
 
-<!-- HERO + GATE -->
-<section class="hero" id="get">
-  <div class="hero-glow g1"></div><div class="hero-glow g2"></div><div class="hero-glow g3"></div>
-  <div class="wrap hero-in">
-    <div>
-      <span class="hero-eyebrow"><span class="badge">New · Pulse</span> Launching 23 September 2026</span>
-      <h1 class="hero-h">HR Pulse Report <span class="grad-text">2026</span></h1>
-      <p class="hero-sub">We asked 14,000+ employees and 2,000 HR leaders one thing: how does work in India <em>actually</em> feel right now? Some of the answers surprised even us.</p>
-      <div class="launch">
-        <div class="lbl" id="cdLabel">Public launch in</div>
-        <div class="countdown" id="countdown">
-          <div class="cd-cell"><div class="cv" data-cd="d">00</div><div class="cl">Days</div></div>
-          <div class="cd-cell"><div class="cv" data-cd="h">00</div><div class="cl">Hrs</div></div>
-          <div class="cd-cell"><div class="cv" data-cd="m">00</div><div class="cl">Min</div></div>
-          <div class="cd-cell"><div class="cv" data-cd="s">00</div><div class="cl">Sec</div></div>
-        </div>
-      </div>
+<!-- COVER -->
+<section class="hero">
+  <div class="hero-glow g1"></div><div class="hero-glow g2"></div>
+  <div class="wrap cover">
+    <div class="cover-top">
+      <span class="brand"><img src="../../zimyo-logo.png" alt="Zimyo" width="105" height="30"></span>
+      <span class="cover-eyebrow">The Pulse of People Operations</span>
+    </div>
+    <h1>India HR<br>Pulse 2026</h1>
+    <p class="cover-sub">Metrics That Matter in HR Tech</p>
+    <p class="cover-desc">Based on 4,117 verified responses from HR and business leaders across India and the GCC market.</p>
+    <p class="cover-window">Collection window: 1 June – 6 August 2026</p>
+
+    <div class="cover-stats">
+      <div class="cstat" style="--x:#00CD37"><div class="n">59.3%</div><div class="l">cite attrition &amp; retention as their top challenge</div></div>
+      <div class="cstat" style="--x:#335AFF"><div class="n">69.1%</div><div class="l">make HR decisions without structured employee data</div></div>
+      <div class="cstat" style="--x:#0085FF"><div class="n">78.4%</div><div class="l">overall offer-to-join rate across organisations analysed</div></div>
+      <div class="cstat" style="--x:#DD4F24"><div class="n">46.6%</div><div class="l">of organisations are not yet Labour Code ready</div></div>
     </div>
 
-    <!-- GATE -->
-    <div class="gate" id="gate">
-      <div class="cover">
-        <div class="thumb">HR<br>PULSE<br>2026</div>
-        <div class="txt">
-          <h2>Read it before everyone else</h2>
-          <p>Unlock the full report now — ahead of the 23 Sep public launch.</p>
-        </div>
-      </div>
-      <form id="leadForm" novalidate>
-        <div class="field" id="f-email">
-          <label for="email">Enter your email to read the report</label>
-          <input id="email" name="email" type="email" autocomplete="email" placeholder="you@company.com" required>
-          <div class="err">Please enter a valid email address.</div>
-        </div>
-        <button class="btn btn-primary btn-lg btn-block" type="submit">Read the full report →</button>
-      </form>
-      <p class="fine">By submitting you agree to receive the report and occasional HR research from Zimyo. Unsubscribe anytime.</p>
-      <div class="trust">🔒 We never share your email · GDPR-friendly</div>
-      <div class="success">
-        <div class="check">✓</div>
-        <h2>You're in!</h2>
-        <p class="fine" style="font-size:14px;margin-top:8px">The full report is unlocked below and on its way to your inbox.</p>
-        <button class="btn btn-primary btn-lg" id="readBtn" type="button" style="margin-top:18px">Read it now ↓</button>
-      </div>
+    <p class="cover-note">Responses are confidential. Data is published only in aggregate.</p>
+
+    <div class="cover-cta">
+      <a class="btn btn-primary btn-lg" href="#report">Read the full report ↓</a>
+      <span class="launch-inline" id="launch">Public launch <b>23 Sep 2026</b> · <span class="cd" id="cdMini">—</span></span>
     </div>
   </div>
 </section>
 
-<!-- CURIOSITY TEASER (free) -->
-<section class="sec wrap">
-  <span class="kicker">A sneak peek</span>
-  <h2>Four findings from this year's pulse</h2>
-  <p class="lead">Here's a taste. We're showing one number in full — the other three are behind the form, because honestly, they're the ones worth talking about.</p>
-  <div class="peek">
-    <div class="pcard">
-      <div class="n">+34</div>
-      <div class="l">Median employee eNPS — a four-year high</div>
-    </div>
-    <div class="pcard locked">
-      <span class="lockpill">🔒 Locked</span>
-      <div class="n">1 in 3</div>
-      <div class="l">employees are “quietly disengaged” — and their managers don't know</div>
-    </div>
-    <div class="pcard locked">
-      <span class="lockpill">🔒 Locked</span>
-      <div class="n">71%</div>
-      <div class="l">of HR leaders now trust AI for this one task they wouldn't touch a year ago</div>
-    </div>
-    <div class="pcard locked">
-      <span class="lockpill">🔒 Locked</span>
-      <div class="n">2.4×</div>
-      <div class="l">the retention gap between the best and worst workplaces — the widest we've measured</div>
-    </div>
-  </div>
-  <div class="peek-cta">
-    <a class="btn btn-primary btn-lg" href="#get" id="peekBtn">Unlock all 11 findings →</a>
-    <span class="txt">Free · 2 minutes · your work email</span>
-  </div>
+<!-- ABOUT (free) -->
+<section class="sec wrap" id="report">
+  <span class="kicker">About this report</span>
+  <h2>The state of Indian HR, measured — not guessed</h2>
+  <p class="lead">This report summarises findings from the India HR Pulse 2026 survey, a community initiative by Zimyo Research to benchmark how HR and business leaders across India — and select GCC markets — are experiencing attrition, leadership, data maturity, and the changing shape of HR's mandate.</p>
+  <p class="lead">The picture that emerges is a profession under pressure to modernise: retention is the number-one worry, most decisions are still made without structured data, and nearly half of organisations aren't yet ready for the new Labour Codes. The full breakdown — with sector cuts and the levers that move each metric — is below.</p>
 </section>
 
-<!-- GATED FULL REPORT -->
+<!-- METHODOLOGY (free) -->
+<section class="sec wrap" style="padding-top:0">
+  <span class="kicker">Methodology</span>
+  <h2 style="font-size:clamp(24px,3vw,32px)">How the pulse was taken</h2>
+  <p class="lead"><b>Sample size:</b> 4,117 verified, anonymous responses collected between 1 June and 6 August 2026. Respondents span organisations of varying size, industry, and geography across India and select GCC markets.</p>
+  <p class="lead">Figures are reported as medians or shares of respondents unless stated otherwise; sector and size cuts require a minimum sample of 30 organisations. No individual person or company is identifiable — data is published only in aggregate.</p>
+</section>
+
+<!-- GATED FINDINGS -->
 <div class="gated locked" id="gated">
   <div class="gated-inner">
 
     <section class="sec wrap">
-      <span class="kicker">01 · Engagement</span>
-      <h2>Sentiment is up — but it's a tale of two workplaces</h2>
-      <p class="lead">Median eNPS reached +34, the highest since 2022. But the spread is enormous: top-quartile employers scored +58, while the bottom quartile sat at −6. The average hides a widening divide.</p>
+      <span class="kicker">01 · Attrition &amp; retention</span>
+      <h2>Retention is HR's number-one challenge — by a distance</h2>
+      <p class="lead">59.3% of leaders named attrition and retention their single biggest challenge for the year — ahead of hiring, cost, and compliance. The pain is sharpest in organisations without a clear growth path for employees.</p>
       <div class="chart-card">
-        <h3>Employee eNPS by workplace quartile</h3>
-        <p class="cap">Net Promoter–style score, −100 to +100.</p>
+        <h3>Top HR challenge for 2026</h3>
+        <p class="cap">Share of leaders selecting each as their #1 challenge.</p>
         <div class="bars">
-          <div class="bar-row"><span class="rl">Top 25%</span><div class="bar-track"><div class="bar-fill c2" style="width:100%"></div></div><span class="rv">+58</span></div>
-          <div class="bar-row"><span class="rl">Upper-mid</span><div class="bar-track"><div class="bar-fill" style="width:76%"></div></div><span class="rv">+41</span></div>
-          <div class="bar-row"><span class="rl">Lower-mid</span><div class="bar-track"><div class="bar-fill c3" style="width:41%"></div></div><span class="rv">+18</span></div>
-          <div class="bar-row"><span class="rl">Bottom 25%</span><div class="bar-track"><div class="bar-fill c4" style="width:8%"></div></div><span class="rv">−6</span></div>
+          <div class="bar-row"><span class="rl">Attrition &amp; retention</span><div class="bar-track"><div class="bar-fill c2" style="width:100%"></div></div><span class="rv">59.3%</span></div>
+          <div class="bar-row"><span class="rl">Hiring quality talent</span><div class="bar-track"><div class="bar-fill" style="width:71%"></div></div><span class="rv">42.1%</span></div>
+          <div class="bar-row"><span class="rl">Cost &amp; productivity</span><div class="bar-track"><div class="bar-fill" style="width:53%"></div></div><span class="rv">31.4%</span></div>
+          <div class="bar-row"><span class="rl">Compliance</span><div class="bar-track"><div class="bar-fill c3" style="width:41%"></div></div><span class="rv">24.6%</span></div>
+          <div class="bar-row"><span class="rl">Engagement</span><div class="bar-track"><div class="bar-fill c3" style="width:36%"></div></div><span class="rv">21.2%</span></div>
         </div>
+      </div>
+      <div class="callout">
+        <div class="q">“We can hire. Keeping people past year one is the real fight.”</div>
+        <div class="who">— CHRO, IT services (2,200 employees)</div>
       </div>
     </section>
 
     <section class="sec wrap">
-      <span class="kicker">02 · Quiet disengagement</span>
-      <h2>One in three are checked out — quietly</h2>
-      <p class="lead">33% of employees told us they do the minimum and no more, yet only 9% of managers could correctly identify a disengaged report. The signal is there; most teams just aren't reading it.</p>
+      <span class="kicker">02 · The data gap</span>
+      <h2>Most HR decisions are still made on gut, not data</h2>
+      <p class="lead">69.1% of leaders admit they make key HR decisions without structured employee data. The organisations that have closed this gap report materially lower attrition and faster hiring.</p>
       <div class="donut-card">
-        <div class="donut" style="--val:33"><span class="dv">33%</span></div>
+        <div class="donut" style="--val:69"><span class="dv">69.1%</span></div>
         <div>
-          <h3>are “quietly disengaged”</h3>
-          <p>They're not leaving — they've mentally left. The strongest predictors: no growth conversation in 6+ months (2.9× more likely), and a manager they'd rate below 6/10. Regular 1:1s cut the odds nearly in half.</p>
+          <h3>decide without structured data</h3>
+          <p>Only 30.9% say their people decisions are consistently backed by data they trust. Among the data-mature minority, attrition runs ~7 points lower and offer-to-join is ~9 points higher — the clearest ROI signal in this year's survey.</p>
         </div>
       </div>
     </section>
 
     <section class="sec wrap">
-      <span class="kicker">03 · AI at work</span>
-      <h2>HR crossed the AI trust line</h2>
-      <p class="lead">71% of HR leaders now trust AI to screen and shortlist candidates — a task most said was off-limits just a year ago. Adoption is broad, but governance hasn't caught up.</p>
+      <span class="kicker">03 · Hiring &amp; offer-to-join</span>
+      <h2>Offers convert well — but the drop-off is sector-specific</h2>
+      <p class="lead">The overall offer-to-join rate across organisations analysed was 78.4%. Technology and BFSI convert best; manufacturing and retail lose the most candidates between offer and joining.</p>
+      <div class="chart-card">
+        <h3>Offer-to-join rate by sector</h3>
+        <p class="cap">Share of accepted offers that resulted in a joiner.</p>
+        <div class="bars">
+          <div class="bar-row"><span class="rl">Technology</span><div class="bar-track"><div class="bar-fill" style="width:100%"></div></div><span class="rv">86.2%</span></div>
+          <div class="bar-row"><span class="rl">BFSI</span><div class="bar-track"><div class="bar-fill" style="width:95%"></div></div><span class="rv">82.0%</span></div>
+          <div class="bar-row"><span class="rl">Healthcare</span><div class="bar-track"><div class="bar-fill" style="width:90%"></div></div><span class="rv">78.4%</span></div>
+          <div class="bar-row"><span class="rl">Manufacturing</span><div class="bar-track"><div class="bar-fill c3" style="width:83%"></div></div><span class="rv">71.9%</span></div>
+          <div class="bar-row"><span class="rl">Retail</span><div class="bar-track"><div class="bar-fill c4" style="width:77%"></div></div><span class="rv">66.5%</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="sec wrap">
+      <span class="kicker">04 · Compliance</span>
+      <h2>Nearly half aren't Labour Code ready</h2>
+      <p class="lead">46.6% of organisations say they are not yet ready for India's new Labour Codes. Readiness rises sharply with company size — but even among large enterprises, a third are still working through it.</p>
+      <div class="split">
+        <div class="chart-card" style="margin-top:0">
+          <h3>Labour Code readiness</h3>
+          <p class="cap">Self-reported readiness across all respondents.</p>
+          <div class="bars">
+            <div class="bar-row"><span class="rl">Ready</span><div class="bar-track"><div class="bar-fill c2" style="width:53%"></div></div><span class="rv">31.8%</span></div>
+            <div class="bar-row"><span class="rl">In progress</span><div class="bar-track"><div class="bar-fill c3" style="width:36%"></div></div><span class="rv">21.6%</span></div>
+            <div class="bar-row"><span class="rl">Not ready</span><div class="bar-track"><div class="bar-fill c4" style="width:78%"></div></div><span class="rv">46.6%</span></div>
+          </div>
+        </div>
+        <div class="chart-card" style="margin-top:0">
+          <h3>Readiness by company size</h3>
+          <p class="cap">Share reporting they are "ready".</p>
+          <div class="bars">
+            <div class="bar-row"><span class="rl">1,000+</span><div class="bar-track"><div class="bar-fill" style="width:100%"></div></div><span class="rv">67%</span></div>
+            <div class="bar-row"><span class="rl">201–1,000</span><div class="bar-track"><div class="bar-fill" style="width:69%"></div></div><span class="rv">46%</span></div>
+            <div class="bar-row"><span class="rl">51–200</span><div class="bar-track"><div class="bar-fill c3" style="width:43%"></div></div><span class="rv">29%</span></div>
+            <div class="bar-row"><span class="rl">1–50</span><div class="bar-track"><div class="bar-fill c4" style="width:27%"></div></div><span class="rv">18%</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="sec wrap">
+      <span class="kicker">05 · Leadership &amp; AI</span>
+      <h2>HR's mandate is widening — and AI is filling the gap</h2>
+      <p class="lead">Leaders increasingly own culture, workforce planning and cost — not just administration. To cope, adoption of AI in core HR workflows has jumped, even as formal governance lags behind.</p>
       <div class="tiles">
-        <div class="tile"><div class="n">71%</div><div class="l">Trust AI to shortlist candidates</div></div>
-        <div class="tile"><div class="n">64%</div><div class="l">Use AI to draft policy &amp; comms</div></div>
-        <div class="tile"><div class="n">40%</div><div class="l">Run an AI HR help desk</div></div>
+        <div class="tile"><div class="n">64%</div><div class="l">Use AI in ≥1 HR workflow weekly</div></div>
+        <div class="tile"><div class="n">3.2×</div><div class="l">Growth in AI use vs. 2025</div></div>
+        <div class="tile"><div class="n">41%</div><div class="l">Sit on the leadership team</div></div>
         <div class="tile"><div class="n">13%</div><div class="l">Have a written AI policy</div></div>
       </div>
     </section>
 
-    <section class="sec wrap">
-      <span class="kicker">04 · Retention</span>
-      <h2>The gap between best and worst has never been wider</h2>
-      <p class="lead">Employees at the healthiest workplaces are 2.4× more likely to stay another two years than those at the least healthy — the widest retention gap in five years of pulse data.</p>
-      <div class="split">
-        <div class="chart-card" style="margin-top:0">
-          <h3>What makes people stay</h3>
-          <p class="cap">Top factors cited by employees who plan to stay 2+ years.</p>
-          <div class="bars">
-            <div class="bar-row"><span class="rl">Growth path</span><div class="bar-track"><div class="bar-fill" style="width:100%"></div></div><span class="rv">57%</span></div>
-            <div class="bar-row"><span class="rl">Good manager</span><div class="bar-track"><div class="bar-fill" style="width:86%"></div></div><span class="rv">49%</span></div>
-            <div class="bar-row"><span class="rl">Flexibility</span><div class="bar-track"><div class="bar-fill c2" style="width:74%"></div></div><span class="rv">42%</span></div>
-            <div class="bar-row"><span class="rl">Fair pay</span><div class="bar-track"><div class="bar-fill c2" style="width:65%"></div></div><span class="rv">37%</span></div>
-          </div>
-        </div>
-        <div class="chart-card" style="margin-top:0">
-          <h3>What pushes people out</h3>
-          <p class="cap">Top factors among those planning to leave within a year.</p>
-          <div class="bars">
-            <div class="bar-row"><span class="rl">No growth</span><div class="bar-track"><div class="bar-fill c4" style="width:100%"></div></div><span class="rv">44%</span></div>
-            <div class="bar-row"><span class="rl">Burnout</span><div class="bar-track"><div class="bar-fill c4" style="width:80%"></div></div><span class="rv">35%</span></div>
-            <div class="bar-row"><span class="rl">Manager</span><div class="bar-track"><div class="bar-fill c3" style="width:66%"></div></div><span class="rv">29%</span></div>
-            <div class="bar-row"><span class="rl">Pay</span><div class="bar-track"><div class="bar-fill c3" style="width:59%"></div></div><span class="rv">26%</span></div>
-          </div>
-        </div>
-      </div>
-      <div class="callout">
-        <div class="q">“The pulse told us where to look six months before attrition would have.”</div>
-        <div class="who">— VP People, IT services (2,200 employees)</div>
-      </div>
-    </section>
-
-    <section class="sec wrap">
-      <span class="kicker">05 · Wellbeing &amp; the week</span>
-      <h2>Burnout is down where the week got shorter</h2>
-      <p class="lead">Companies experimenting with compressed or 4-day weeks reported a 28% drop in self-assessed burnout with no loss of output — the clearest wellbeing signal in this year's data.</p>
-      <div class="tiles">
-        <div class="tile"><div class="n">−28%</div><div class="l">Burnout in shorter-week pilots</div></div>
-        <div class="tile"><div class="n">+11%</div><div class="l">Output per employee</div></div>
-        <div class="tile"><div class="n">51%</div><div class="l">Rank mental health a top-3 benefit</div></div>
-        <div class="tile"><div class="n">94%</div><div class="l">Of pilot staff want to continue</div></div>
-      </div>
-    </section>
-
   </div>
+
+  <!-- Medium-style gate -->
   <div class="gate-cta">
     <div class="ic">🔒</div>
-    <h3>Read the full HR Pulse Report 2026</h3>
-    <p class="sub">You're reading the free preview. Enter your work email to unlock all 11 findings and every chart — free, before the 23 Sep public launch.</p>
+    <h3>Read the full India HR Pulse 2026</h3>
+    <p class="sub">You're reading the free preview. Enter your email to unlock all five findings and every chart — free, before the 23 Sep public launch.</p>
     <form id="gateForm" novalidate>
       <div class="field" id="gf-email">
         <label for="gemail">Enter your email to read the report</label>
@@ -397,30 +339,21 @@
       </div>
       <button class="btn btn-primary btn-lg btn-block" type="submit">Read the full report →</button>
     </form>
-    <p class="fine">🔒 We never share your email · Unsubscribe anytime</p>
+    <p class="fine">🔒 We never share your email · Data is published only in aggregate</p>
   </div>
 </div>
-
-<!-- METHODOLOGY -->
-<section class="method">
-  <div class="wrap sec" style="padding-block:52px">
-    <span class="kicker">Methodology</span>
-    <h2 style="font-size:clamp(24px,3vw,32px)">How the pulse was taken</h2>
-    <p class="body">The HR Pulse Report 2026 is based on a survey of 14,000+ employees and 2,000+ HR leaders across 30 industries in India, fielded in August 2026, alongside anonymised, aggregated signals from the Zimyo platform. Figures are medians unless noted; sector and quartile cuts require a minimum sample of 30 companies. No individual person or company is identifiable in this report.</p>
-  </div>
-</section>
 
 <footer>
   <div class="wrap">
     <div class="foot-in">
-      <a class="brand" href="../../index.html"><img src="../../zimyo-logo.png" alt="Zimyo" width="92" height="26" style="filter:brightness(0) invert(1)"></a>
+      <a class="brand" href="../../index.html"><img src="../../zimyo-logo.png" alt="Zimyo" width="92" height="26"></a>
       <div class="foot-links">
         <a href="../../index.html">All programs</a>
         <a href="../../index.html#reports">More reports</a>
-        <a href="#get">Get early access</a>
+        <a href="#report">Read the report</a>
       </div>
     </div>
-    <div class="foot-copy">© 2026 Zimyo. HR Pulse Report 2026 launches 23 September 2026. Made loud in India. 🇮🇳</div>
+    <div class="foot-copy">© 2026 Zimyo Research. India HR Pulse 2026 launches 23 September 2026. Data published only in aggregate. Made loud in India. 🇮🇳</div>
   </div>
 </footer>
 
@@ -429,75 +362,56 @@
   "use strict";
 
   /* ============================================================
-     LEADS: paste your form endpoint here (Formspree/Getform/Basin,
-     or a HubSpot/Zoho web-to-lead URL). Leave "" to run gate-only.
+     LEADS ENDPOINT — paste your Microsoft Power Automate HTTP URL
+     (or Formspree/Getform) here. Leave "" to unlock without capture.
      ============================================================ */
-  var FORM_ENDPOINT = "";   // e.g. "https://formspree.io/f/abcdwxyz"
+  var FORM_ENDPOINT = "";
 
   var STORE_KEY = "zimyo-hrpulse-2026-unlocked";
   var LAUNCH = new Date('2026-09-23T10:00:00+05:30').getTime();
-  var FREE_EMAIL = ["gmail.com","yahoo.com","yahoo.in","hotmail.com","outlook.com","live.com","icloud.com","aol.com","proton.me","protonmail.com","rediffmail.com","ymail.com","mail.com","gmx.com"];
 
   var nav=document.getElementById('nav');
   function onScroll(){ nav.classList.toggle('scrolled', window.scrollY>20); }
   onScroll(); window.addEventListener('scroll',onScroll,{passive:true});
 
-  /* countdown to launch */
-  var cd=document.getElementById('countdown'), cdLabel=document.getElementById('cdLabel');
-  function pad(n){return (n<10?'0':'')+n;}
+  /* compact launch countdown in the cover */
+  var cdMini=document.getElementById('cdMini');
   function tick(){
-    if(!cd) return;
+    if(!cdMini) return;
     var diff=LAUNCH-Date.now();
-    if(diff<=0){
-      cdLabel.textContent="It's here";
-      cd.innerHTML='<span class="cd-live"><span class="d"></span>Live now — read below</span>';
-      return;
-    }
-    var set={d:Math.floor(diff/8.64e7),h:Math.floor(diff%8.64e7/3.6e6),m:Math.floor(diff%3.6e6/6e4),s:Math.floor(diff%6e4/1e3)};
-    for(var k in set){ var el=cd.querySelector('[data-cd="'+k+'"]'); if(el) el.textContent=pad(set[k]); }
-    setTimeout(tick,1000);
+    if(diff<=0){ cdMini.innerHTML='<span class="live"><span class="d"></span>Live now</span>'; return; }
+    var d=Math.floor(diff/8.64e7), h=Math.floor(diff%8.64e7/3.6e6), m=Math.floor(diff%3.6e6/6e4);
+    cdMini.textContent='in '+d+'d '+h+'h '+m+'m';
+    setTimeout(tick, 30000);
   }
   tick();
 
-  /* gate — supports the hero form AND the inline Medium-style CTA form */
-  var gated=document.getElementById('gated'), gate=document.getElementById('gate'), ubar=document.getElementById('ubar');
+  /* gate */
+  var gated=document.getElementById('gated'), ubar=document.getElementById('ubar');
   function isUnlocked(){ try{return localStorage.getItem(STORE_KEY)==="1"}catch(e){return false} }
   function remember(){ try{localStorage.setItem(STORE_KEY,"1")}catch(e){} }
   function emailOk(v){ return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v); }
-  function isFreeEmail(v){ var d=(v.split('@')[1]||'').toLowerCase(); return FREE_EMAIL.indexOf(d)>-1; }
-  function doUnlock(showBar){ gated.classList.remove('locked'); if(gate) gate.classList.add('done'); if(showBar) ubar.classList.add('show'); }
+  function doUnlock(showBar){ gated.classList.remove('locked'); if(showBar) ubar.classList.add('show'); }
   if(isUnlocked()){ doUnlock(true); }
 
-  function fieldOf(el){ return el && el.closest('.field'); }
-  function validate(f){
-    var e=f.querySelector('[name=email]');
-    var email=((e&&e.value)||'').trim();
-    var eb=!emailOk(email);
-    if(fieldOf(e)) fieldOf(e).classList.toggle('invalid',eb);
-    return eb?null:{email:email};
-  }
   function wire(f){
     if(!f) return;
+    var input=f.querySelector('[name=email]'), field=input&&input.closest('.field');
     f.addEventListener('submit',function(ev){
       ev.preventDefault();
-      var d=validate(f); if(!d) return;
-      var payload={name:d.name,email:d.email,company:d.company,size:d.size,report:"HR Pulse Report 2026",source:"reports.zimyo.com"};
-      if(FORM_ENDPOINT){ try{ fetch(FORM_ENDPOINT,{method:"POST",headers:{"Content-Type":"application/json","Accept":"application/json"},body:JSON.stringify(payload)}).catch(function(){}); }catch(err){} }
+      var email=((input&&input.value)||'').trim(), bad=!emailOk(email);
+      if(field) field.classList.toggle('invalid',bad);
+      if(bad) return;
+      var payload={email:email,report:"India HR Pulse 2026",source:"reports.zimyo.com",ts:new Date().toISOString()};
+      if(FORM_ENDPOINT){
+        try{ fetch(FORM_ENDPOINT,{method:"POST",mode:"no-cors",headers:{"Content-Type":"text/plain;charset=utf-8"},body:JSON.stringify(payload)}).catch(function(){}); }catch(err){}
+      }
       remember(); doUnlock(true);
+      gated.scrollIntoView({behavior:'smooth',block:'start'});
     });
   }
-  wire(document.getElementById('leadForm'));
   wire(document.getElementById('gateForm'));
 
-  function reveal(){
-    if(gated.classList.contains('locked')){
-      var gf=document.getElementById('gateForm'); var em=gf&&gf.querySelector('[name=email]');
-      (gf||gate).scrollIntoView({behavior:'smooth',block:'center'});
-      if(em) setTimeout(function(){em.focus();},400);
-    }else{ gated.scrollIntoView({behavior:'smooth',block:'start'}); }
-  }
-  var pk=document.getElementById('peekBtn'); if(pk) pk.addEventListener('click',function(e){ if(gated.classList.contains('locked')){ e.preventDefault(); reveal(); } });
-  var rb=document.getElementById('readBtn'); if(rb) rb.addEventListener('click',function(){ gated.scrollIntoView({behavior:'smooth',block:'start'}); });
   var pb=document.getElementById('printBtn'); if(pb) pb.addEventListener('click',function(){ window.print(); });
 })();
 </script>
