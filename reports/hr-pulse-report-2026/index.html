@@ -64,7 +64,7 @@
   .hero-glow{position:absolute;border-radius:50%;filter:blur(80px);z-index:0}
   .g1{width:36vw;height:36vw;left:-6vw;top:-8vw;background:radial-gradient(circle,var(--primary),transparent 68%);opacity:.55}
   .g2{width:24vw;height:24vw;right:-4vw;bottom:-12vh;background:radial-gradient(circle,var(--azure),transparent 66%);opacity:.5}
-  .cover{position:relative;z-index:1;padding-block:112px 66px}
+  .cover{position:relative;z-index:1;padding-block:52px 66px}
   .cover-top{display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;margin-bottom:40px}
   .cover-top .brand img{height:30px;filter:brightness(0) invert(1)}
   .cover-eyebrow{font-weight:700;font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:#84A0FF}
@@ -234,17 +234,6 @@
 </style>
 </head>
 <body>
-
-<header class="nav" id="nav">
-  <div class="wrap nav-in">
-    <a class="brand" href="../../index.html" aria-label="Zimyo Programs">
-      <img src="../../zimyo-logo.png" alt="Zimyo" width="98" height="27">
-      <span class="tag">Programs</span>
-    </a>
-    <a class="nav-back" href="../../index.html">← All programs</a>
-    <div class="nav-cta"><a class="btn btn-primary" href="#report">Read the report</a></div>
-  </div>
-</header>
 
 <div class="unlocked-bar" id="ubar">
   <div class="wrap ub-in">
@@ -645,10 +634,6 @@
     if(axis) h+='<div class="axis">'+axis+'</div>';
     el.innerHTML=h;
   });
-
-  var nav=document.getElementById('nav');
-  function onScroll(){ nav.classList.toggle('scrolled', window.scrollY>20); }
-  onScroll(); window.addEventListener('scroll',onScroll,{passive:true});
 
   var cdMini=document.getElementById('cdMini');
   function tick(){
