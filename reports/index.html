@@ -1,0 +1,152 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Zimyo Reports</title>
+<meta name="description" content="Independent HR research from Zimyo — the India HR Pulse, State of HR, and more. Free to read.">
+<meta name="robots" content="noindex, nofollow">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    color-scheme:light;
+    --azure:#0085FF; --green:#00CD37; --green-2:#0AA23A; --flame:#DD4F24; --jonquil:#F9C804;
+    --primary:#335AFF; --primary-2:#5B7BFF; --oxford:#03192E;
+    --ground:#F6F8FF; --surface:#FFFFFF; --surface-2:#EEF2FF;
+    --ink:#03192E; --ink-2:#33465B; --muted:#657488;
+    --border:#E2E8F5; --border-strong:#CED9EE; --shadow:12 40 120; --shadow-a:.12;
+    --grad:linear-gradient(100deg,var(--azure) 0%,var(--primary) 100%);
+    --maxw:1120px; --ease:cubic-bezier(.22,1,.36,1);
+    --font:"Poppins",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--ground);color:var(--ink);font-family:var(--font);font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+  h1,h2,h3{font-family:var(--font);font-weight:700;line-height:1.08;letter-spacing:-.02em;margin:0;text-wrap:balance}
+  p{margin:0}
+  a{color:inherit;text-decoration:none}
+  img{max-width:100%;display:block}
+  ::selection{background:var(--primary);color:#fff}
+  .wrap{max-width:var(--maxw);margin-inline:auto;padding-inline:24px}
+  @media (max-width:520px){.wrap{padding-inline:18px}}
+  :focus-visible{outline:2.5px solid var(--primary);outline-offset:3px;border-radius:6px}
+
+  /* top bar */
+  .top{display:flex;align-items:center;gap:16px;height:66px}
+  .brand{display:flex;align-items:center;gap:11px}
+  .brand img{height:28px;width:auto;display:block}
+  .brand .tag{font-size:10px;font-weight:700;letter-spacing:.16em;padding:3px 9px;border-radius:20px;border:1px solid var(--border-strong);color:var(--muted);text-transform:uppercase}
+  .top .back{margin-left:auto;font-weight:600;font-size:14px;color:var(--muted);transition:color .2s}
+  .top .back:hover{color:var(--ink)}
+
+  /* header */
+  .head{padding-block:36px 8px}
+  .eyebrow{color:var(--primary);font-weight:700;font-size:12.5px;letter-spacing:.16em;text-transform:uppercase;display:flex;align-items:center;gap:10px}
+  .eyebrow::before{content:"";width:26px;height:2px;background:var(--grad);border-radius:2px}
+  .head h1{font-size:clamp(36px,6vw,62px);font-weight:800;letter-spacing:-.03em;margin-top:16px}
+  .head p{color:var(--muted);font-size:clamp(16px,2vw,19px);margin-top:16px;max-width:56ch}
+
+  /* grid */
+  .grid{display:grid;grid-template-columns:1fr 1fr;gap:22px;padding-block:44px 20px}
+  @media (max-width:760px){.grid{grid-template-columns:1fr}}
+  .card{position:relative;display:flex;flex-direction:column;background:var(--surface);border:1px solid var(--border);border-radius:22px;overflow:hidden;transition:transform .3s var(--ease),box-shadow .3s var(--ease),border-color .3s}
+  .card:hover{transform:translateY(-6px);box-shadow:0 26px 55px rgba(var(--shadow),calc(var(--shadow-a)+.04));border-color:var(--border-strong)}
+  .card .cover{position:relative;overflow:hidden;color:#fff;padding:26px 26px 22px;background:radial-gradient(130% 130% at 100% 0%,#1E48C9,#0A2A6B 55%,#03192E)}
+  .card .cover .halo{position:absolute;width:220px;height:220px;top:-90px;right:-70px;border-radius:50%;background:var(--grad);filter:blur(60px);opacity:.4}
+  .card .cover .eb{position:relative;font-weight:700;font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:#84A0FF}
+  .card .cover h2{position:relative;font-size:clamp(24px,3vw,32px);font-weight:800;margin-top:12px;letter-spacing:-.03em}
+  .card .cover .sub{position:relative;color:rgba(255,255,255,.8);font-size:14px;margin-top:8px}
+  .card .body{padding:22px 26px 26px;display:flex;flex-direction:column;gap:16px;flex-grow:1}
+  .card .status{display:inline-flex;align-items:center;gap:7px;font-size:12.5px;font-weight:600;color:var(--flame)}
+  .card .status .d{width:8px;height:8px;border-radius:50%;background:var(--jonquil);box-shadow:0 0 0 3px color-mix(in srgb,var(--jonquil) 30%,transparent)}
+  .card .desc{color:var(--muted);font-size:15px;flex-grow:1}
+  .card .meta{display:flex;gap:22px;padding-top:14px;border-top:1px dashed var(--border-strong)}
+  .card .meta .m .n{font-weight:800;font-size:20px;letter-spacing:-.02em;font-variant-numeric:tabular-nums}
+  .card .meta .m .l{font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);margin-top:2px;font-weight:600}
+  .card .foot{display:flex;align-items:center;gap:8px;font-weight:700;font-size:14.5px;color:var(--primary);margin-top:auto}
+  .card .foot .arw{transition:transform .25s var(--ease)}
+  .card:hover .foot .arw{transform:translateX(5px)}
+  .stretched{position:absolute;inset:0;z-index:1}
+
+  .soon{padding:20px 24px;border:1px dashed var(--border-strong);border-radius:16px;color:var(--muted);font-size:14.5px;margin-top:12px;background:var(--surface)}
+  .soon b{color:var(--ink-2)}
+
+  footer{border-top:1px solid var(--border);margin-top:44px;padding-block:34px 40px;color:var(--muted);font-size:13.5px}
+  .foot-in{display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap}
+  footer .brand img{height:24px}
+</style>
+</head>
+<body>
+
+<div class="wrap top">
+  <a class="brand" href="../index.html" aria-label="Zimyo Programs">
+    <img src="../zimyo-logo.png" alt="Zimyo" width="98" height="28">
+    <span class="tag">Programs</span>
+  </a>
+  <a class="back" href="../index.html">← All programs</a>
+</div>
+
+<header class="wrap head">
+  <span class="eyebrow">Zimyo Research</span>
+  <h1>Reports</h1>
+  <p>Independent, benchmarked HR research — free to read and cited across the industry. Enter your work email on any report to unlock the full findings.</p>
+</header>
+
+<main class="wrap">
+  <div class="grid">
+
+    <article class="card">
+      <a class="stretched" href="hr-pulse-report-2026/" aria-label="Open India HR Pulse 2026"></a>
+      <div class="cover">
+        <span class="halo" aria-hidden="true"></span>
+        <div class="eb">The Pulse of People Operations</div>
+        <h2>India HR Pulse 2026</h2>
+        <div class="sub">Metrics That Matter in HR Tech</div>
+      </div>
+      <div class="body">
+        <span class="status"><span class="d"></span>Launching 23 Sep 2026</span>
+        <p class="desc">4,117 verified responses from HR &amp; business leaders across India and the GCC — on attrition, data maturity, hiring, leadership and Labour Code readiness.</p>
+        <div class="meta">
+          <div class="m"><div class="n">4,117</div><div class="l">Responses</div></div>
+          <div class="m"><div class="n">17</div><div class="l">Sections</div></div>
+          <div class="m"><div class="n">30</div><div class="l">Industries</div></div>
+        </div>
+        <span class="foot">Read the report <span class="arw">→</span></span>
+      </div>
+    </article>
+
+    <article class="card">
+      <a class="stretched" href="state-of-hr-2026/" aria-label="Open State of HR in India 2026"></a>
+      <div class="cover" style="background:radial-gradient(130% 130% at 0% 0%,#0085FF,#0A2A6B 55%,#03192E)">
+        <span class="halo" aria-hidden="true"></span>
+        <div class="eb">Flagship Annual Report</div>
+        <h2>State of HR in India 2026</h2>
+        <div class="sub">The definitive annual benchmark</div>
+      </div>
+      <div class="body">
+        <span class="status"><span class="d"></span>Launching Nov 12, 2026</span>
+        <p class="desc">2,500+ companies on pay transparency, attrition, AI at work, the 4-day week and employee wellbeing — the data everyone will be quoting next year.</p>
+        <div class="meta">
+          <div class="m"><div class="n">2,500+</div><div class="l">Companies</div></div>
+          <div class="m"><div class="n">5</div><div class="l">Themes</div></div>
+          <div class="m"><div class="n">42</div><div class="l">Charts</div></div>
+        </div>
+        <span class="foot">Read the report <span class="arw">→</span></span>
+      </div>
+    </article>
+
+  </div>
+
+  <p class="soon"><b>More reports coming soon</b> — India Attrition Report, Employee Engagement Index and the Payroll Benchmark are being prepared. Subscribe from the <a href="../index.html#pitch" style="color:var(--primary);font-weight:600">homepage</a> to get each one the night before it drops.</p>
+</main>
+
+<footer>
+  <div class="wrap foot-in">
+    <a class="brand" href="../index.html"><img src="../zimyo-logo.png" alt="Zimyo" width="92" height="24"><span class="tag">Programs</span></a>
+    <span>© 2026 Zimyo Research. Made loud in India. 🇮🇳</span>
+  </div>
+</footer>
+
+</body>
+</html>
