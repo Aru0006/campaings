@@ -48,8 +48,7 @@
   .head p{color:var(--muted);font-size:clamp(16px,2vw,19px);margin-top:16px;max-width:56ch}
 
   /* grid */
-  .grid{display:grid;grid-template-columns:1fr 1fr;gap:22px;padding-block:44px 20px}
-  @media (max-width:760px){.grid{grid-template-columns:1fr}}
+  .grid{display:grid;grid-template-columns:1fr;gap:22px;padding-block:44px 20px;max-width:640px;margin-inline:auto}
   .card{position:relative;display:flex;flex-direction:column;background:var(--surface);border:1px solid var(--border);border-radius:22px;overflow:hidden;transition:transform .3s var(--ease),box-shadow .3s var(--ease),border-color .3s}
   .card:hover{transform:translateY(-6px);box-shadow:0 26px 55px rgba(var(--shadow),calc(var(--shadow-a)+.04));border-color:var(--border-strong)}
   .card .cover{position:relative;overflow:hidden;color:#fff;padding:26px 26px 22px;background:radial-gradient(130% 130% at 100% 0%,#1E48C9,#0A2A6B 55%,#03192E)}
@@ -69,7 +68,7 @@
   .card:hover .foot .arw{transform:translateX(5px)}
   .stretched{position:absolute;inset:0;z-index:1}
 
-  .soon{padding:20px 24px;border:1px dashed var(--border-strong);border-radius:16px;color:var(--muted);font-size:14.5px;margin-top:12px;background:var(--surface)}
+  .soon{padding:20px 24px;border:1px dashed var(--border-strong);border-radius:16px;color:var(--muted);font-size:14.5px;margin-top:12px;background:var(--surface);max-width:640px;margin-inline:auto}
   .soon b{color:var(--ink-2)}
 
   footer{border-top:1px solid var(--border);margin-top:44px;padding-block:34px 40px;color:var(--muted);font-size:13.5px}
@@ -111,26 +110,6 @@
           <div class="m"><div class="n">4,117</div><div class="l">Responses</div></div>
           <div class="m"><div class="n">17</div><div class="l">Sections</div></div>
           <div class="m"><div class="n">30</div><div class="l">Industries</div></div>
-        </div>
-        <span class="foot">Read the report <span class="arw">→</span></span>
-      </div>
-    </article>
-
-    <article class="card">
-      <a class="stretched" href="state-of-hr-2026/" aria-label="Open State of HR in India 2026"></a>
-      <div class="cover" style="background:radial-gradient(130% 130% at 0% 0%,#0085FF,#0A2A6B 55%,#03192E)">
-        <span class="halo" aria-hidden="true"></span>
-        <div class="eb">Flagship Annual Report</div>
-        <h2>State of HR in India 2026</h2>
-        <div class="sub">The definitive annual benchmark</div>
-      </div>
-      <div class="body">
-        <span class="status"><span class="d"></span>Launching Nov 12, 2026</span>
-        <p class="desc">2,500+ companies on pay transparency, attrition, AI at work, the 4-day week and employee wellbeing — the data everyone will be quoting next year.</p>
-        <div class="meta">
-          <div class="m"><div class="n">2,500+</div><div class="l">Companies</div></div>
-          <div class="m"><div class="n">5</div><div class="l">Themes</div></div>
-          <div class="m"><div class="n">42</div><div class="l">Charts</div></div>
         </div>
         <span class="foot">Read the report <span class="arw">→</span></span>
       </div>
