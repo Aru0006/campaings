@@ -244,29 +244,12 @@
         </div>
       </div>
       <form id="leadForm" novalidate>
-        <div class="field" id="f-name">
-          <label for="name">Full name</label>
-          <input id="name" name="name" type="text" autocomplete="name" placeholder="Priya Sharma" required>
-          <div class="err">Please enter your name.</div>
-        </div>
         <div class="field" id="f-email">
-          <label for="email">Work email</label>
-          <input id="email" name="email" type="email" autocomplete="email" placeholder="priya@company.com" required>
-          <div class="err">Please use a valid work email (not Gmail/Yahoo).</div>
+          <label for="email">Enter your email to read the report</label>
+          <input id="email" name="email" type="email" autocomplete="email" placeholder="you@company.com" required>
+          <div class="err">Please enter a valid email address.</div>
         </div>
-        <div class="field" id="f-company">
-          <label for="company">Company</label>
-          <input id="company" name="company" type="text" autocomplete="organization" placeholder="Company name" required>
-          <div class="err">Please enter your company.</div>
-        </div>
-        <div class="field" id="f-size">
-          <label for="size">Company size</label>
-          <select id="size" name="size">
-            <option value="">Select…</option>
-            <option>1–50</option><option>51–200</option><option>201–1,000</option><option>1,000+</option>
-          </select>
-        </div>
-        <button class="btn btn-primary btn-lg btn-block" type="submit">Unlock the full report →</button>
+        <button class="btn btn-primary btn-lg btn-block" type="submit">Read the full report →</button>
       </form>
       <p class="fine">By submitting you agree to receive the report and occasional HR research from Zimyo. Unsubscribe anytime.</p>
       <div class="trust">🔒 We never share your email · GDPR-friendly</div>
@@ -407,22 +390,12 @@
     <h3>Read the full HR Pulse Report 2026</h3>
     <p class="sub">You're reading the free preview. Enter your work email to unlock all 11 findings and every chart — free, before the 23 Sep public launch.</p>
     <form id="gateForm" novalidate>
-      <div class="field" id="gf-name">
-        <label for="gname">Full name</label>
-        <input id="gname" name="name" type="text" autocomplete="name" placeholder="Priya Sharma" required>
-        <div class="err">Please enter your name.</div>
-      </div>
       <div class="field" id="gf-email">
-        <label for="gemail">Work email</label>
-        <input id="gemail" name="email" type="email" autocomplete="email" placeholder="priya@company.com" required>
-        <div class="err">Please use a valid work email (not Gmail/Yahoo).</div>
+        <label for="gemail">Enter your email to read the report</label>
+        <input id="gemail" name="email" type="email" autocomplete="email" placeholder="you@company.com" required>
+        <div class="err">Please enter a valid email address.</div>
       </div>
-      <div class="field" id="gf-company">
-        <label for="gcompany">Company</label>
-        <input id="gcompany" name="company" type="text" autocomplete="organization" placeholder="Company name" required>
-        <div class="err">Please enter your company.</div>
-      </div>
-      <button class="btn btn-primary btn-lg btn-block" type="submit">Unlock the full report →</button>
+      <button class="btn btn-primary btn-lg btn-block" type="submit">Read the full report →</button>
     </form>
     <p class="fine">🔒 We never share your email · Unsubscribe anytime</p>
   </div>
@@ -497,13 +470,11 @@
 
   function fieldOf(el){ return el && el.closest('.field'); }
   function validate(f){
-    var n=f.querySelector('[name=name]'), e=f.querySelector('[name=email]'), c=f.querySelector('[name=company]'), s=f.querySelector('[name=size]');
-    var name=((n&&n.value)||'').trim(), email=((e&&e.value)||'').trim(), company=((c&&c.value)||'').trim(), size=(s&&s.value)||'';
-    var bad=false;
-    if(fieldOf(n)) fieldOf(n).classList.toggle('invalid',!name); if(!name) bad=true;
-    var eb=!emailOk(email)||isFreeEmail(email); if(fieldOf(e)) fieldOf(e).classList.toggle('invalid',eb); if(eb) bad=true;
-    if(fieldOf(c)) fieldOf(c).classList.toggle('invalid',!company); if(!company) bad=true;
-    return bad?null:{name:name,email:email,company:company,size:size};
+    var e=f.querySelector('[name=email]');
+    var email=((e&&e.value)||'').trim();
+    var eb=!emailOk(email);
+    if(fieldOf(e)) fieldOf(e).classList.toggle('invalid',eb);
+    return eb?null:{email:email};
   }
   function wire(f){
     if(!f) return;
