@@ -189,7 +189,8 @@
   @media(max-width:560px){.founders{grid-template-columns:1fr}}
   .founder{background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:20px}
   .founder .fh{display:flex;align-items:center;gap:12px}
-  .avatar{width:46px;height:46px;border-radius:50%;flex:0 0 auto;display:grid;place-items:center;color:#fff;font-weight:700;font-size:16px;background:var(--grad)}
+  .avatar{width:66px;height:66px;border-radius:50%;flex:0 0 auto;overflow:hidden;background:var(--surface-2);border:2px solid var(--border);display:block}
+  .avatar img{width:100%;height:100%;object-fit:cover;display:block}
   .founder .fn{font-weight:700;font-size:16px}
   .founder .fr{color:var(--green-2);font-weight:600;font-size:13px}
   .founder p{color:var(--ink-2);font-size:13.5px;margin-top:14px}
@@ -538,11 +539,11 @@
       <span class="kicker">About the founders</span>
       <div class="founders">
         <div class="founder">
-          <div class="fh"><span class="avatar">KM</span><div><div class="fn">Kumar Mayank</div><div class="fr">Founder &amp; CEO</div></div></div>
+          <div class="fh"><span class="avatar"><img src="kumar-mayank.png" alt="Kumar Mayank" style="transform:scale(1.35);transform-origin:center 16%;object-position:center 14%"></span><div><div class="fn">Kumar Mayank</div><div class="fr">Founder &amp; CEO</div></div></div>
           <p>Leads Zimyo's overall vision and strategy, with a focus on strengthening the company's position in international markets while continuing to serve the Indian SMB and mid-market segment.</p>
         </div>
         <div class="founder">
-          <div class="fh"><span class="avatar">NG</span><div><div class="fn">Naresh Gupta</div><div class="fr">Co-Founder &amp; CFO</div></div></div>
+          <div class="fh"><span class="avatar"><img src="naresh-gupta.png" alt="Naresh Gupta" style="transform:scale(1.85);transform-origin:center 26%;object-position:center 22%"></span><div><div class="fn">Naresh Gupta</div><div class="fr">Co-Founder &amp; CFO</div></div></div>
           <p>A Chartered Accountant by background, leading Zimyo's financial and operational strategy — including fundraising — alongside customer success, product marketing, and growth.</p>
         </div>
       </div>
