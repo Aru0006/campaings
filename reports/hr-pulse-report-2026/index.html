@@ -290,6 +290,16 @@
   @keyframes pulse{0%,100%{box-shadow:0 0 0 4px rgba(0,205,55,.22)}50%{box-shadow:0 0 0 8px rgba(0,205,55,0)}}
   .lc-live{font-size:22px;font-weight:800;color:#fff;margin:30px 0 24px}
   @media (max-width:520px){.cd-grid{gap:6px}.cd-cell{padding:13px 3px;border-radius:13px}}
+  /* ===== Launch celebration toast ===== */
+  .celebrate{position:fixed;left:50%;top:22px;transform:translate(-50%,-160%);z-index:3200;
+    display:flex;align-items:center;gap:9px;max-width:calc(100vw - 32px);
+    background:var(--grad);color:#fff;font-weight:600;font-size:15px;letter-spacing:-.01em;
+    padding:13px 22px;border-radius:999px;box-shadow:0 16px 44px rgba(51,90,255,.45);
+    opacity:0;transition:transform .55s var(--ease),opacity .4s ease;white-space:nowrap}
+  .celebrate.show{transform:translate(-50%,0);opacity:1}
+  .celebrate .cb-emoji{font-size:18px}
+  @media (max-width:520px){.celebrate{font-size:13px;padding:11px 16px;white-space:normal;text-align:center}}
+  @media print{.celebrate{display:none!important}}
 </style>
 <script>
   /* Decide pre-launch state synchronously so the report never flashes before the overlay.
@@ -320,6 +330,9 @@
     <span class="lc-when"><span class="dot"></span>Launching 23 September 2026 · 3:00 PM IST</span>
   </div>
 </div>
+
+<!-- Launch celebration toast -->
+<div class="celebrate" id="celebrate"><span class="cb-emoji">🎉</span>India HR Pulse 2026 is now live — welcome!</div>
 
 <div class="unlocked-bar" id="ubar">
   <div class="wrap ub-in">
@@ -792,6 +805,37 @@
     });
   }
   var pb=document.getElementById('printBtn'); if(pb) pb.addEventListener('click',function(){ window.print(); });
+
+  /* ===== Launch celebration (confetti + toast) ===== */
+  function zimyoConfetti(){
+    var cv=document.createElement('canvas');
+    cv.style.cssText='position:fixed;inset:0;width:100%;height:100%;pointer-events:none;z-index:3000';
+    document.body.appendChild(cv);
+    var cx=cv.getContext('2d'), W=cv.width=innerWidth, H=cv.height=innerHeight;
+    var cols=['#335AFF','#0085FF','#00CD37','#F9C804','#DD4F24','#5B7BFF'], P=[];
+    for(var i=0;i<180;i++){ P.push({x:Math.random()*W,y:-20-Math.random()*H*0.5,r:5+Math.random()*7,
+      c:cols[i%cols.length],vy:2.5+Math.random()*4.5,vx:-2.5+Math.random()*5,rot:Math.random()*6.28,
+      vr:-0.25+Math.random()*0.5,sq:Math.random()>0.45}); }
+    var t0=Date.now();
+    (function frame(){ cx.clearRect(0,0,W,H);
+      for(var i=0;i<P.length;i++){ var p=P[i]; p.x+=p.vx; p.y+=p.vy; p.vy+=0.05; p.rot+=p.vr;
+        cx.save(); cx.translate(p.x,p.y); cx.rotate(p.rot); cx.globalAlpha=0.92; cx.fillStyle=p.c;
+        if(p.sq) cx.fillRect(-p.r/2,-p.r/2,p.r,p.r*0.6); else { cx.beginPath(); cx.arc(0,0,p.r/2,0,6.283); cx.fill(); }
+        cx.restore(); }
+      if(Date.now()-t0<5000) requestAnimationFrame(frame); else cv.remove();
+    })();
+  }
+  (function(){
+    var force=/[?&]celebrate=1/.test(location.search);
+    if(Date.now()<LAUNCH && !force) return;                 // only at/after launch
+    var fromTeaser=false; try{ fromTeaser=sessionStorage.getItem('zimyo-hrpulse-live')==='1'; if(fromTeaser) sessionStorage.removeItem('zimyo-hrpulse-live'); }catch(e){}
+    var done=false; try{ done=localStorage.getItem('zimyo-hrpulse-celebrated')==='1'; }catch(e){}
+    if(done && !force && !fromTeaser) return;                // celebrate once per visitor
+    var t=document.getElementById('celebrate');
+    if(t){ t.classList.add('show'); setTimeout(function(){ t.classList.remove('show'); },7000); }
+    if(!fromTeaser || force) zimyoConfetti();                // avoid a double burst right after the teaser
+    try{ localStorage.setItem('zimyo-hrpulse-celebrated','1'); }catch(e){}
+  })();
 })();
 </script>
 </body>
