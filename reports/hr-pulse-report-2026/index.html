@@ -125,6 +125,24 @@
   .bars .barrow:nth-child(6n+5) .bfill{background:#F9C804}
   .bars .barrow:nth-child(6n+6) .bfill{background:#DD4F24}
   .axis{text-align:center;color:var(--muted);font-size:11.5px;margin-top:16px}
+  /* range charts (min–max band on a fixed axis) */
+  .rbars{display:grid;gap:15px}
+  .rrow{display:grid;grid-template-columns:minmax(110px,150px) 1fr 76px;align-items:center;gap:12px}
+  @media (max-width:560px){.rrow{grid-template-columns:92px 1fr 62px;gap:8px}}
+  .rrow .rl{font-size:12.5px;font-weight:600;color:var(--ink-2);text-align:right;line-height:1.25}
+  .rtrack{position:relative;height:16px;background:var(--surface-2);border-radius:8px}
+  .rlight{position:absolute;left:0;top:0;height:100%;background:color-mix(in srgb,var(--rc,#1F6BFF) 26%,#fff);border-radius:8px 0 0 8px}
+  .rband{position:absolute;top:0;height:100%;background:var(--rc,#1F6BFF);border-radius:0 8px 8px 0}
+  .rrow .rv{font-weight:700;font-size:13px;text-align:left;font-variant-numeric:tabular-nums}
+  .rbars .rrow:nth-child(6n+1){--rc:#1F6BFF}
+  .rbars .rrow:nth-child(6n+2){--rc:#3D5AFF}
+  .rbars .rrow:nth-child(6n+3){--rc:#03192E}
+  .rbars .rrow:nth-child(6n+4){--rc:#00CD37}
+  .rbars .rrow:nth-child(6n+5){--rc:#F9C804}
+  .rbars .rrow:nth-child(6n+6){--rc:#DD4F24}
+  .raxis{display:grid;grid-template-columns:minmax(110px,150px) 1fr 76px;gap:12px;margin-top:8px}
+  @media (max-width:560px){.raxis{grid-template-columns:92px 1fr 62px;gap:8px}}
+  .rticks{display:flex;justify-content:space-between;color:var(--muted);font-size:11px;border-top:1px solid var(--border);padding-top:6px}
 
   /* STACKED */
   .srow{display:grid;grid-template-columns:minmax(90px,150px) 1fr;align-items:center;gap:12px;margin-bottom:10px}
@@ -396,7 +414,7 @@
       <div class="section-head"><div class="se">Section 11</div><h2>Work Model Mix: WFO / Hybrid / WFH</h2></div>
       <p class="intro">Remote work is no longer a debate — it's a default consideration for every organisation post-COVID. Here's what our benchmark reveals about where companies have landed.</p>
       <figure class="chart"><div class="ctitle">Work Model Mix, India HR Pulse Survey Findings</div>
-        <div class="rows" data-axis="Approx. % of Indian Organisations" data-bars='[["Complete WFO",50,"35%–50%"],["Hybrid",60,"45%–60%"],["Complete WFH",10,"5%–10%"]]'></div></figure>
+        <div class="rangechart" data-max="100" data-unit="%" data-ticks="0,25,50,75,100" data-axis="Approx. % of Indian Organisations" data-rows='[["Complete WFO",35,50],["Hybrid",45,60],["Complete WFH",5,10]]'></div></figure>
       <div class="concludes"><h4>Zimyo Concludes</h4><ul>
         <li>Hybrid is the dominant working model reported by Indian organisations, at 45%–60% — the single largest category by a clear margin.</li>
         <li>Complete WFO remains substantial at 35%–50%, indicating a significant share of organisations have not adopted any form of remote flexibility.</li>
@@ -457,7 +475,7 @@
         <div class="rows" data-axis="Organisations Offering Paternity Leave (%)" data-bars='[["Under 100",25],["100–250",30],["250–1000",45],["Enterprise (1000+)",57]]'></div></figure>
       <h3 class="subh">Short Leave Policy Adoption</h3>
       <figure class="chart"><div class="ctitle">Short Leave Policy Adoption by Company Size</div>
-        <div class="rows" data-axis="Organisations Offering Short Leave (%)" data-bars='[["Under 100",50,"45%–50%"],["100–250",60,"55%–60%"],["250–1000",70,"65%–70%"],["Enterprise (1000+)",90,"85%–90%"]]'></div></figure>
+        <div class="rangechart" data-max="100" data-unit="%" data-ticks="0,25,50,75,100" data-axis="Organisations Offering Short Leave (%)" data-rows='[["Under 100",45,50],["100–250",55,60],["250–1000",65,70],["Enterprise (1000+)",85,90]]'></div></figure>
       <h3 class="subh">Combined View: Work-Life Balance Benefit Maturity</h3>
       <div class="tbl-wrap"><table class="data">
         <tr><th>Segment</th><th>Paternity Leave</th><th>Short Leave (Mid)</th><th>Benefit Maturity Score</th></tr>
@@ -480,7 +498,7 @@
       <div class="section-head"><div class="se">Section 15</div><h2>HR Team Size Ratio</h2></div>
       <p class="intro">HR staffing ratio moves in the opposite direction to every other parameter in this report: it falls as company size increases, from 3–4 HR staff per 100 employees (Under 100) down to just 1.5–2 (Enterprise 1000+). It's a useful lens for benchmarking: an organisation whose HR ratio sits meaningfully outside its segment's range may be under- or over-staffed relative to peers of similar size.</p>
       <figure class="chart"><div class="ctitle">HR Team Size Ratio Per 100 Employees</div>
-        <div class="rows" data-max="5" data-axis="HR Staff per 100 Employees" data-bars='[["Under 100",4,"3–4"],["100–250",3.5,"2.75–3.5"],["250–1000",2.75,"2.5–2.75"],["Enterprise (1000+)",2,"1.5–2"]]'></div></figure>
+        <div class="rangechart" data-max="5" data-unit="" data-ticks="0,1,2,3,4,5" data-axis="HR Staff per 100 Employees" data-rows='[["Under 100",3,4],["100–250",2.75,3.5],["250–1000",2.5,2.75],["Enterprise (1000+)",1.5,2]]'></div></figure>
       <div class="concludes"><h4>Zimyo Concludes</h4><ul>
         <li>This is a roughly 2x difference between the smallest and largest organisations, smaller organisations carry a proportionally heavier HR overhead per employee than larger ones.</li>
         <li>The decline is steady and consistent across every segment step, reflecting classic economies of scale: HR processes, systems, and infrastructure built at smaller organisations don't need to scale linearly with headcount.</li>
@@ -612,6 +630,24 @@
       h+='<div class="barrow"><span class="blabel">'+d[0]+'</span><span class="btrack"><span class="bfill" style="width:'+pct(d[1],max)+'%"></span></span><span class="bval">'+disp+'</span></div>';
     });
     h+='</div>'; if(axis) h+='<div class="axis">'+axis+'</div>';
+    el.innerHTML=h;
+  });
+  document.querySelectorAll('.rangechart[data-rows]').forEach(function(el){
+    var rows=JSON.parse(el.getAttribute('data-rows'));
+    var mx=parseFloat(el.getAttribute('data-max'));
+    var unit=el.getAttribute('data-unit')||'';
+    var axis=el.getAttribute('data-axis')||'';
+    var ticks=(el.getAttribute('data-ticks')||'').split(',').filter(function(s){return s!==''});
+    var h='<div class="rbars">';
+    rows.forEach(function(r){
+      var lo=r[1], hi=r[2];
+      var loP=Math.max(0,lo/mx*100), bandP=Math.max(1.5,(hi-lo)/mx*100);
+      var disp=lo+unit+'–'+hi+unit;
+      h+='<div class="rrow"><span class="rl">'+r[0]+'</span><span class="rtrack"><span class="rlight" style="width:'+loP+'%"></span><span class="rband" style="left:'+loP+'%;width:'+bandP+'%"></span></span><span class="rv">'+disp+'</span></div>';
+    });
+    h+='</div>';
+    if(ticks.length){ h+='<div class="raxis"><span></span><span class="rticks">'+ticks.map(function(t){return '<span>'+t+'</span>'}).join('')+'</span><span></span></div>'; }
+    if(axis) h+='<div class="axis">'+axis+'</div>';
     el.innerHTML=h;
   });
   document.querySelectorAll('.stack[data-rows]').forEach(function(el){
