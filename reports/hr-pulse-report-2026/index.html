@@ -378,6 +378,24 @@
   var g=function(id){return document.getElementById(id);};
   var cdD=g('cdD'),cdH=g('cdH'),cdM=g('cdM'),cdS=g('cdS');
   function z(n){return (n<10?'0':'')+n;}
+  function zimyoConfetti(){
+    var cv=document.createElement('canvas');
+    cv.style.cssText='position:fixed;inset:0;width:100%;height:100%;pointer-events:none;z-index:3000';
+    document.body.appendChild(cv);
+    var cx=cv.getContext('2d'), W=cv.width=innerWidth, H=cv.height=innerHeight;
+    var cols=['#335AFF','#0085FF','#00CD37','#F9C804','#DD4F24','#5B7BFF'], P=[];
+    for(var i=0;i<180;i++){ P.push({x:Math.random()*W,y:-20-Math.random()*H*0.5,r:5+Math.random()*7,
+      c:cols[i%cols.length],vy:2.5+Math.random()*4.5,vx:-2.5+Math.random()*5,rot:Math.random()*6.28,
+      vr:-0.25+Math.random()*0.5,sq:Math.random()>0.45}); }
+    var t0=Date.now();
+    (function frame(){ cx.clearRect(0,0,W,H);
+      for(var i=0;i<P.length;i++){ var p=P[i]; p.x+=p.vx; p.y+=p.vy; p.vy+=0.05; p.rot+=p.vr;
+        cx.save(); cx.translate(p.x,p.y); cx.rotate(p.rot); cx.globalAlpha=0.92; cx.fillStyle=p.c;
+        if(p.sq) cx.fillRect(-p.r/2,-p.r/2,p.r,p.r*0.6); else { cx.beginPath(); cx.arc(0,0,p.r/2,0,6.283); cx.fill(); }
+        cx.restore(); }
+      if(Date.now()-t0<5000) requestAnimationFrame(frame); else cv.remove();
+    })();
+  }
   var cdTimer, wentLive=false;
   function tick(){
     var diff=LAUNCH-Date.now();
@@ -392,6 +410,8 @@
             '<div class="lc-live">\u2726 The report is now live</div>'+
             '<p class="lc-sub">Loading the full report\u2026</p>';
         }
+        zimyoConfetti();
+        try{ sessionStorage.setItem('zimyo-hrpulse-live','1'); }catch(e){}
         // The full report is published at launch; refresh until it is served.
         setTimeout(function(){ location.reload(); }, 8000);
       }
