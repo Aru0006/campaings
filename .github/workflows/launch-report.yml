@@ -1,0 +1,44 @@
+name: Publish India HR Pulse 2026 at launch
+
+# Swaps the full report onto `main` at launch time. Render auto-deploys the push.
+# Until this runs, `main` serves only the teaser + countdown; the full report
+# lives on the `launch-content` branch, which Render does not deploy.
+
+on:
+  schedule:
+    # 09:30 UTC == 15:00 IST on 23 September 2026 (min hour day month day-of-week)
+    - cron: '30 9 23 9 *'
+  workflow_dispatch: {}   # manual "Run workflow" button — use this to launch on time if the schedule is delayed
+
+permissions:
+  contents: write
+
+concurrency:
+  group: launch-report
+  cancel-in-progress: false
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout main
+        uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 0
+
+      - name: Swap in the full report from launch-content
+        run: |
+          set -euo pipefail
+          FILE="reports/hr-pulse-report-2026/index.html"
+          git fetch origin launch-content
+          git checkout origin/launch-content -- "$FILE"
+          git config user.name  "zimyo-launch-bot"
+          git config user.email "actions@users.noreply.github.com"
+          if git diff --cached --quiet; then
+            echo "No changes — the full report is already published."
+          else
+            git commit -m "Launch: publish full India HR Pulse 2026 report"
+            git push origin main
+            echo "Full report published to main. Render will auto-deploy."
+          fi
