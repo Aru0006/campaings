@@ -262,9 +262,64 @@
     figure.chart,.section-head,.zimfact,.concludes,.tile,.tile-dark,.tile-light,.tbl-wrap,.where,.where-card,.founder,.donut-card,.callout,.about-box{break-inside:avoid}
     .barrow,.srow{break-inside:avoid}
   }
+  /* ===== Pre-launch countdown overlay ===== */
+  .launch-ov{display:none}
+  html.prelaunch .launch-ov{position:fixed;inset:0;z-index:1000;display:grid;place-items:center;padding:24px;
+    background:radial-gradient(120% 100% at 50% -10%,rgba(11,53,118,.60) 0%,rgba(7,32,71,.70) 46%,rgba(3,25,46,.78) 100%);
+    -webkit-backdrop-filter:blur(16px) saturate(130%);backdrop-filter:blur(16px) saturate(130%);
+    animation:ovIn .5s var(--ease) both}
+  html.prelaunch body{overflow:hidden}
+  html.prelaunch .nav{display:none}
+  .launch-ov.hide{opacity:0;pointer-events:none;transition:opacity .6s var(--ease)}
+  @keyframes ovIn{from{opacity:0}to{opacity:1}}
+  .launch-card{width:min(580px,100%);text-align:center;color:#fff;
+    background:linear-gradient(180deg,rgba(255,255,255,.11),rgba(255,255,255,.045));
+    border:1px solid rgba(255,255,255,.18);border-radius:26px;padding:clamp(30px,5vw,46px);
+    box-shadow:0 40px 120px rgba(0,0,0,.5);-webkit-backdrop-filter:blur(4px);backdrop-filter:blur(4px)}
+  .launch-card .lc-logo{margin:0 auto 22px;display:block}
+  .launch-card .lc-eyebrow{display:inline-flex;align-items:center;gap:8px;font-size:11.5px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:#CFDCFF;
+    background:rgba(51,90,255,.24);border:1px solid rgba(120,150,255,.4);padding:7px 15px;border-radius:999px}
+  .launch-card h2{font-size:clamp(26px,5.4vw,40px);font-weight:800;letter-spacing:-.02em;margin:20px 0 8px;line-height:1.12}
+  .launch-card .lc-sub{color:#C6D3E6;font-size:15px;margin:0 auto;max-width:400px;line-height:1.5}
+  .cd-grid{display:flex;justify-content:center;gap:10px;margin:30px 0 24px}
+  .cd-cell{flex:1;max-width:112px;background:rgba(255,255,255,.075);border:1px solid rgba(255,255,255,.15);border-radius:16px;padding:16px 8px}
+  .cd-cell .cd-n{font-size:clamp(30px,7.5vw,48px);font-weight:800;line-height:1;font-variant-numeric:tabular-nums;letter-spacing:-.02em}
+  .cd-cell .cd-l{margin-top:9px;font-size:10.5px;font-weight:600;letter-spacing:.13em;text-transform:uppercase;color:#9FB2CC}
+  .lc-when{display:inline-flex;align-items:center;gap:9px;color:#DEE8F6;font-size:14.5px;font-weight:500}
+  .lc-when .dot{width:8px;height:8px;border-radius:50%;background:var(--green);box-shadow:0 0 0 4px rgba(0,205,55,.22);animation:pulse 2s ease-in-out infinite}
+  @keyframes pulse{0%,100%{box-shadow:0 0 0 4px rgba(0,205,55,.22)}50%{box-shadow:0 0 0 8px rgba(0,205,55,0)}}
+  .lc-live{font-size:22px;font-weight:800;color:#fff;margin:30px 0 24px}
+  @media (max-width:520px){.cd-grid{gap:6px}.cd-cell{padding:13px 3px;border-radius:13px}}
 </style>
+<script>
+  /* Decide pre-launch state synchronously so the report never flashes before the overlay.
+     Add ?preview=1 to the URL to bypass the countdown and preview the report. */
+  (function(){ try{
+    var L=new Date('2026-09-23T15:00:00+05:30').getTime();
+    if(Date.now()<L && !/[?&]preview=1/.test(location.search)){
+      document.documentElement.className+=' prelaunch';
+    }
+  }catch(e){} })();
+</script>
 </head>
 <body>
+
+<!-- PRE-LAUNCH COUNTDOWN OVERLAY -->
+<div class="launch-ov" id="launchOv">
+  <div class="launch-card">
+    <img class="lc-logo" src="../../zimyo-logo-white.png" alt="Zimyo" width="118" height="34">
+    <span class="lc-eyebrow">Zimyo Research · India HR Pulse 2026</span>
+    <h2>The full report<br>goes live soon</h2>
+    <p class="lc-sub">A community pulse check from 4,117 HR &amp; business leaders across India &amp; the GCC.</p>
+    <div class="cd-grid" id="cdGrid">
+      <div class="cd-cell"><div class="cd-n" id="cdD">--</div><div class="cd-l">Days</div></div>
+      <div class="cd-cell"><div class="cd-n" id="cdH">--</div><div class="cd-l">Hours</div></div>
+      <div class="cd-cell"><div class="cd-n" id="cdM">--</div><div class="cd-l">Minutes</div></div>
+      <div class="cd-cell"><div class="cd-n" id="cdS">--</div><div class="cd-l">Seconds</div></div>
+    </div>
+    <span class="lc-when"><span class="dot"></span>Launching 23 September 2026 · 3:00 PM IST</span>
+  </div>
+</div>
 
 <div class="unlocked-bar" id="ubar">
   <div class="wrap ub-in">
@@ -621,7 +676,7 @@
   var FREE_EMAIL = ["gmail.com","googlemail.com","yahoo.com","yahoo.in","yahoo.co.in","hotmail.com","outlook.com","live.com","msn.com","icloud.com","me.com","aol.com","proton.me","protonmail.com","rediffmail.com","ymail.com","mail.com","gmx.com","zoho.com","yandex.com"];
 
   var STORE_KEY = "zimyo-hrpulse-2026-unlocked";
-  var LAUNCH = new Date('2026-09-23T10:00:00+05:30').getTime();
+  var LAUNCH = new Date('2026-09-23T15:00:00+05:30').getTime(); // 23 Sep 2026, 3:00 PM IST
   var LIGHT_SEG = ["#F9C804","#C9D6F0"]; // segments that need dark text
 
   /* charts render even while gated (visible in the fade + on unlock) */
@@ -687,15 +742,27 @@
     el.innerHTML=h;
   });
 
-  var cdMini=document.getElementById('cdMini');
-  function tick(){
-    if(!cdMini) return;
-    var diff=LAUNCH-Date.now();
-    if(diff<=0){ cdMini.innerHTML='<span class="live"><span class="d"></span>Live now</span>'; return; }
-    var d=Math.floor(diff/8.64e7), hh=Math.floor(diff%8.64e7/3.6e6), m=Math.floor(diff%3.6e6/6e4);
-    cdMini.textContent='in '+d+'d '+hh+'h '+m+'m'; setTimeout(tick,30000);
+  /* ===== Pre-launch countdown overlay ===== */
+  var ov=document.getElementById('launchOv');
+  var g=function(id){return document.getElementById(id);};
+  var cdD=g('cdD'),cdH=g('cdH'),cdM=g('cdM'),cdS=g('cdS');
+  function z(n){return (n<10?'0':'')+n;}
+  function reveal(){
+    document.documentElement.classList.remove('prelaunch');
+    if(ov){ ov.classList.add('hide'); setTimeout(function(){ if(ov&&ov.parentNode) ov.parentNode.removeChild(ov); },700); }
   }
-  tick();
+  var cdTimer;
+  function tick(){
+    var diff=LAUNCH-Date.now();
+    if(diff<=0){
+      var grid=g('cdGrid'); if(grid) grid.outerHTML='<div class="lc-live">✦ The report is now live</div>';
+      clearInterval(cdTimer); setTimeout(reveal,1200); return;
+    }
+    var d=Math.floor(diff/8.64e7), hh=Math.floor(diff%8.64e7/3.6e6),
+        m=Math.floor(diff%3.6e6/6e4), s=Math.floor(diff%6e4/1e3);
+    if(cdD){ cdD.textContent=z(d); cdH.textContent=z(hh); cdM.textContent=z(m); cdS.textContent=z(s); }
+  }
+  if(document.documentElement.classList.contains('prelaunch')){ tick(); cdTimer=setInterval(tick,1000); }
 
   var gated=document.getElementById('gated'), ubar=document.getElementById('ubar');
   function isUnlocked(){ try{return localStorage.getItem(STORE_KEY)==="1"}catch(e){return false} }
