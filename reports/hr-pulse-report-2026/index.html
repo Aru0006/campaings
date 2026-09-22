@@ -148,10 +148,13 @@
   .rticks{display:flex;justify-content:space-between;color:var(--muted);font-size:11px;border-top:1px solid var(--border);padding-top:6px}
 
   /* STACKED */
-  .srow{display:grid;grid-template-columns:minmax(90px,150px) 1fr;align-items:center;gap:12px;margin-bottom:10px}
-  @media (max-width:560px){.srow{grid-template-columns:88px 1fr;gap:8px}}
-  .strack{display:flex;height:22px;border-radius:5px;overflow:hidden;background:var(--surface-2)}
-  .sseg{display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;min-width:0;overflow:hidden;white-space:nowrap}
+  .sbars{display:grid;gap:11px}
+  .srow{display:grid;grid-template-columns:var(--lw,180px) 1fr 46px;align-items:center;gap:12px}
+  .strack{display:flex;height:24px;border-radius:4px;overflow:hidden;background:var(--surface-2)}
+  .sseg{display:flex;align-items:center;justify-content:center;font-size:11.5px;font-weight:700;min-width:0;overflow:hidden;white-space:nowrap}
+  .sout{font-size:11.5px;font-weight:700;color:var(--ink);font-variant-numeric:tabular-nums;white-space:nowrap}
+  .saxis{display:grid;grid-template-columns:var(--lw,180px) 1fr 46px;gap:12px;margin-top:2px}
+  .sticks{display:flex;justify-content:space-between;border-top:2px solid var(--border-strong);padding-top:6px;color:var(--muted);font-size:11px;font-variant-numeric:tabular-nums}
   .legend{display:flex;gap:16px;flex-wrap:wrap;justify-content:center;margin-top:14px}
   .lg{display:inline-flex;align-items:center;gap:7px;font-size:12.5px;color:var(--ink-2);font-weight:600}
   .ld{width:12px;height:12px;border-radius:3px}
@@ -662,19 +665,25 @@
     var legend=JSON.parse(el.getAttribute('data-legend'));
     var colors=JSON.parse(el.getAttribute('data-colors'));
     var axis=el.getAttribute('data-axis')||'';
-    var h='<div>';
+    var ticks=(el.getAttribute('data-ticks')||'0,20,40,60,80,100').split(',');
+    var h='<div class="sbars">';
     rows.forEach(function(r){
       h+='<div class="srow"><span class="blabel">'+r[0]+'</span><span class="strack">';
+      var outside=[];
       r[1].forEach(function(v,i){
         if(v>0){
           var dark=LIGHT_SEG.indexOf(colors[i])>-1;
-          h+='<span class="sseg" style="width:'+v+'%;background:'+colors[i]+';color:'+(dark?'#03192E':'#fff')+'">'+(v>=8?v+'%':'')+'</span>';
+          var lbl=v>=8?v.toFixed(1)+'%':'';
+          if(!lbl) outside.push(v.toFixed(1)+'%');
+          h+='<span class="sseg" style="width:'+v+'%;background:'+colors[i]+';color:'+(dark?'#03192E':'#fff')+'">'+lbl+'</span>';
         }
       });
-      h+='</span></div>';
+      h+='</span><span class="sout">'+outside.join(' ')+'</span></div>';
     });
-    h+='</div><div class="legend">'+legend.map(function(l,i){return '<span class="lg"><span class="ld" style="background:'+colors[i]+'"></span>'+l+'</span>';}).join('')+'</div>';
+    h+='</div>';
+    h+='<div class="saxis"><span></span><span class="sticks">'+ticks.map(function(t){return '<span>'+t+'</span>'}).join('')+'</span><span></span></div>';
     if(axis) h+='<div class="axis">'+axis+'</div>';
+    h+='<div class="legend">'+legend.map(function(l,i){return '<span class="lg"><span class="ld" style="background:'+colors[i]+'"></span>'+l+'</span>';}).join('')+'</div>';
     el.innerHTML=h;
   });
 
