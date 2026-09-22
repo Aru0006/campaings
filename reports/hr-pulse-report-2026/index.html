@@ -111,21 +111,24 @@
   /* CHARTS */
   figure.chart{margin:22px 0 0;background:var(--surface);border:1px solid var(--border);border-radius:var(--r-md);padding:22px}
   .ctitle{text-align:center;font-weight:700;font-size:15px;margin-bottom:18px;color:var(--ink)}
-  .bars{display:grid;gap:12px}
-  .barrow{display:grid;grid-template-columns:minmax(110px,196px) 1fr 52px;align-items:center;gap:12px}
-  @media (max-width:560px){.barrow{grid-template-columns:104px 1fr 44px;gap:8px}}
-  .blabel{font-size:12.5px;font-weight:600;color:var(--ink-2);line-height:1.25;text-align:right}
-  .btrack{display:block;height:16px;border-radius:5px;background:var(--surface-2);overflow:hidden}
-  .bfill{display:block;height:100%;border-radius:5px;transform-origin:left;animation:grow .9s var(--ease) both;background:var(--blue)}
+  .bars{display:grid;gap:13px;position:relative}
+  .bars::before{content:"";position:absolute;left:calc(var(--lw,180px) + 12px);top:0;bottom:0;width:2px;background:var(--border-strong)}
+  .barrow{display:grid;grid-template-columns:var(--lw,180px) 1fr;align-items:center;gap:12px}
+  @media (max-width:560px){figure.chart{--lw:100px}}
+  .blabel{font-size:12.5px;font-weight:600;color:var(--ink-2);line-height:1.2;text-align:right}
+  .btrack{position:relative;height:16px}
+  .bfill{position:absolute;left:0;top:0;height:100%;border-radius:0 3px 3px 0;background:var(--blue);transform-origin:left;animation:grow .9s var(--ease) both}
   @keyframes grow{from{transform:scaleX(0)}}
-  .bval{font-weight:700;font-size:13px;text-align:left;font-variant-numeric:tabular-nums}
+  .bval{position:absolute;top:50%;transform:translateY(-50%);margin-left:8px;font-weight:700;font-size:12.5px;color:var(--ink);font-variant-numeric:tabular-nums;white-space:nowrap}
   .bars .barrow:nth-child(6n+1) .bfill{background:#1F6BFF}
   .bars .barrow:nth-child(6n+2) .bfill{background:#3D5AFF}
   .bars .barrow:nth-child(6n+3) .bfill{background:#03192E}
   .bars .barrow:nth-child(6n+4) .bfill{background:#00CD37}
   .bars .barrow:nth-child(6n+5) .bfill{background:#F9C804}
   .bars .barrow:nth-child(6n+6) .bfill{background:#DD4F24}
-  .axis{text-align:center;color:var(--muted);font-size:11.5px;margin-top:16px}
+  .baxis{display:grid;grid-template-columns:var(--lw,180px) 1fr;gap:12px;margin-top:2px}
+  .bticks{display:flex;justify-content:space-between;border-top:2px solid var(--border-strong);padding-top:6px;color:var(--muted);font-size:11px;font-variant-numeric:tabular-nums}
+  .axis{text-align:center;color:var(--muted);font-size:11.5px;margin-top:12px}
   /* range charts (min–max band on a fixed axis) */
   .rbars{display:grid;gap:15px}
   .rrow{display:grid;grid-template-columns:minmax(110px,150px) 1fr 76px;align-items:center;gap:12px}
@@ -311,14 +314,14 @@
       <div class="section-head"><div class="se">Section 01</div><h2>Respondent Profile</h2></div>
       <h3 class="subh">Where these responses come from, by company size</h3>
       <figure class="chart"><div class="ctitle">Respondent Profile: Organisation Size</div>
-        <div class="rows" data-axis="Share of Respondents (%)" data-bars='[["Under 100 employees",54.2],["100–250 employees",27.5],["Above 250 employees",18.3]]'></div></figure>
+        <div class="rows" data-axis="Share of Respondents (%)" data-max="60" data-ticks="0,10,20,30,40,50,60" data-bars='[["Under 100 employees",54.2],["100–250 employees",27.5],["Above 250 employees",18.3]]'></div></figure>
       <h3 class="subh">Geography</h3>
       <p class="subnote">Respondents were based across the following locations:</p>
       <figure class="chart"><div class="ctitle">Respondent Profile: Geography</div>
-        <div class="rows" data-axis="Share of Respondents (%)" data-bars='[["Delhi NCR",33.3],["Mumbai",14.8],["Bangalore",13.4],["Middle East",11.1],["Vadodara, Surat",6.8],["Chennai",5.2],["Other Region",5.2],["Pune",3.9],["Hyderabad",3.7],["Bhubaneswar",2.6]]'></div></figure>
+        <div class="rows" data-axis="Share of Respondents (%)" data-max="40" data-ticks="0,10,20,30,40" data-bars='[["Delhi NCR",33.3],["Mumbai",14.8],["Bangalore",13.4],["Middle East",11.1],["Vadodara, Surat",6.8],["Chennai",5.2],["Other Region",5.2],["Pune",3.9],["Hyderabad",3.7],["Bhubaneswar",2.6]]'></div></figure>
       <h3 class="subh">Years in a Leadership Role</h3>
       <figure class="chart"><div class="ctitle">Respondent Profile: Years in a Leadership Role</div>
-        <div class="rows" data-axis="Share of Respondents (%)" data-bars='[["Under 2 years",32.6],["2–5 years",29.4],["5–10 years",26.1],["10+ years",14.8]]'></div></figure>
+        <div class="rows" data-axis="Share of Respondents (%)" data-max="40" data-ticks="0,10,20,30,40" data-bars='[["Under 2 years",32.6],["2–5 years",29.4],["5–10 years",26.1],["10+ years",14.8]]'></div></figure>
     </section>
 
     <!-- 02 -->
@@ -326,7 +329,7 @@
       <div class="section-head"><div class="se">Section 02</div><h2>HR's Strategic Standing</h2></div>
       <p class="intro">Respondents were asked how much influence HR currently has on strategic decisions in their organisation.</p>
       <figure class="chart"><div class="ctitle">HR's Strategic Standing</div>
-        <div class="rows" data-axis="Share of Respondents (%)" data-bars='[["HR sets strategy, not just people policy",40.7],["HR is asked for input, but doesn’t decide",33.4],["HR only runs processes (hiring, payroll, compliance)",25.9]]'></div></figure>
+        <div class="rows" data-axis="Share of Respondents (%)" data-max="50" data-ticks="0,10,20,30,40,50" data-bars='[["HR sets strategy, not just people policy",40.7],["HR is asked for input, but doesn’t decide",33.4],["HR only runs processes (hiring, payroll, compliance)",25.9]]'></div></figure>
       <div class="zimfact"><span class="zl">✦ Zimfact</span><p>The HR seat at the table isn't enough - HR needs a vote. Today, nearly 60% say their role is still reactive or advisory rather than truly strategic.</p></div>
     </section>
 
@@ -335,7 +338,7 @@
       <div class="section-head"><div class="se">Section 03</div><h2>Data-Driven Decision-Making — Maturity</h2></div>
       <p class="intro">In the AI era, data-driven HR is becoming essential for smarter, faster and more predictive people decisions. But how many HR teams are actually using dashboards and analytics, and how many are still relying on spreadsheets?</p>
       <figure class="chart"><div class="ctitle">Data-Driven Decision-Making — Maturity</div>
-        <div class="rows" data-axis="Share of Respondents (%)" data-bars='[["Runs on dashboards and predictive analytics",29.6],["Has data but decisions still rely on gut",22.2],["Doesn’t track HR data in a structured way",18.5],["Uses data but it’s not always timely",18.5],["Mostly relies on spreadsheets and instinct",11.1]]'></div></figure>
+        <div class="rows" data-axis="Share of Respondents (%)" data-max="40" data-ticks="0,10,20,30,40" data-bars='[["Runs on dashboards and predictive analytics",29.6],["Has data but decisions still rely on gut",22.2],["Doesn’t track HR data in a structured way",18.5],["Uses data but it’s not always timely",18.5],["Mostly relies on spreadsheets and instinct",11.1]]'></div></figure>
     </section>
 
     <!-- 04 -->
@@ -343,14 +346,14 @@
       <div class="section-head"><div class="se">Section 04</div><h2>Attrition Benchmark</h2></div>
       <p class="intro">Annual attrition remains a significant concern, with 55.5% of organisations reporting attrition above 10% or not tracking it precisely.</p>
       <figure class="chart"><div class="ctitle">Annual Attrition Rate, Best Estimate</div>
-        <div class="rows" data-axis="Share of Respondents (%)" data-bars='[["2–5%",14.8],["5–10%",37.0],["Above 10%",18.5],["Don’t track this precisely",29.6]]'></div></figure>
+        <div class="rows" data-axis="Share of Respondents (%)" data-max="40" data-ticks="0,10,20,30,40" data-bars='[["2–5%",14.8],["5–10%",37.0],["Above 10%",18.5],["Don’t track this precisely",29.6]]'></div></figure>
       <h3 class="subh">Workforce Attrition by Company Size</h3>
       <figure class="chart"><div class="ctitle">Headcount Attrition Rate by Company Size</div>
-        <div class="rows" data-axis="Headcount Attrition Rate (%)" data-bars='[["Under 100",12.6],["100–250",8.4],["250–1000",7.6],["Enterprise (1000+)",7.3]]'></div></figure>
+        <div class="rows" data-axis="Headcount Attrition Rate (%)" data-max="15" data-ticks="0,2.5,5,7.5,10,12.5,15" data-bars='[["Under 100",12.6],["100–250",8.4],["250–1000",7.6],["Enterprise (1000+)",7.3]]'></div></figure>
       <h3 class="subh">What's Actually Driving Attrition</h3>
       <p class="subnote">Respondents were allowed to select more than one driver; percentages reflect the share of respondents citing each factor.</p>
       <figure class="chart"><div class="ctitle">What's Actually Driving Attrition (Multi-Select)</div>
-        <div class="rows" data-axis="Share of Respondents Citing Each Factor (%)" data-bars='[["Compensation, losing the pay war",44.4],["Career growth, no visible path",25.9],["Early exits, people leave before they settle in",22.2],["Don’t dig into this enough to know",18.5],["Manager relationships, not the company",18.5],["Work-life balance / burnout",7.4]]'></div></figure>
+        <div class="rows" data-axis="Share of Respondents Citing Each Factor (%)" data-max="50" data-ticks="0,10,20,30,40,50" data-bars='[["Compensation, losing the pay war",44.4],["Career growth, no visible path",25.9],["Early exits, people leave before they settle in",22.2],["Don’t dig into this enough to know",18.5],["Manager relationships, not the company",18.5],["Work-life balance / burnout",7.4]]'></div></figure>
     </section>
 
     <!-- 05 -->
@@ -358,7 +361,7 @@
       <div class="section-head"><div class="se">Section 05</div><h2>Top HR Challenges Keeping Leaders Up At Night</h2></div>
       <p class="intro">Respondents were allowed to select more than one challenge; percentages reflect the share of respondents citing each challenge.</p>
       <figure class="chart"><div class="ctitle">Top HR Challenges Keeping Leaders Up At Night (Multi-Select)</div>
-        <div class="rows" data-axis="Share of Respondents (%)" data-bars='[["Attrition & retention",59.3],["Leadership development",37.0],["Compliance & labour law",37.0],["Manager capability gaps",33.3],["AI adoption in HR",29.6],["Compensation benchmarking",29.6],["Culture in hybrid/remote setups",25.9],["HR tech ROI",18.5],["Mental health & burnout",14.8],["GenZ as future workforce",11.1]]'></div></figure>
+        <div class="rows" data-axis="Share of Respondents (%)" data-max="80" data-ticks="0,20,40,60,80" data-bars='[["Attrition & retention",59.3],["Leadership development",37.0],["Compliance & labour law",37.0],["Manager capability gaps",33.3],["AI adoption in HR",29.6],["Compensation benchmarking",29.6],["Culture in hybrid/remote setups",25.9],["HR tech ROI",18.5],["Mental health & burnout",14.8],["GenZ as future workforce",11.1]]'></div></figure>
       <div class="zimfact"><span class="zl">✦ Zimfact</span><p>While attrition and retention top the list, the attrition rate graph reveals a glaring operational paradox: approximately 30% of organizations still fail to track these metrics with precision. Without precise tracking, addressing the root causes of turnover remains an uphill battle.</p></div>
     </section>
 
@@ -367,7 +370,7 @@
       <div class="section-head"><div class="se">Section 06</div><h2>The Execution Gap: What HR Promises vs. What It Delivers</h2></div>
       <p class="intro">Respondents were allowed to select more than one statement; percentages reflect the share of respondents citing each statement.</p>
       <figure class="chart"><div class="ctitle">What HR Promises vs. What It Delivers</div>
-        <div class="rows" data-axis="Share of Respondents (%)" data-bars='[["Promise a great experience, people don’t feel it",40.7],["All of the above, honestly",29.6],["Preach wellness, workloads never ease",22.2],["Celebrate performance, appraisals feel unfair",14.8],["Champion inclusion, decisions don’t show it",11.1]]'></div></figure>
+        <div class="rows" data-axis="Share of Respondents (%)" data-max="50" data-ticks="0,10,20,30,40,50" data-bars='[["Promise a great experience, people don’t feel it",40.7],["All of the above, honestly",29.6],["Preach wellness, workloads never ease",22.2],["Celebrate performance, appraisals feel unfair",14.8],["Champion inclusion, decisions don’t show it",11.1]]'></div></figure>
     </section>
 
     <!-- 07 -->
@@ -375,7 +378,7 @@
       <div class="section-head"><div class="se">Section 07</div><h2>HR Practices That Now Feel Broken or Ineffective</h2></div>
       <p class="intro">Respondents were allowed to select more than one practice; percentages reflect the share of respondents citing each practice.</p>
       <figure class="chart"><div class="ctitle">HR Practices That Now Feel Broken or Ineffective</div>
-        <div class="rows" data-axis="Share of Respondents (%)" data-bars='[["Rigid 9-to-5 attendance policies",40.7],["One-size-fits-all onboarding",33.3],["Exit interviews that go nowhere",25.9],["Appraisal-linked increments, no mid-year correction",23.4],["Annual performance reviews",22.2],["Hiring based on degrees over skills",21.0]]'></div></figure>
+        <div class="rows" data-axis="Share of Respondents (%)" data-max="50" data-ticks="0,10,20,30,40,50" data-bars='[["Rigid 9-to-5 attendance policies",40.7],["One-size-fits-all onboarding",33.3],["Exit interviews that go nowhere",25.9],["Appraisal-linked increments, no mid-year correction",23.4],["Annual performance reviews",22.2],["Hiring based on degrees over skills",21.0]]'></div></figure>
       <div class="zimfact"><span class="zl">✦ Zimfact</span><p>4 in 10 HR professionals say rigid 9-to-5 attendance is a practice that no longer works. Are HR leaders measuring presence or productivity?</p></div>
     </section>
 
@@ -384,7 +387,7 @@
       <div class="section-head"><div class="se">Section 08</div><h2>Readiness to Lead Through Change</h2></div>
       <p class="intro">Only 18.5% of HR teams call themselves very prepared to lead through change over the next 12 months. The remaining 81.5% are still building the plan, the capability, or both, most are figuring it out as they go rather than executing from a position of strength.</p>
       <figure class="chart"><div class="ctitle">Readiness to Lead Through Change</div>
-        <div class="rows" data-axis="Share of Respondents (%)" data-bars='[["Somewhat prepared, figuring it out as we go",40.7],["Fairly prepared, plan exists, execution uncertain",33.3],["Very prepared, clear plan and capability",18.5],["Not very prepared, reactive more than proactive",7.4]]'></div></figure>
+        <div class="rows" data-axis="Share of Respondents (%)" data-max="50" data-ticks="0,10,20,30,40,50" data-bars='[["Somewhat prepared, figuring it out as we go",40.7],["Fairly prepared, plan exists, execution uncertain",33.3],["Very prepared, clear plan and capability",18.5],["Not very prepared, reactive more than proactive",7.4]]'></div></figure>
     </section>
 
     <!-- 09 -->
@@ -392,7 +395,7 @@
       <div class="section-head"><div class="se">Section 09</div><h2>Conversations HR Leaders in India Need to Have More Openly</h2></div>
       <p class="intro">Mental health of HR professionals themselves tops the list, well ahead of every other conversation leaders feel goes unspoken. Respondents were allowed to select more than one conversation; percentages reflect the share of respondents citing each topic.</p>
       <figure class="chart"><div class="ctitle">Conversations HR Leaders in India Need to Have More Openly</div>
-        <div class="rows" data-axis="Share of Respondents (%)" data-bars='[["Mental health of HR professionals themselves",59.3],["The real cost of bad managers",55.6],["What employees actually think of HR",51.9],["Pay transparency",48.1],["Succession planning that never gets implemented",48.1],["HR’s role in layoff decisions",40.7],["Diversity that actually works vs. diversity theatre",14.8],["How HR tech is oversold",7.4]]'></div></figure>
+        <div class="rows" data-axis="Share of Respondents (%)" data-max="80" data-ticks="0,20,40,60,80" data-bars='[["Mental health of HR professionals themselves",59.3],["The real cost of bad managers",55.6],["What employees actually think of HR",51.9],["Pay transparency",48.1],["Succession planning that never gets implemented",48.1],["HR’s role in layoff decisions",40.7],["Diversity that actually works vs. diversity theatre",14.8],["How HR tech is oversold",7.4]]'></div></figure>
     </section>
 
     <!-- 10 -->
@@ -404,7 +407,7 @@
       </div>
       <p class="intro">Offer-to-join rates vary sharply by company size, with the steepest drop showing up in the 250–1,000 employee band. Roughly 1 in 5 accepted offers do not convert into an actual joining, on average, across the organisations analysed.</p>
       <figure class="chart"><div class="ctitle">Offer-to-Join Rate by Company Size</div>
-        <div class="rows" data-axis="Offer-to-Join Rate (%)" data-bars='[["Under 100",84.7],["100–250",91.2],["250–1000",71.5],["Enterprise (1000+)",78.6]]'></div></figure>
+        <div class="rows" data-axis="Offer-to-Join Rate (%)" data-max="100" data-ticks="0,20,40,60,80,100" data-bars='[["Under 100",84.7],["100–250",91.2],["250–1000",71.5],["Enterprise (1000+)",78.6]]'></div></figure>
       <div class="zimfact"><span class="zl">✦ Zimfact</span><p>The offer letter may be signed, but the talent is still in the market. Long notice periods give competitors and counter-offers time to rewrite the hiring outcome.</p></div>
     </section>
 
@@ -460,7 +463,7 @@
       <h3 class="subh">Women in Leadership</h3>
       <p class="subnote">Even at the highest end, women hold less than a third of leadership positions. Here's how female representation shifts by company size:</p>
       <figure class="chart"><div class="ctitle">Women in Leadership by Company Size</div>
-        <div class="rows" data-axis="Women in Leadership (%)" data-bars='[["Under 100",17.0],["100–250",21.0],["250–1000",26.0],["Enterprise (1000+)",32.0]]'></div></figure>
+        <div class="rows" data-axis="Women in Leadership (%)" data-max="40" data-ticks="0,10,20,30,40" data-bars='[["Under 100",17.0],["100–250",21.0],["250–1000",26.0],["Enterprise (1000+)",32.0]]'></div></figure>
       <div class="concludes"><h4>Zimyo Concludes</h4><ul>
         <li>Female leadership representation rises with company size, from 17% (Under 100) to 32% (Enterprise 1000+).</li>
         <li>LGBTQ+ representation in leadership is minimal throughout (1%–3%) and essentially flat past the 100–250 band, this dimension shows the least movement of the three groups as company size increases.</li>
@@ -472,7 +475,7 @@
       <div class="section-head"><div class="se">Section 14</div><h2>Work-Life Balance: Paternity &amp; Short Leave</h2></div>
       <h3 class="subh">Paternity Leave Adoption</h3>
       <figure class="chart"><div class="ctitle">Paternity Leave Adoption by Company Size</div>
-        <div class="rows" data-axis="Organisations Offering Paternity Leave (%)" data-bars='[["Under 100",25],["100–250",30],["250–1000",45],["Enterprise (1000+)",57]]'></div></figure>
+        <div class="rows" data-axis="Organisations Offering Paternity Leave (%)" data-max="60" data-ticks="0,10,20,30,40,50,60" data-bars='[["Under 100",25],["100–250",30],["250–1000",45],["Enterprise (1000+)",57]]'></div></figure>
       <h3 class="subh">Short Leave Policy Adoption</h3>
       <figure class="chart"><div class="ctitle">Short Leave Policy Adoption by Company Size</div>
         <div class="rangechart" data-max="100" data-unit="%" data-ticks="0,20,40,60,80,100" data-axis="Organisations Offering Short Leave (%)" data-rows='[["Under 100",45,50],["100–250",55,60],["250–1000",65,70],["Enterprise (1000+)",85,90]]'></div></figure>
@@ -486,7 +489,7 @@
       </table></div>
       <p class="intro">Even at the Enterprise level, short leave and paternity leave adoption both sit short of universal, work-life balance policy still has room to mature even among the largest, most resourced organisations. Let's see which company sizes are lagging most on both benefits simultaneously:</p>
       <figure class="chart"><div class="ctitle">Work-Life Balance Benefit Maturity by Company Size</div>
-        <div class="rows" data-axis="Benefit Maturity Score" data-bars='[["Under 100",36.2],["100–250",43.8],["250–1000",56.3],["Enterprise (1000+)",72.3]]'></div></figure>
+        <div class="rows" data-axis="Benefit Maturity Score" data-max="80" data-ticks="0,20,40,60,80" data-bars='[["Under 100",36.2],["100–250",43.8],["250–1000",56.3],["Enterprise (1000+)",72.3]]'></div></figure>
       <div class="concludes"><h4>Zimyo Concludes</h4><ul>
         <li>Benefit maturity scales consistently with company size, from 36.2% (Under 100) to 72.3% (Enterprise 1,000+), the largest organisations are roughly twice as mature on work-life balance benefits as the smallest.</li>
         <li>The jump from 100–250 to 250–1,000 employees remains the sharpest single step, this appears to be the inflection point where organisations formalise these benefits.</li>
@@ -512,7 +515,7 @@
       <div class="section-head"><div class="se">Section 16</div><h2>Hiring Method Preference for Top Talent</h2></div>
       <p class="intro">Referrals and direct sourcing dominate how organisations try to land top talent, while traditional channels like job portals and campus hiring lag well behind.</p>
       <figure class="chart"><div class="ctitle">Hiring Method Preference for Top Talent</div>
-        <div class="rows" data-axis="Indicative Preference for Hiring Top 5% Talent (%)" data-bars='[["Employee / leadership referrals",25],["Direct sourcing of passive candidates",22],["Industry / CXO network",15],["Targeted LinkedIn outreach",14],["Specialist executive search",10],["Internal talent / succession",7],["Job portals",5],["Campus hiring",2]]'></div></figure>
+        <div class="rows" data-axis="Indicative Preference for Hiring Top 5% Talent (%)" data-max="30" data-ticks="0,5,10,15,20,25,30" data-bars='[["Employee / leadership referrals",25],["Direct sourcing of passive candidates",22],["Industry / CXO network",15],["Targeted LinkedIn outreach",14],["Specialist executive search",10],["Internal talent / succession",7],["Job portals",5],["Campus hiring",2]]'></div></figure>
       <div class="zimfact"><span class="zl">✦ Zimfact</span><p>The best talent may not be applying at all. Nearly 1 in 2 HR professionals prefer referrals or direct sourcing to find top talent.</p></div>
     </section>
 
@@ -623,13 +626,17 @@
   document.querySelectorAll('.rows[data-bars]').forEach(function(el){
     var data=JSON.parse(el.getAttribute('data-bars'));
     var axis=el.getAttribute('data-axis')||'';
-    var max=parseFloat(el.getAttribute('data-max'))||Math.max.apply(null,data.map(function(d){return d[1];}));
+    var ticks=(el.getAttribute('data-ticks')||'').split(',').filter(function(s){return s!==''});
+    var mx=parseFloat(el.getAttribute('data-max'))||(ticks.length?parseFloat(ticks[ticks.length-1]):Math.max.apply(null,data.map(function(d){return d[1];})));
     var h='<div class="bars">';
     data.forEach(function(d){
       var disp=(d[2]!=null?d[2]:d[1]+'%');
-      h+='<div class="barrow"><span class="blabel">'+d[0]+'</span><span class="btrack"><span class="bfill" style="width:'+pct(d[1],max)+'%"></span></span><span class="bval">'+disp+'</span></div>';
+      var w=Math.max(0.5,d[1]/mx*100);
+      h+='<div class="barrow"><span class="blabel">'+d[0]+'</span><span class="btrack"><span class="bfill" style="width:'+w+'%"></span><span class="bval" style="left:'+w+'%">'+disp+'</span></span></div>';
     });
-    h+='</div>'; if(axis) h+='<div class="axis">'+axis+'</div>';
+    h+='</div>';
+    if(ticks.length){ h+='<div class="baxis"><span></span><span class="bticks">'+ticks.map(function(t){return '<span>'+t+'</span>'}).join('')+'</span></div>'; }
+    if(axis) h+='<div class="axis">'+axis+'</div>';
     el.innerHTML=h;
   });
   document.querySelectorAll('.rangechart[data-rows]').forEach(function(el){
