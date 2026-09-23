@@ -2,3 +2,8 @@
 *.log
 .vscode/
 reports/hr-pulse-report-2026/_review.html
+reports/hr-pulse-report-2026/_test.html
+reports/hr-pulse-report-2026/_show.html
+reports/hr-pulse-report-2026/_tverify.html
+initiatives/referral-program/_*.html
+_hp.html
