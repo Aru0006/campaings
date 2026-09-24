@@ -1,0 +1,215 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="noindex, nofollow">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>You're Invited to Zimyo</title>
+<meta name="description" content="A colleague invited you to see how Zimyo runs HR and payroll. Book a free demo.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+  :root{
+    color-scheme:light;
+    --azure:#0085FF; --green:#00CD37; --flame:#DD4F24; --primary:#335AFF; --oxford:#03192E;
+    --ground:#F5F7FE; --surface:#FFFFFF; --surface-2:#EEF2FF; --lav:#F0F3FF;
+    --ink:#03192E; --ink-2:#33465B; --muted:#6B7A8D; --border:#E6EBF7; --border-strong:#D3DCEF;
+    --grad:linear-gradient(105deg,var(--azure) 0%,var(--primary) 100%);
+    --ease:cubic-bezier(.22,1,.36,1);
+    --font:"Poppins",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--ground);color:var(--ink);font-family:var(--font);font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+  .wrap{max-width:1120px;margin:0 auto;padding:0 24px}
+  h1,h2,h3{margin:0;letter-spacing:-.025em;line-height:1.12}
+  header{background:var(--surface);border-bottom:1px solid var(--border)}
+  header .wrap{display:flex;align-items:center;height:64px}
+  header img{height:26px;display:block}
+
+  .hero{position:relative;overflow:hidden;color:#fff;background:radial-gradient(130% 110% at 8% -10%,#0E3E86 0%,#082452 48%,#03192E 100%)}
+  .hero .wrap{position:relative;z-index:2;display:grid;grid-template-columns:1fr 480px;gap:48px;align-items:start;padding:60px 24px 70px}
+  .blob{position:absolute;border-radius:50%;filter:blur(70px);opacity:.5;pointer-events:none}
+  .b1{width:360px;height:360px;background:#0085FF;top:-110px;right:-40px}
+  .b2{width:280px;height:280px;background:#335AFF;bottom:-140px;left:24%}
+  .badge{display:inline-flex;align-items:center;gap:8px;font-size:11.5px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#D6E2FF;background:rgba(91,123,255,.22);border:1px solid rgba(130,160,255,.42);padding:8px 15px;border-radius:999px}
+  .hero h1{font-size:clamp(32px,4.6vw,50px);font-weight:900;margin:20px 0 0}
+  .hero h1 .grad{background:linear-gradient(100deg,#7FE7A6,#F9C804);-webkit-background-clip:text;background-clip:text;color:transparent}
+  .hero .sub{color:#BFCFE6;font-size:17px;max-width:46ch;margin:16px 0 0}
+  .points{list-style:none;padding:0;margin:28px 0 0;display:grid;gap:12px}
+  .points li{display:flex;gap:12px;align-items:flex-start;color:#DEE8F6;font-size:15px}
+  .points .ic{flex:none;width:30px;height:30px;border-radius:9px;display:grid;place-items:center;background:rgba(127,231,166,.18);color:#7FE7A6;font-weight:800}
+  .trust{margin-top:30px;color:#9FB2CC;font-size:13.5px}
+  .trust b{color:#fff}
+
+  .card{background:var(--surface);color:var(--ink);border-radius:22px;padding:30px;box-shadow:0 40px 90px rgba(0,0,0,.35)}
+  .card h2{font-size:22px;font-weight:800}
+  .card .lede{color:var(--muted);font-size:14px;margin:6px 0 0}
+  .field{margin-top:14px}
+  .field label{display:block;font-size:13px;font-weight:600;color:var(--ink-2);margin-bottom:6px}
+  .field input,.field select{width:100%;font-family:inherit;font-size:15px;padding:13px 15px;border:1.5px solid var(--border-strong);border-radius:12px;background:#fff;color:var(--ink);transition:border-color .15s,box-shadow .15s}
+  .field input:focus,.field select:focus{outline:0;border-color:var(--primary);box-shadow:0 0 0 4px rgba(51,90,255,.14)}
+  .field.invalid input,.field.invalid select{border-color:var(--flame);box-shadow:0 0 0 4px rgba(221,79,36,.12)}
+  .field .err{display:none;color:var(--flame);font-size:12.5px;margin-top:5px}
+  .field.invalid .err{display:block}
+  .two{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+  .btn{display:flex;align-items:center;justify-content:center;width:100%;font-family:inherit;font-weight:600;font-size:15px;padding:15px 24px;border-radius:13px;border:0;cursor:pointer;background:var(--grad);color:#fff;box-shadow:0 12px 30px rgba(51,90,255,.36);margin-top:20px;transition:transform .2s var(--ease)}
+  .btn:hover{transform:translateY(-2px)}
+  .btn:disabled{opacity:.7;cursor:wait;transform:none}
+  .form-err{display:none;margin-top:12px;background:#FFF1EC;border:1px solid #F6C9B8;color:#9A3412;border-radius:11px;padding:10px 13px;font-size:13.5px}
+  .form-err.show{display:block}
+  .fine{font-size:12px;color:var(--muted);margin-top:12px;text-align:center}
+  .done{text-align:center;padding:12px 0}
+  .done .big{font-size:48px}
+  .done h2{margin-top:8px}
+  .done p{color:var(--ink-2);margin:10px auto 0;max-width:36ch}
+
+  .why{padding:64px 0}
+  .why h2{text-align:center;font-size:clamp(24px,3.2vw,32px);font-weight:800}
+  .why .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:34px}
+  .why .it{background:var(--surface);border:1px solid var(--border);border-radius:18px;padding:24px}
+  .why .it .e{font-size:28px}
+  .why .it h3{font-size:17px;margin-top:10px}
+  .why .it p{color:var(--ink-2);font-size:14px;margin:8px 0 0}
+  footer{background:var(--oxford);color:#9FB2CC}
+  footer .wrap{padding:30px 24px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;font-size:14px}
+  footer a{color:#CFDCFF;text-decoration:none}
+  footer img{height:22px;display:block}
+
+  @media (max-width:940px){ .hero .wrap{grid-template-columns:1fr} .why .grid{grid-template-columns:1fr} }
+  @media (max-width:520px){ .two{grid-template-columns:1fr} .card{padding:22px} }
+</style>
+</head>
+<body>
+
+<header><div class="wrap"><img src="/zimyo-logo.png" alt="Zimyo"></div></header>
+
+<section class="hero">
+  <div class="blob b1"></div><div class="blob b2"></div>
+  <div class="wrap">
+    <div>
+      <span class="badge">👋 You've been invited</span>
+      <h1>A colleague thinks Zimyo could make <span class="grad">HR easier</span> for your team.</h1>
+      <p class="sub">Zimyo brings HR, payroll, attendance and compliance into one platform. See it in a free, no-obligation demo tailored to your team.</p>
+      <ul class="points">
+        <li><span class="ic">✓</span><span>Payroll and statutory compliance, done in a few clicks</span></li>
+        <li><span class="ic">✓</span><span>Attendance, leave and expenses on one app your team will actually use</span></li>
+        <li><span class="ic">✓</span><span>Our team reaches out within one working day</span></li>
+      </ul>
+      <p class="trust">Trusted by <b>2,500+ companies</b> across India</p>
+    </div>
+
+    <div class="card" id="card">
+      <form id="demoForm" novalidate>
+        <h2>Book your free demo</h2>
+        <p class="lede">Takes 30 seconds. Business email required.</p>
+        <div class="field" data-f="name"><label for="dName">Full name</label><input id="dName" type="text" autocomplete="name" maxlength="200" placeholder="Your name"><div class="err">Please enter your name.</div></div>
+        <div class="field" data-f="email"><label for="dEmail">Work email</label><input id="dEmail" type="email" autocomplete="email" maxlength="320" placeholder="you@company.com"><div class="err">Please use your business email (no Gmail, Yahoo, etc.).</div></div>
+        <div class="field" data-f="phone"><label for="dPhone">Phone number</label><input id="dPhone" type="tel" autocomplete="tel" maxlength="25" placeholder="+91 98765 43210"><div class="err">Please enter a valid phone number.</div></div>
+        <div class="two">
+          <div class="field" data-f="company"><label for="dCompany">Company</label><input id="dCompany" type="text" autocomplete="organization" maxlength="200" placeholder="Company name"><div class="err">Please enter your company.</div></div>
+          <div class="field" data-f="size"><label for="dSize">Team size</label>
+            <select id="dSize"><option value="">Select</option><option>1–50</option><option>51–200</option><option>201–500</option><option>501–1000</option><option>1000+</option></select>
+            <div class="err">Please choose a team size.</div></div>
+        </div>
+        <div class="form-err" id="formErr"></div>
+        <button class="btn" type="submit">Book my free demo →</button>
+        <p class="fine">🔒 We'll only use your details to arrange your demo.</p>
+      </form>
+
+      <div class="done" id="done" hidden>
+        <div class="big">✅</div>
+        <h2>You're booked!</h2>
+        <p>Thanks — our team will reach out within one working day to schedule your demo.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="why wrap">
+  <h2>Why teams switch to Zimyo</h2>
+  <div class="grid">
+    <div class="it"><div class="e">💸</div><h3>Payroll without panic</h3><p>Run payroll with statutory deductions and compliance built in, every month, on time.</p></div>
+    <div class="it"><div class="e">📱</div><h3>One app for everyone</h3><p>Attendance, leave, expenses and payslips in one place, on web and mobile.</p></div>
+    <div class="it"><div class="e">📊</div><h3>Decisions with data</h3><p>Real-time HR analytics so you can act on attrition, costs and headcount early.</p></div>
+  </div>
+</section>
+
+<footer><div class="wrap"><img src="/zimyo-logo-white.png" alt="Zimyo"><div><a href="https://www.zimyo.com" rel="noopener">zimyo.com</a> · <a href="mailto:support@zimyo.com">support@zimyo.com</a></div></div></footer>
+
+<script>
+(function(){
+  "use strict";
+
+  /* Referral demo request → Zimyo CRM (admin.zimyo.us). Filed as a DEMO lead tagged
+     utm_campaign=referral-<code>, which the Referral Leads pipeline picks up automatically. */
+  var API = "https://api.zimyo.us";
+  var SITE_ID = "c03112f5-2740-452a-86d9-3ec879f1cc7f"; // Tracker Site for programs.zimyo.co.in
+  var FORM_NAME = "Referral Demo Request";
+  var STORE = "zimyo-referral-code";
+
+  var FREE_EMAIL = ["gmail.com","googlemail.com","yahoo.com","yahoo.in","yahoo.co.in","hotmail.com","outlook.com","live.com","msn.com","icloud.com","me.com","aol.com","proton.me","protonmail.com","rediffmail.com","ymail.com","mail.com","gmx.com","zoho.com","yandex.com"];
+  function g(id){ return document.getElementById(id); }
+  function isWork(v){ var d=(v.split('@')[1]||'').toLowerCase(); return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v) && FREE_EMAIL.indexOf(d)===-1; }
+  function okPhone(v){ var n=v.replace(/\D/g,'').length; return /^\+?[0-9 ()-]+$/.test(v) && n>=7 && n<=15; }
+
+  /* Referral code: from the link (?c=), else remembered from an earlier visit so a prospect who
+     comes back later is still credited to the colleague who sent them. */
+  var params=new URLSearchParams(location.search);
+  var raw=(params.get('c')||params.get('ref')||'').trim().toLowerCase();
+  var code = /^[a-z0-9-]{3,40}$/.test(raw) ? raw : '';
+  try{ if(code) localStorage.setItem(STORE, code); else code = localStorage.getItem(STORE) || ''; }catch(e){}
+
+  /* Count the click for the referrer (once per browser session per code). The API records it and
+     answers with a redirect we don't need; an image beacon fires it without leaving this page. */
+  if(code){
+    var key='zref-click-'+code, seen=false;
+    try{ seen=sessionStorage.getItem(key)==='1'; sessionStorage.setItem(key,'1'); }catch(e){}
+    if(!seen){ var b=new Image(); b.src=API+'/api/v1/referral/r/'+encodeURIComponent(code)+'?c=programs'; }
+  }
+
+  var form=g('demoForm');
+  function bad(f,msg){ var el=form.querySelector('[data-f="'+f+'"]'); if(msg) el.querySelector('.err').textContent=msg; el.classList.add('invalid'); }
+
+  form.addEventListener('submit',function(ev){
+    ev.preventDefault();
+    form.querySelectorAll('.field').forEach(function(f){ f.classList.remove('invalid'); });
+    g('formErr').classList.remove('show');
+    var v={ name:g('dName').value.trim(), email:g('dEmail').value.trim(), phone:g('dPhone').value.trim(), company:g('dCompany').value.trim(), size:g('dSize').value };
+    var ok=true;
+    if(!v.name){ bad('name'); ok=false; }
+    if(!isWork(v.email)){ bad('email'); ok=false; }
+    if(!okPhone(v.phone)){ bad('phone'); ok=false; }
+    if(!v.company){ bad('company'); ok=false; }
+    if(!v.size){ bad('size'); ok=false; }
+    if(!ok){ var first=form.querySelector('.field.invalid input,.field.invalid select'); if(first) first.focus(); return; }
+
+    var body={
+      siteId: SITE_ID,
+      lead: {
+        email: v.email, name: v.name, phone: v.phone, company: v.company, companySize: v.size,
+        formName: FORM_NAME, leadType: 'DEMO',
+        rawPayload: { 'Full Name': v.name, 'Business Email': v.email, 'Phone Number': v.phone, 'Company Name': v.company, 'Number of Employees': v.size, referral_code: code || null, source: 'programs-referral-landing', submitted_at: new Date().toISOString() }
+      },
+      journey: {
+        landingPath: location.pathname, landingPageUrl: location.href, referrerUrl: document.referrer || null,
+        utmSource: 'referral', utmMedium: 'referral', utmCampaign: code ? ('referral-'+code) : null,
+        userAgent: navigator.userAgent
+      }
+    };
+    var btn=form.querySelector('button'); btn.disabled=true; btn.textContent='Booking…';
+    fetch(API+'/api/v1/leads/ingest',{ method:'POST', headers:{'Content-Type':'application/json'}, body:JSON.stringify(body) })
+      .then(function(r){ return r.json().catch(function(){ return {}; }).then(function(d){ return {ok:r.ok,status:r.status,data:d}; }); })
+      .then(function(res){
+        if(res.ok){ form.hidden=true; g('done').hidden=false; g('card').scrollIntoView({behavior:'smooth',block:'center'}); return; }
+        var msg = res.status===429 ? 'Too many attempts. Please wait a few minutes and try again.'
+          : (res.data && (res.data.error && (res.data.error.message || res.data.error))) || 'Something went wrong. Please try again in a moment.';
+        g('formErr').textContent = typeof msg==='string' ? msg : 'Something went wrong. Please try again in a moment.';
+        g('formErr').classList.add('show');
+      })
+      .catch(function(){ g('formErr').textContent='We couldn’t reach the server. Check your connection and try again.'; g('formErr').classList.add('show'); })
+      .then(function(){ btn.disabled=false; btn.textContent='Book my free demo →'; });
+  });
+})();
+</script>
+</body>
+</html>

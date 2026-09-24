@@ -359,6 +359,7 @@
   var SEASON = 1;
   var SEASON_END = new Date('2026-12-31T23:59:59+05:30');
   var STORE = "zimyo-referral-link";
+  var LINK_PREFIX = "https://programs.zimyo.co.in/r/?c=";
 
   var FREE_EMAIL = ["gmail.com","googlemail.com","yahoo.com","yahoo.in","yahoo.co.in","hotmail.com","outlook.com","live.com","msn.com","icloud.com","me.com","aol.com","proton.me","protonmail.com","rediffmail.com","ymail.com","mail.com","gmx.com","zoho.com","yandex.com"];
   var AVC = ['#335AFF','#0085FF','#00CD37','#DD4F24','#5B7BFF','#0AA23A','#9B51E0','#E0A800'];
@@ -392,6 +393,8 @@
 
   function showLink(data, fresh){
     form.style.display='none'; g('linkView').style.display='block';
+    // Links always land on the Programs referral page, whatever the API echoes back.
+    if(data.code) data.url=LINK_PREFIX+encodeURIComponent(data.code);
     g('refLink').value=data.url;
     var first=String(data.name||'').trim().split(/\s+/)[0];
     g('welcome').textContent = data.alreadyRegistered ? ('Welcome back'+(first?', '+first:'')+'!') : ("You're in"+(first?', '+first:'')+'!');
