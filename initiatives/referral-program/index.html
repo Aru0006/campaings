@@ -123,7 +123,7 @@
   .panel{background:var(--surface);border:1px solid var(--border);border-radius:var(--r-lg);padding:clamp(26px,4vw,42px);box-shadow:0 28px 64px rgba(var(--shadow),.1);max-width:580px;margin:0 auto}
   .field{margin-top:16px}
   .field label{display:block;font-size:13px;font-weight:600;color:var(--ink-2);margin-bottom:7px}
-  .field input[type=text],.field input[type=email]{width:100%;font-family:inherit;font-size:15px;padding:14px 16px;border:1.5px solid var(--border-strong);border-radius:12px;background:#fff;color:var(--ink);transition:border-color .15s,box-shadow .15s}
+  .field input[type=text],.field input[type=email],.field input[type=tel]{width:100%;font-family:inherit;font-size:15px;padding:14px 16px;border:1.5px solid var(--border-strong);border-radius:12px;background:#fff;color:var(--ink);transition:border-color .15s,box-shadow .15s}
   .field input:focus{outline:0;border-color:var(--primary);box-shadow:0 0 0 4px rgba(51,90,255,.14)}
   .field.invalid input{border-color:var(--flame);box-shadow:0 0 0 4px rgba(221,79,36,.12)}
   .field .err{display:none;color:var(--flame);font-size:12.5px;margin-top:6px}
@@ -239,8 +239,8 @@
       <div class="hc-top">🔗 Your personal referral link</div>
       <div class="hc-chip">zimyo.us/r/<b>YOURCODE</b></div>
       <div class="hc-stages">
-        <div class="hc-st"><span class="n">1</span><span class="t">Introduction verified</span><span class="v">+ points</span></div>
-        <div class="hc-st"><span class="n">2</span><span class="t">Demo completed</span><span class="v">+ points</span></div>
+        <div class="hc-st"><span class="n">1</span><span class="t">Demo booked via your link</span><span class="v">tracked</span></div>
+        <div class="hc-st"><span class="n">2</span><span class="t">Verified genuine by Zimyo</span><span class="v">+100 pts</span></div>
         <div class="hc-st win"><span class="n">3</span><span class="t">Contract signed</span><span class="v">₹15,000</span></div>
       </div>
     </div>
@@ -260,7 +260,7 @@
   <div class="steps">
     <div class="step reveal"><div class="top"><span class="num">01</span><span class="tm">2 minutes</span></div><h3>Grab your link</h3><p>Sign up below with your work email and get your personal referral link instantly. We email it to you too.</p></div>
     <div class="step reveal" style="transition-delay:.06s"><div class="top"><span class="num">02</span><span class="tm">Same day</span></div><h3>We reach out</h3><p>When someone books a demo through your link, our partnerships team contacts them within one working day.</p></div>
-    <div class="step reveal" style="transition-delay:.12s"><div class="top"><span class="num">03</span><span class="tm">Nightly updates</span></div><h3>Earn points</h3><p>Points land automatically at each stage: intro verified, demo completed, contract signed. Your rank updates every night.</p></div>
+    <div class="step reveal" style="transition-delay:.12s"><div class="top"><span class="num">03</span><span class="tm">Nightly updates</span></div><h3>Earn points</h3><p>Once our team verifies the prospect&rsquo;s email and phone are genuine, you earn 100 points. Your rank updates every night.</p></div>
     <div class="step reveal" style="transition-delay:.18s"><div class="top"><span class="num">04</span><span class="tm">18 days avg.</span></div><h3>Get paid</h3><p>Cash out per closed referral, and finish the season in the top three to collect a podium prize on top.</p></div>
   </div>
 </section>
@@ -284,6 +284,7 @@
     <form id="signupForm" novalidate>
       <div class="field" data-f="name"><label for="fName">Full name</label><input id="fName" name="name" type="text" placeholder="Your name" autocomplete="name" maxlength="120"><div class="err">Please enter your name.</div></div>
       <div class="field" data-f="email"><label for="fEmail">Work email</label><input id="fEmail" name="email" type="email" placeholder="you@company.com" autocomplete="email"><div class="err">Please use a business email address (no Gmail, Yahoo, etc.).</div></div>
+      <div class="field" data-f="phone"><label for="fPhone">Phone number</label><input id="fPhone" name="phone" type="tel" placeholder="+91 98765 43210" autocomplete="tel" maxlength="25"><div class="err">Please enter a valid phone number.</div></div>
       <label class="consent"><input id="fConsent" type="checkbox"> <span>Show my name on the public leaderboard. If you leave this unticked you'll appear as "Anonymous".</span></label>
       <div class="form-err" id="formErr"></div>
       <button class="btn btn-primary block" type="submit" style="margin-top:22px">Get my referral link →</button>
@@ -301,14 +302,14 @@
         <a id="shX" class="xx" target="_blank" rel="noopener">𝕏 Post</a>
         <a id="shMail" class="ml">✉️ Email</a>
       </div>
-      <div class="note">📬 We've also emailed this link to you. You'll appear on the leaderboard once your first referral completes a verified demo.</div>
+      <div class="note">📬 We've also emailed this link to you. You'll appear on the leaderboard once our team verifies your first referral as genuine.</div>
       <button class="again" id="againBtn" type="button">Not you? Sign up with a different email</button>
     </div>
   </div>
 </section>
 
 <section class="sec wrap" id="leaderboard" style="padding-top:0">
-  <div class="sec-head reveal"><span class="eyebrow">Live standings</span><h2>Season 1 leaderboard</h2><p>Updated every night at 12:00 AM IST. Only verified, demo-completed referrals count toward points.</p></div>
+  <div class="sec-head reveal"><span class="eyebrow">Live standings</span><h2>Season 1 leaderboard</h2><p>Updated every night at 12:00 AM IST. Only referrals our team verifies as genuine count toward points.</p></div>
   <div class="lb reveal">
     <div class="tabs" role="group" aria-label="Leaderboard range">
       <button type="button" data-range="season" aria-pressed="true">This season</button>
@@ -327,8 +328,8 @@
   <div class="sec-head reveal"><span class="eyebrow">FAQ</span><h2>Good to know</h2></div>
   <div class="faq reveal">
     <details><summary>Who can take part in the referral program?</summary><p>Anyone outside Zimyo can refer: customers, partners, consultants and alumni. Current Zimyo employees and their immediate family are not eligible for cash prizes, though they can still refer for recognition points.</p></details>
-    <details><summary>How are points calculated?</summary><p>Points land automatically at three stages: when we verify the introduction, when the demo is completed, and when a contract is signed. Only verified, demo-completed referrals count toward your rank, and the board recalculates every night at 12:00 AM IST.</p></details>
-    <details><summary>When does a referral count as closed?</summary><p>A referral is closed once the company you introduced signs a contract with Zimyo. Introductions that are verified and have completed a demo still earn points toward your rank before that point.</p></details>
+    <details><summary>How are points calculated?</summary><p>You earn 100 points for every referred prospect our team verifies as genuine, meaning a real business email and a real phone number. Each company can be credited only once per season, and the board recalculates every night at 12:00 AM IST.</p></details>
+    <details><summary>When does a referral count as closed?</summary><p>A referral is closed once the company you introduced signs a contract with Zimyo. Verified referrals earn points toward your rank before that point.</p></details>
     <details><summary>How and when do I get paid?</summary><p>You cash out per closed referral rather than waiting for the season to end. Payouts take 18 days on average from the contract being signed. Season prizes for the top three are paid separately after the board is finalised.</p></details>
   </div>
 </section>
@@ -408,12 +409,14 @@
     ev.preventDefault();
     form.querySelectorAll('.field').forEach(function(f){ f.classList.remove('invalid'); });
     g('formErr').classList.remove('show');
-    var name=g('fName').value.trim(), email=g('fEmail').value.trim(), consent=g('fConsent').checked;
+    var name=g('fName').value.trim(), email=g('fEmail').value.trim(), phone=g('fPhone').value.trim(), consent=g('fConsent').checked;
     if(!name){ fieldErr('name','Please enter your name.'); return; }
     if(!isWork(email)){ fieldErr('email','Please use a business email address (no Gmail, Yahoo, etc.).'); return; }
+    var digits=phone.replace(/\D/g,'').length;
+    if(!/^\+?[0-9 ()-]+$/.test(phone) || digits<7 || digits>15){ fieldErr('phone','Please enter a valid phone number.'); return; }
 
     var btn=form.querySelector('button[type=submit]'); btn.disabled=true; btn.textContent='Creating your link…';
-    fetch(API+'/signup',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({name:name,email:email,boardConsent:consent})})
+    fetch(API+'/signup',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({name:name,email:email,phone:phone,boardConsent:consent})})
       .then(function(r){ return r.json().catch(function(){ return {}; }).then(function(d){ return {status:r.status,ok:r.ok,data:d}; }); })
       .then(function(res){
         if(res.ok && res.data && res.data.url){
