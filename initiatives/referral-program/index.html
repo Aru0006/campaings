@@ -1,0 +1,491 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="noindex, nofollow">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Zimyo Referral Program</title>
+<meta name="description" content="Refer an HR team to Zimyo. Earn ₹15,000 for every referral that closes and climb the Season 1 leaderboard for a podium prize of up to ₹2,00,000.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+  :root{
+    color-scheme:light;
+    --azure:#0085FF; --green:#00CD37; --flame:#DD4F24; --jonquil:#F9C804;
+    --primary:#335AFF; --primary-2:#5B7BFF; --oxford:#03192E;
+    --ground:#F5F7FE; --surface:#FFFFFF; --surface-2:#EEF2FF; --lav:#F0F3FF;
+    --ink:#03192E; --ink-2:#33465B; --muted:#6B7A8D;
+    --border:#E6EBF7; --border-strong:#D3DCEF;
+    --grad:linear-gradient(105deg,var(--azure) 0%,var(--primary) 100%);
+    --grad-warm:linear-gradient(120deg,#F9C804,#FF9A3D);
+    --maxw:1120px; --r-lg:22px; --r-md:14px; --ease:cubic-bezier(.22,1,.36,1);
+    --font:"Poppins",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+    --shadow:16 40 120;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{margin:0;background:var(--ground);color:var(--ink);font-family:var(--font);font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 24px}
+  a{color:inherit}
+  h1,h2,h3,h4{margin:0;letter-spacing:-.025em;line-height:1.1}
+  .btn{display:inline-flex;align-items:center;justify-content:center;gap:9px;font-family:inherit;font-weight:600;font-size:15px;padding:15px 26px;border-radius:13px;border:0;cursor:pointer;text-decoration:none;transition:transform .22s var(--ease),box-shadow .22s var(--ease),background .2s}
+  .btn-primary{background:var(--grad);color:#fff;background-size:160% 160%;box-shadow:0 12px 30px rgba(51,90,255,.36)}
+  .btn-primary:hover{transform:translateY(-3px);background-position:100% 0;box-shadow:0 18px 40px rgba(0,133,255,.46)}
+  .btn-primary:disabled{opacity:.7;cursor:wait;transform:none}
+  .btn-light{background:rgba(255,255,255,.12);color:#fff;border:1px solid rgba(255,255,255,.3)}
+  .btn-light:hover{background:rgba(255,255,255,.2);transform:translateY(-3px)}
+  .btn.block{width:100%}
+  .eyebrow{display:inline-flex;align-items:center;gap:8px;font-size:12px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--primary)}
+
+  header.nav{position:sticky;top:0;z-index:60;background:color-mix(in srgb,var(--surface) 84%,transparent);backdrop-filter:blur(16px) saturate(150%);border-bottom:1px solid transparent;transition:border-color .3s,box-shadow .3s}
+  header.nav.scrolled{border-bottom-color:var(--border);box-shadow:0 6px 26px rgba(16,40,120,.06)}
+  header.nav .wrap{display:flex;align-items:center;justify-content:space-between;height:66px}
+  .brand{display:flex;align-items:center;text-decoration:none}
+  .brand img{height:26px;width:auto;display:block}
+  .nav-right{display:flex;align-items:center;gap:18px}
+  .nav a.back{font-size:14px;color:var(--muted);text-decoration:none;font-weight:500}
+  .nav a.back:hover{color:var(--ink)}
+  .nav .btn{padding:10px 18px;font-size:14px}
+
+  /* HERO */
+  .hero{position:relative;overflow:hidden;color:#fff;background:radial-gradient(130% 110% at 8% -10%,#0E3E86 0%,#082452 48%,#03192E 100%)}
+  .hero::after{content:"";position:absolute;inset:0;background:radial-gradient(60% 50% at 85% 20%,rgba(0,133,255,.28),transparent 70%);pointer-events:none}
+  .hero .wrap{position:relative;z-index:2;display:grid;grid-template-columns:1.05fr .95fr;gap:44px;align-items:center;padding:72px 24px 84px}
+  .badge{display:inline-flex;align-items:center;gap:8px;font-size:11.5px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#D6E2FF;background:rgba(91,123,255,.22);border:1px solid rgba(130,160,255,.42);padding:8px 15px;border-radius:999px}
+  .hero h1{font-size:clamp(36px,5.4vw,60px);font-weight:900;margin:22px 0 0;letter-spacing:-.03em}
+  .hero h1 .grad{background:linear-gradient(100deg,#7FE7A6,#F9C804);-webkit-background-clip:text;background-clip:text;color:transparent}
+  .hero .sub{color:#BFCFE6;font-size:clamp(16px,1.7vw,18.5px);max-width:48ch;margin:18px 0 0}
+  .hero .cta-row{display:flex;gap:14px;flex-wrap:wrap;margin-top:32px}
+  .hero .ends{margin-top:24px;color:#9FB2CC;font-size:13.5px}
+  .hero .ends b{color:#fff}
+  .blob{position:absolute;border-radius:50%;filter:blur(70px);opacity:.55;pointer-events:none;z-index:1}
+  .b1{width:360px;height:360px;background:#0085FF;top:-110px;right:-30px;animation:drift 16s ease-in-out infinite}
+  .b2{width:300px;height:300px;background:#335AFF;bottom:-140px;left:28%;animation:drift 20s ease-in-out infinite reverse}
+  @keyframes drift{0%,100%{transform:translate(0,0)}50%{transform:translate(-26px,26px)}}
+
+  .hcard{position:relative;z-index:2;background:linear-gradient(180deg,rgba(255,255,255,.14),rgba(255,255,255,.05));border:1px solid rgba(255,255,255,.2);border-radius:24px;padding:24px;backdrop-filter:blur(10px);box-shadow:0 40px 90px rgba(0,0,0,.4);animation:float 6s ease-in-out infinite}
+  @keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-12px)}}
+  .hc-top{color:#CFDCFF;font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;margin-bottom:12px}
+  .hc-chip{display:flex;align-items:center;gap:10px;background:rgba(0,0,0,.24);border:1px dashed rgba(255,255,255,.3);border-radius:12px;padding:12px 14px;color:#CFE0FF;font-family:ui-monospace,Menlo,monospace;font-size:13px}
+  .hc-chip b{color:#fff}
+  .hc-stages{margin-top:16px}
+  .hc-st{display:flex;align-items:center;gap:12px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.1);border-radius:14px;padding:12px 14px;margin-top:9px}
+  .hc-st .n{width:28px;height:28px;border-radius:9px;display:grid;place-items:center;font-weight:800;font-size:13px;background:rgba(127,231,166,.2);color:#7FE7A6;flex:none}
+  .hc-st .t{flex:1;color:#fff;font-weight:600;font-size:14px}
+  .hc-st .v{color:#7FE7A6;font-weight:700;font-size:13px}
+  .hc-st.win{background:linear-gradient(100deg,rgba(249,200,4,.22),rgba(249,200,4,.06));border-color:rgba(249,200,4,.4)}
+  .hc-st.win .n{background:rgba(249,200,4,.25);color:#F9C804}
+  .hc-st.win .v{color:#F9C804}
+
+  .band{background:var(--surface);border-bottom:1px solid var(--border)}
+  .band .wrap{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;padding:30px 24px}
+  .band .st{text-align:center}
+  .band .st .n{font-size:clamp(24px,3.2vw,34px);font-weight:900;letter-spacing:-.03em;background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+  .band .st .l{color:var(--muted);font-size:13.5px;font-weight:500;margin-top:2px}
+
+  section.sec{padding:72px 0}
+  .sec-head{max-width:62ch;margin:0 auto 44px;text-align:center}
+  .sec-head h2{font-size:clamp(26px,3.6vw,38px);margin:14px 0 0;font-weight:800}
+  .sec-head p{color:var(--muted);margin:14px 0 0}
+
+  .reveal{opacity:0;transform:translateY(22px);transition:opacity .7s var(--ease),transform .7s var(--ease)}
+  .reveal.in{opacity:1;transform:none}
+  @media (prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none}.hcard,.blob{animation:none}}
+
+  .steps{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+  .step{background:var(--surface);border:1px solid var(--border);border-radius:var(--r-lg);padding:26px;transition:transform .25s var(--ease),box-shadow .25s var(--ease)}
+  .step:hover{transform:translateY(-6px);box-shadow:0 24px 50px rgba(16,40,120,.1)}
+  .step .top{display:flex;justify-content:space-between;align-items:center;margin-bottom:16px}
+  .step .num{font-size:26px;font-weight:900;letter-spacing:-.03em;background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+  .step .tm{font-size:11px;font-weight:700;color:var(--primary);background:var(--lav);padding:4px 10px;border-radius:999px}
+  .step h3{font-size:18px}
+  .step p{color:var(--ink-2);font-size:14px;margin:10px 0 0}
+
+  .prizes{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;align-items:end;margin-bottom:20px}
+  .prize{border-radius:var(--r-lg);padding:30px 24px;color:#fff;position:relative;overflow:hidden;box-shadow:0 20px 44px rgba(16,40,120,.14)}
+  .prize::after{content:"";position:absolute;top:-40%;left:-40%;width:60%;height:180%;background:linear-gradient(90deg,transparent,rgba(255,255,255,.32),transparent);transform:rotate(18deg);animation:shine 5s ease-in-out infinite}
+  @keyframes shine{0%,60%{left:-40%}80%,100%{left:130%}}
+  .prize.p1{background:linear-gradient(160deg,#F0B400,#C98A00);transform:translateY(-14px)}
+  .prize.p2{background:linear-gradient(160deg,#8C9DB4,#5E708A)}
+  .prize.p3{background:linear-gradient(160deg,#D2842F,#A05A12)}
+  .prize .medal{font-size:40px}
+  .prize .rk{font-size:12px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;opacity:.92;margin-top:6px}
+  .prize .amt{font-size:32px;font-weight:900;letter-spacing:-.03em;margin-top:6px}
+  .prize .sum{font-size:14px;font-weight:600;margin-top:4px}
+  .prize ul{margin:16px 0 0;padding:14px 0 0;border-top:1px solid rgba(255,255,255,.28);list-style:none;font-size:13px}
+  .prize li{padding-left:20px;position:relative;margin-top:6px;opacity:.95}
+  .prize li::before{content:"✓";position:absolute;left:0;font-weight:800}
+  .per-close{background:var(--surface);border:1.5px dashed var(--border-strong);border-radius:var(--r-lg);padding:22px 28px;display:flex;align-items:center;gap:16px;justify-content:center;flex-wrap:wrap;text-align:center}
+  .per-close .em{font-size:30px}
+  .per-close b{color:var(--ink)}
+  .per-close span{color:var(--muted);font-size:14.5px}
+
+  .panel{background:var(--surface);border:1px solid var(--border);border-radius:var(--r-lg);padding:clamp(26px,4vw,42px);box-shadow:0 28px 64px rgba(var(--shadow),.1);max-width:580px;margin:0 auto}
+  .field{margin-top:16px}
+  .field label{display:block;font-size:13px;font-weight:600;color:var(--ink-2);margin-bottom:7px}
+  .field input[type=text],.field input[type=email]{width:100%;font-family:inherit;font-size:15px;padding:14px 16px;border:1.5px solid var(--border-strong);border-radius:12px;background:#fff;color:var(--ink);transition:border-color .15s,box-shadow .15s}
+  .field input:focus{outline:0;border-color:var(--primary);box-shadow:0 0 0 4px rgba(51,90,255,.14)}
+  .field.invalid input{border-color:var(--flame);box-shadow:0 0 0 4px rgba(221,79,36,.12)}
+  .field .err{display:none;color:var(--flame);font-size:12.5px;margin-top:6px}
+  .field.invalid .err{display:block}
+  .consent{display:flex;gap:11px;align-items:flex-start;margin-top:18px;font-size:13.5px;color:var(--ink-2);cursor:pointer}
+  .consent input{width:18px;height:18px;margin-top:2px;accent-color:var(--primary);flex:none}
+  .form-err{display:none;margin-top:14px;background:#FFF1EC;border:1px solid #F6C9B8;color:#9A3412;border-radius:11px;padding:11px 14px;font-size:13.5px}
+  .form-err.show{display:block}
+  .fine{font-size:12px;color:var(--muted);margin-top:14px}
+
+  .linkbox{display:flex;gap:10px;margin-top:8px}
+  .linkbox input{flex:1;font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:13.5px;padding:14px;border:1.5px solid var(--border);border-radius:12px;background:var(--surface-2);color:var(--ink);min-width:0}
+  .share{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin-top:16px}
+  .share a{display:inline-flex;align-items:center;justify-content:center;gap:8px;font-size:14px;font-weight:600;text-decoration:none;padding:12px 15px;border-radius:11px;color:#fff;transition:transform .2s var(--ease),filter .2s}
+  .share a:hover{transform:translateY(-2px);filter:brightness(1.06)}
+  .share .wa{background:#25D366}.share .li{background:#0A66C2}.share .xx{background:#111}.share .ml{background:var(--ink-2)}
+  .note{margin-top:18px;background:linear-gradient(100deg,#EAF1FF,#F0EEFF);border:1px solid var(--border);border-radius:14px;padding:14px 16px;font-size:13.5px;color:var(--ink-2)}
+  .again{background:none;border:0;color:var(--primary);font-weight:600;cursor:pointer;font-family:inherit;font-size:13px;margin-top:14px;padding:0}
+
+  /* leaderboard */
+  .lb{max-width:840px;margin:0 auto}
+  .tabs{display:flex;gap:6px;justify-content:center;background:var(--surface);border:1px solid var(--border);border-radius:999px;padding:5px;width:max-content;margin:0 auto 26px}
+  .tabs button{border:0;background:none;font-family:inherit;font-size:13.5px;font-weight:600;color:var(--muted);padding:9px 18px;border-radius:999px;cursor:pointer}
+  .tabs button[aria-pressed=true]{background:var(--oxford);color:#fff}
+  .podium{display:grid;grid-template-columns:1fr 1.2fr 1fr;gap:14px;align-items:end;margin-bottom:22px}
+  .pod{background:var(--surface);border:1px solid var(--border);border-radius:18px;padding:22px 12px 18px;text-align:center;position:relative;box-shadow:0 16px 40px rgba(16,40,120,.08)}
+  .pod .av{width:58px;height:58px;border-radius:50%;margin:0 auto;display:grid;place-items:center;font-weight:800;font-size:20px;color:#fff}
+  .pod .medal{font-size:24px;position:absolute;top:-14px;left:50%;transform:translateX(-50%)}
+  .pod .nm{font-weight:700;margin-top:12px;font-size:15px}
+  .pod .pt{font-size:24px;font-weight:900;letter-spacing:-.03em;margin-top:6px}
+  .pod .pt small{font-size:11px;color:var(--muted);font-weight:600}
+  .pod .base{height:10px;border-radius:6px;margin-top:14px}
+  .pod.pod1{transform:translateY(-16px)} .pod.pod1 .base{height:26px;background:var(--grad-warm)} .pod.pod1 .av{background:linear-gradient(160deg,#F0B400,#C98A00)}
+  .pod.pod2 .base{height:16px;background:linear-gradient(160deg,#8C9DB4,#5E708A)} .pod.pod2 .av{background:linear-gradient(160deg,#8C9DB4,#5E708A)}
+  .pod.pod3 .base{background:linear-gradient(160deg,#D2842F,#A05A12)} .pod.pod3 .av{background:linear-gradient(160deg,#D2842F,#A05A12)}
+  .lb-meta{display:flex;justify-content:space-between;align-items:center;gap:10px;margin:0 auto 12px;font-size:12.5px;color:var(--muted);flex-wrap:wrap}
+  .lb-wrap{background:var(--surface);border:1px solid var(--border);border-radius:var(--r-lg);overflow:hidden;box-shadow:0 20px 50px rgba(var(--shadow),.08)}
+  .lb-head,.lb-row{display:grid;grid-template-columns:70px 1fr 110px 90px;align-items:center;gap:12px;padding:14px 20px}
+  .lb-head{background:var(--oxford);color:#fff;font-size:11.5px;font-weight:700;letter-spacing:.08em;text-transform:uppercase}
+  .lb-row{border-top:1px solid var(--border)}
+  .lb-row:hover{background:#FBFCFF}
+  .lb-rank{font-weight:800;font-size:15px}
+  .mv{display:block;font-size:11px;font-weight:700}
+  .mv.up{color:#0AA23A}.mv.dn{color:var(--flame)}.mv.nw{color:var(--primary)}.mv.eq{color:var(--muted)}
+  .lb-who{display:flex;align-items:center;gap:11px;min-width:0}
+  .lb-who .av{width:36px;height:36px;border-radius:50%;display:grid;place-items:center;font-weight:700;font-size:13px;color:#fff;flex:none}
+  .lb-who .nm{font-weight:600;font-size:14.5px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .tier{display:inline-block;font-size:10.5px;font-weight:700;padding:2px 8px;border-radius:6px;margin-top:3px}
+  .tier.Platinum{background:#E8EEF7;color:#3B4A63}.tier.Gold{background:#FFF4CC;color:#8A6400}.tier.Silver{background:#EEF1F5;color:#5E708A}.tier.Rising{background:var(--lav);color:var(--primary)}
+  .lb-ref{font-size:13px;color:var(--ink-2)}
+  .lb-ref small{display:block;color:var(--muted);font-size:11.5px}
+  .lb-pts{text-align:right;font-weight:900;font-size:17px}
+  .lb-pts small{display:block;font-size:11px;font-weight:500;color:var(--muted)}
+  .lb-empty{padding:44px 24px;text-align:center;color:var(--muted)}
+  .lb-empty b{display:block;color:var(--ink);font-size:17px;margin-bottom:6px}
+
+  .faq{max-width:780px;margin:0 auto}
+  .faq details{background:var(--surface);border:1px solid var(--border);border-radius:16px;margin-top:12px;padding:0 22px}
+  .faq summary{cursor:pointer;list-style:none;font-weight:600;padding:18px 0;display:flex;justify-content:space-between;gap:16px}
+  .faq summary::-webkit-details-marker{display:none}
+  .faq summary::after{content:"+";font-size:22px;line-height:1;color:var(--primary);transition:transform .2s}
+  .faq details[open] summary::after{transform:rotate(45deg)}
+  .faq details p{margin:0 0 18px;color:var(--ink-2);font-size:14.5px}
+
+  .closing{background:var(--oxford);color:#fff;border-radius:var(--r-lg);padding:40px;display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap}
+  .closing h3{font-size:clamp(22px,3vw,30px)}
+  .closing p{color:#9FB2CC;margin:8px 0 0}
+
+  .toast{position:fixed;left:50%;bottom:26px;transform:translate(-50%,150%);background:var(--oxford);color:#fff;padding:14px 24px;border-radius:999px;font-weight:600;font-size:14px;box-shadow:0 16px 40px rgba(3,25,46,.4);z-index:120;opacity:0;transition:transform .5s var(--ease),opacity .3s}
+  .toast.show{transform:translate(-50%,0);opacity:1}
+  footer{background:var(--oxford);color:#9FB2CC;margin-top:72px}
+  footer .wrap{padding:38px 24px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px}
+  footer .brand img{height:24px}
+  footer a{color:#CFDCFF;text-decoration:none;font-size:14px}
+
+  @media (max-width:980px){ .steps{grid-template-columns:repeat(2,1fr)} }
+  @media (max-width:900px){ .hero .wrap{grid-template-columns:1fr;gap:32px} .hcard{max-width:440px} .prizes{grid-template-columns:1fr} .prize.p1{transform:none} }
+  @media (max-width:600px){
+    .band .wrap{grid-template-columns:1fr;gap:14px} .steps{grid-template-columns:1fr} .share{grid-template-columns:1fr}
+    .podium{grid-template-columns:1fr;gap:10px} .pod.pod1{transform:none}
+    .lb-head,.lb-row{grid-template-columns:48px 1fr 70px;padding:12px 14px} .lb-ref,.lb-head .h-ref{display:none}
+    .linkbox{flex-direction:column} .closing{padding:28px}
+  }
+</style>
+</head>
+<body>
+
+<header class="nav" id="nav">
+  <div class="wrap">
+    <a class="brand" href="../../"><img src="../../zimyo-logo.png" alt="Zimyo"></a>
+    <div class="nav-right">
+      <a class="back" href="../../">← All programs</a>
+      <a class="btn btn-primary" href="#join">Get my link</a>
+    </div>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="blob b1"></div><div class="blob b2"></div>
+  <div class="wrap">
+    <div>
+      <span class="badge">✦ Zimyo Referral Program · Season 1</span>
+      <h1>Refer an HR team.<br>Earn up to <span class="grad">₹2,00,000.</span></h1>
+      <p class="sub">Introduce companies that need better HR &amp; payroll. Earn ₹15,000 for every referral that closes, and climb the season leaderboard for a podium prize.</p>
+      <div class="cta-row">
+        <a class="btn btn-primary" href="#join">Get my referral link →</a>
+        <a class="btn btn-light" href="#leaderboard">See the leaderboard</a>
+      </div>
+      <p class="ends">Season 1 closes <b>31 December</b> · <span id="daysLeft"></span></p>
+    </div>
+
+    <div class="hcard" aria-hidden="true">
+      <div class="hc-top">🔗 Your personal referral link</div>
+      <div class="hc-chip">zimyo.us/r/<b>YOURCODE</b></div>
+      <div class="hc-stages">
+        <div class="hc-st"><span class="n">1</span><span class="t">Introduction verified</span><span class="v">+ points</span></div>
+        <div class="hc-st"><span class="n">2</span><span class="t">Demo completed</span><span class="v">+ points</span></div>
+        <div class="hc-st win"><span class="n">3</span><span class="t">Contract signed</span><span class="v">₹15,000</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="band">
+  <div class="wrap">
+    <div class="st"><div class="n">₹2,00,000</div><div class="l">Top prize this season</div></div>
+    <div class="st"><div class="n">₹15,000</div><div class="l">Per closed referral</div></div>
+    <div class="st"><div class="n">3</div><div class="l">Podium places</div></div>
+  </div>
+</div>
+
+<section class="sec wrap">
+  <div class="sec-head reveal"><span class="eyebrow">How it works</span><h2>Four steps from intro to payout</h2></div>
+  <div class="steps">
+    <div class="step reveal"><div class="top"><span class="num">01</span><span class="tm">2 minutes</span></div><h3>Grab your link</h3><p>Sign up below with your work email and get your personal referral link instantly. We email it to you too.</p></div>
+    <div class="step reveal" style="transition-delay:.06s"><div class="top"><span class="num">02</span><span class="tm">Same day</span></div><h3>We reach out</h3><p>When someone books a demo through your link, our partnerships team contacts them within one working day.</p></div>
+    <div class="step reveal" style="transition-delay:.12s"><div class="top"><span class="num">03</span><span class="tm">Nightly updates</span></div><h3>Earn points</h3><p>Points land automatically at each stage: intro verified, demo completed, contract signed. Your rank updates every night.</p></div>
+    <div class="step reveal" style="transition-delay:.18s"><div class="top"><span class="num">04</span><span class="tm">18 days avg.</span></div><h3>Get paid</h3><p>Cash out per closed referral, and finish the season in the top three to collect a podium prize on top.</p></div>
+  </div>
+</section>
+
+<section class="sec wrap" style="padding-top:0">
+  <div class="sec-head reveal"><span class="eyebrow">Season 1 prizes</span><h2>What the podium wins</h2><p>Awarded when the season board is finalised after 31 December.</p></div>
+  <div class="prizes reveal">
+    <div class="prize p2"><div class="medal">🥈</div><div class="rk">Second place</div><div class="amt">₹75,000</div><div class="sum">Cash prize + Bose QuietComfort headphones</div>
+      <ul><li>Feature in the Zimyo partner spotlight</li><li>Two conference passes for HRTech 2027</li><li>Silver badge on your leaderboard profile</li></ul></div>
+    <div class="prize p1"><div class="medal">🥇</div><div class="rk">First place</div><div class="amt">₹2,00,000</div><div class="sum">Cash prize + 3-night Goa stay for two</div>
+      <ul><li>Named Referrer Of The Season across our channels</li><li>Dinner with the Zimyo founding team</li><li>Lifetime 2x points multiplier on future referrals</li></ul></div>
+    <div class="prize p3"><div class="medal">🥉</div><div class="rk">Third place</div><div class="amt">₹40,000</div><div class="sum">Cash prize + Apple Watch SE</div>
+      <ul><li>Feature in the quarterly referrer newsletter</li><li>One conference pass for HRTech 2027</li><li>Bronze badge on your leaderboard profile</li></ul></div>
+  </div>
+  <div class="per-close reveal"><span class="em">💸</span><div><b>Plus ₹15,000 for every referral that closes.</b> <span>Paid as each deal closes, not at season end, whether or not you make the podium.</span></div></div>
+</section>
+
+<section class="sec wrap" id="join" style="padding-top:0">
+  <div class="sec-head reveal"><span class="eyebrow" id="joinEyebrow">Join the program</span><h2 id="joinTitle">Get your referral link</h2><p id="joinSub">Takes under a minute. Business email required.</p></div>
+  <div class="panel reveal">
+    <form id="signupForm" novalidate>
+      <div class="field" data-f="name"><label for="fName">Full name</label><input id="fName" name="name" type="text" placeholder="Your name" autocomplete="name" maxlength="120"><div class="err">Please enter your name.</div></div>
+      <div class="field" data-f="email"><label for="fEmail">Work email</label><input id="fEmail" name="email" type="email" placeholder="you@company.com" autocomplete="email"><div class="err">Please use a business email address (no Gmail, Yahoo, etc.).</div></div>
+      <label class="consent"><input id="fConsent" type="checkbox"> <span>Show my name on the public leaderboard. If you leave this unticked you'll appear as "Anonymous".</span></label>
+      <div class="form-err" id="formErr"></div>
+      <button class="btn btn-primary block" type="submit" style="margin-top:22px">Get my referral link →</button>
+      <p class="fine">🔒 We use your details only to run the referral program and pay out rewards.</p>
+    </form>
+
+    <div id="linkView" style="display:none">
+      <div style="text-align:center"><div style="font-size:40px">🎉</div><h3 style="margin-top:8px" id="welcome">You're in!</h3><p style="color:var(--muted);margin:8px auto 0;font-size:14.5px;max-width:40ch" id="welcomeSub">Share this link. Anyone who books a Zimyo demo through it is credited to you.</p></div>
+      <div class="field" style="margin-top:20px"><label for="refLink">Your referral link</label>
+        <div class="linkbox"><input id="refLink" type="text" readonly><button class="btn btn-primary" id="copyBtn" type="button" style="padding:14px 18px">Copy</button></div>
+      </div>
+      <div class="share">
+        <a id="shWa" class="wa" target="_blank" rel="noopener">💬 WhatsApp</a>
+        <a id="shLi" class="li" target="_blank" rel="noopener">in LinkedIn</a>
+        <a id="shX" class="xx" target="_blank" rel="noopener">𝕏 Post</a>
+        <a id="shMail" class="ml">✉️ Email</a>
+      </div>
+      <div class="note">📬 We've also emailed this link to you. You'll appear on the leaderboard once your first referral completes a verified demo.</div>
+      <button class="again" id="againBtn" type="button">Not you? Sign up with a different email</button>
+    </div>
+  </div>
+</section>
+
+<section class="sec wrap" id="leaderboard" style="padding-top:0">
+  <div class="sec-head reveal"><span class="eyebrow">Live standings</span><h2>Season 1 leaderboard</h2><p>Updated every night at 12:00 AM IST. Only verified, demo-completed referrals count toward points.</p></div>
+  <div class="lb reveal">
+    <div class="tabs" role="group" aria-label="Leaderboard range">
+      <button type="button" data-range="season" aria-pressed="true">This season</button>
+      <button type="button" data-range="month" aria-pressed="false">This month</button>
+      <button type="button" data-range="all" aria-pressed="false">All time</button>
+    </div>
+    <div class="podium" id="podium" style="display:none"></div>
+    <div class="lb-wrap">
+      <div class="lb-head"><div>Rank</div><div>Referrer</div><div class="h-ref">Referrals</div><div style="text-align:right">Points</div></div>
+      <div id="lbRows"><div class="lb-empty">Loading standings…</div></div>
+    </div>
+  </div>
+</section>
+
+<section class="sec wrap" style="padding-top:0">
+  <div class="sec-head reveal"><span class="eyebrow">FAQ</span><h2>Good to know</h2></div>
+  <div class="faq reveal">
+    <details><summary>Who can take part in the referral program?</summary><p>Anyone outside Zimyo can refer: customers, partners, consultants and alumni. Current Zimyo employees and their immediate family are not eligible for cash prizes, though they can still refer for recognition points.</p></details>
+    <details><summary>How are points calculated?</summary><p>Points land automatically at three stages: when we verify the introduction, when the demo is completed, and when a contract is signed. Only verified, demo-completed referrals count toward your rank, and the board recalculates every night at 12:00 AM IST.</p></details>
+    <details><summary>When does a referral count as closed?</summary><p>A referral is closed once the company you introduced signs a contract with Zimyo. Introductions that are verified and have completed a demo still earn points toward your rank before that point.</p></details>
+    <details><summary>How and when do I get paid?</summary><p>You cash out per closed referral rather than waiting for the season to end. Payouts take 18 days on average from the contract being signed. Season prizes for the top three are paid separately after the board is finalised.</p></details>
+  </div>
+</section>
+
+<section class="wrap reveal">
+  <div class="closing">
+    <div><h3>Know an HR team that deserves better?</h3><p>Get your link now. Season 1 closes 31 December.</p></div>
+    <a class="btn btn-primary" href="#join">Get my referral link →</a>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <a class="brand" href="../../"><img src="../../zimyo-logo-white.png" alt="Zimyo"></a>
+    <div><a href="../../">Zimyo Programs</a> · <a href="mailto:support@zimyo.com">support@zimyo.com</a></div>
+  </div>
+</footer>
+
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script>
+(function(){
+  "use strict";
+
+  /* Zimyo referral backend (api.zimyo.us → zimyo-db). The API already allows this origin. */
+  var API = "https://api.zimyo.us/api/v1/referral";
+  var SEASON = 1;
+  var SEASON_END = new Date('2026-12-31T23:59:59+05:30');
+  var STORE = "zimyo-referral-link";
+
+  var FREE_EMAIL = ["gmail.com","googlemail.com","yahoo.com","yahoo.in","yahoo.co.in","hotmail.com","outlook.com","live.com","msn.com","icloud.com","me.com","aol.com","proton.me","protonmail.com","rediffmail.com","ymail.com","mail.com","gmx.com","zoho.com","yandex.com"];
+  var AVC = ['#335AFF','#0085FF','#00CD37','#DD4F24','#5B7BFF','#0AA23A','#9B51E0','#E0A800'];
+  function g(id){ return document.getElementById(id); }
+  function isWork(v){ var d=(v.split('@')[1]||'').toLowerCase(); return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v) && FREE_EMAIL.indexOf(d)===-1; }
+  function esc(s){ return String(s==null?'':s).replace(/[&<>"]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c];}); }
+  function initial(s){ return (String(s||'?').trim().charAt(0)||'?').toUpperCase(); }
+  function avColor(s){ var h=0; s=String(s||''); for(var i=0;i<s.length;i++) h=(h*31+s.charCodeAt(i))>>>0; return AVC[h%AVC.length]; }
+  function store(get,val){ try{ if(get) return JSON.parse(localStorage.getItem(STORE)); localStorage.setItem(STORE,JSON.stringify(val)); }catch(e){ return null; } }
+  function forget(){ try{ localStorage.removeItem(STORE); }catch(e){} }
+
+  var toastT;
+  function toast(m){ var t=g('toast'); t.textContent=m; t.classList.add('show'); clearTimeout(toastT); toastT=setTimeout(function(){ t.classList.remove('show'); },2800); }
+
+  function confetti(){
+    if(window.matchMedia && matchMedia('(prefers-reduced-motion:reduce)').matches) return;
+    var cv=document.createElement('canvas'); cv.style.cssText='position:fixed;inset:0;width:100%;height:100%;pointer-events:none;z-index:200';
+    document.body.appendChild(cv); var cx=cv.getContext('2d'),W=cv.width=innerWidth,H=cv.height=innerHeight;
+    var cols=['#335AFF','#0085FF','#00CD37','#F9C804','#DD4F24','#5B7BFF'],P=[];
+    for(var i=0;i<160;i++) P.push({x:Math.random()*W,y:-20-Math.random()*H*.5,r:5+Math.random()*7,c:cols[i%cols.length],vy:2.5+Math.random()*4.5,vx:-2.5+Math.random()*5,rot:Math.random()*6.28,vr:-.25+Math.random()*.5,sq:Math.random()>.45});
+    var t0=Date.now();(function f(){ cx.clearRect(0,0,W,H); for(var i=0;i<P.length;i++){ var p=P[i]; p.x+=p.vx; p.y+=p.vy; p.vy+=.05; p.rot+=p.vr; cx.save(); cx.translate(p.x,p.y); cx.rotate(p.rot); cx.fillStyle=p.c; if(p.sq) cx.fillRect(-p.r/2,-p.r/2,p.r,p.r*.6); else { cx.beginPath(); cx.arc(0,0,p.r/2,0,6.28); cx.fill(); } cx.restore(); } if(Date.now()-t0<4600) requestAnimationFrame(f); else cv.remove(); })();
+  }
+
+  /* ---- season countdown ---- */
+  (function(){ var d=Math.ceil((SEASON_END-Date.now())/8.64e7); g('daysLeft').textContent = d>0 ? (d+' day'+(d===1?'':'s')+' left') : 'season closed'; })();
+
+  /* ---- signup ---- */
+  var form=g('signupForm');
+  function fieldErr(name,msg){ var f=form.querySelector('[data-f="'+name+'"]'); if(!f) return false; if(msg) f.querySelector('.err').textContent=msg; f.classList.add('invalid'); f.querySelector('input').focus(); return true; }
+  function showFormErr(msg){ var e=g('formErr'); e.textContent=msg; e.classList.add('show'); }
+
+  function showLink(data, fresh){
+    form.style.display='none'; g('linkView').style.display='block';
+    g('refLink').value=data.url;
+    var first=String(data.name||'').trim().split(/\s+/)[0];
+    g('welcome').textContent = data.alreadyRegistered ? ('Welcome back'+(first?', '+first:'')+'!') : ("You're in"+(first?', '+first:'')+'!');
+    g('welcomeSub').textContent = data.alreadyRegistered ? 'You already had a link. Here it is again, and we’ve re-sent it to your inbox.' : 'Share this link. Anyone who books a Zimyo demo through it is credited to you.';
+    var msg="If your team is looking for a better HR & payroll platform, book a Zimyo demo through my link:";
+    g('shWa').href='https://wa.me/?text='+encodeURIComponent(msg+' '+data.url);
+    g('shLi').href='https://www.linkedin.com/sharing/share-offsite/?url='+encodeURIComponent(data.url);
+    g('shX').href='https://twitter.com/intent/tweet?text='+encodeURIComponent(msg)+'&url='+encodeURIComponent(data.url);
+    g('shMail').href='mailto:?subject='+encodeURIComponent('Worth a look: Zimyo for HR & payroll')+'&body='+encodeURIComponent(msg+' '+data.url);
+    g('joinEyebrow').textContent='You’re in the program'; g('joinTitle').textContent='Your referral link'; g('joinSub').textContent='Share it with HR leaders, founders and business owners.';
+    if(fresh) confetti();
+  }
+
+  form.addEventListener('submit',function(ev){
+    ev.preventDefault();
+    form.querySelectorAll('.field').forEach(function(f){ f.classList.remove('invalid'); });
+    g('formErr').classList.remove('show');
+    var name=g('fName').value.trim(), email=g('fEmail').value.trim(), consent=g('fConsent').checked;
+    if(!name){ fieldErr('name','Please enter your name.'); return; }
+    if(!isWork(email)){ fieldErr('email','Please use a business email address (no Gmail, Yahoo, etc.).'); return; }
+
+    var btn=form.querySelector('button[type=submit]'); btn.disabled=true; btn.textContent='Creating your link…';
+    fetch(API+'/signup',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({name:name,email:email,boardConsent:consent})})
+      .then(function(r){ return r.json().catch(function(){ return {}; }).then(function(d){ return {status:r.status,ok:r.ok,data:d}; }); })
+      .then(function(res){
+        if(res.ok && res.data && res.data.url){
+          var saved={url:res.data.url,code:res.data.code,name:name,alreadyRegistered:!!res.data.alreadyRegistered};
+          store(false,saved); showLink(saved,true);
+          toast(saved.alreadyRegistered ? 'Link re-sent to your inbox' : 'Your referral link is ready 🎉');
+          return;
+        }
+        if(res.status===429){ showFormErr('Too many attempts. Please wait a few minutes and try again.'); }
+        else if(res.status===422 && res.data && res.data.error){ if(!fieldErr(res.data.field, res.data.error)) showFormErr(res.data.error); }
+        else { showFormErr('Something went wrong on our side. Please try again in a moment.'); }
+      })
+      .catch(function(){ showFormErr('We couldn’t reach the server. Check your connection and try again.'); })
+      .then(function(){ btn.disabled=false; btn.textContent='Get my referral link →'; });
+  });
+
+  g('copyBtn').addEventListener('click',function(){
+    var i=g('refLink'), b=this;
+    var done=function(){ b.textContent='✓ Copied'; toast('Link copied'); setTimeout(function(){ b.textContent='Copy'; },1800); };
+    if(navigator.clipboard && navigator.clipboard.writeText){ navigator.clipboard.writeText(i.value).then(done,function(){ i.select(); document.execCommand('copy'); done(); }); }
+    else { i.select(); document.execCommand('copy'); done(); }
+  });
+  g('againBtn').addEventListener('click',function(){
+    forget(); g('linkView').style.display='none'; form.style.display='block'; form.reset();
+    g('joinEyebrow').textContent='Join the program'; g('joinTitle').textContent='Get your referral link'; g('joinSub').textContent='Takes under a minute. Business email required.';
+  });
+  (function(){ var s=store(true); if(s && s.url) showLink(s,false); })();
+
+  /* ---- leaderboard (live from zimyo-db via the public board endpoint) ---- */
+  function medal(r){ return r===1?'🥇':r===2?'🥈':r===3?'🥉':''; }
+  function move(m){ if(m===null||m===undefined) return '<span class="mv nw">NEW</span>'; if(m>0) return '<span class="mv up">▲ '+m+'</span>'; if(m<0) return '<span class="mv dn">▼ '+(-m)+'</span>'; return '<span class="mv eq">–</span>'; }
+
+  function renderBoard(rows){
+    var pod=g('podium'), list=g('lbRows');
+    if(!rows.length){
+      pod.style.display='none';
+      list.innerHTML='<div class="lb-empty"><b>No qualified referrals yet this period</b>The board fills in as referred companies complete verified demos. Get your link and be the first name up here.</div>';
+      return;
+    }
+    if(rows.length>=3){
+      var order=[1,0,2], cls=['pod2','pod1','pod3'];
+      pod.innerHTML=order.map(function(idx,i){ var r=rows[idx]; return '<div class="pod '+cls[i]+'"><span class="medal">'+medal(r.rank)+'</span><div class="av">'+esc(initial(r.name))+'</div><div class="nm">'+esc(r.name)+'</div><div class="pt">'+r.points+' <small>pts</small></div><div class="base"></div></div>'; }).join('');
+      pod.style.display='';
+    } else { pod.style.display='none'; }
+    list.innerHTML=rows.map(function(r){
+      return '<div class="lb-row"><div class="lb-rank">'+(medal(r.rank)||('#'+r.rank))+move(r.move)+'</div>'+
+        '<div class="lb-who"><span class="av" style="background:'+avColor(r.name)+'">'+esc(initial(r.name))+'</span><div style="min-width:0"><div class="nm">'+esc(r.name)+'</div><span class="tier '+esc(r.tier)+'">'+esc(r.tier)+'</span></div></div>'+
+        '<div class="lb-ref">'+r.referrals+' referral'+(r.referrals===1?'':'s')+'<small>'+r.closed+' closed</small></div>'+
+        '<div class="lb-pts">'+r.points+'<small>pts</small></div></div>';
+    }).join('');
+  }
+
+  var range='season';
+  function loadBoard(){
+    fetch(API+'/board?range='+range+'&season='+SEASON)
+      .then(function(r){ if(!r.ok) throw 0; return r.json(); })
+      .then(function(d){ renderBoard((d && d.data) || []); })
+      .catch(function(){ g('podium').style.display='none'; g('lbRows').innerHTML='<div class="lb-empty"><b>Standings are unavailable right now</b>Please refresh in a minute.</div>'; });
+  }
+  document.querySelectorAll('.tabs button').forEach(function(b){
+    b.addEventListener('click',function(){
+      document.querySelectorAll('.tabs button').forEach(function(x){ x.setAttribute('aria-pressed', x===b ? 'true':'false'); });
+      range=b.getAttribute('data-range'); g('lbRows').innerHTML='<div class="lb-empty">Loading standings…</div>'; loadBoard();
+    });
+  });
+  loadBoard();
+
+  /* ---- polish ---- */
+  var nav=g('nav'); addEventListener('scroll',function(){ nav.classList.toggle('scrolled',scrollY>10); },{passive:true});
+  var io=new IntersectionObserver(function(es){ es.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } }); },{threshold:.12});
+  document.querySelectorAll('.reveal').forEach(function(el){ io.observe(el); });
+})();
+</script>
+</body>
+</html>
