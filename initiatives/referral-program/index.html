@@ -232,7 +232,7 @@
         <a class="btn btn-primary" href="#join">Get my referral link →</a>
         <a class="btn btn-light" href="#leaderboard">See the leaderboard</a>
       </div>
-      <p class="ends">Season 1 closes <b>31 December</b> · <span id="daysLeft"></span></p>
+      <p class="ends">Season 1 closes <b class="season-end">31 December</b> · <span id="daysLeft"></span></p>
     </div>
 
     <div class="hcard" aria-hidden="true">
@@ -266,7 +266,7 @@
 </section>
 
 <section class="sec wrap" style="padding-top:0">
-  <div class="sec-head reveal"><span class="eyebrow">Season 1 prizes</span><h2>What the podium wins</h2><p>Awarded when the season board is finalised after 31 December.</p></div>
+  <div class="sec-head reveal"><span class="eyebrow">Season 1 prizes</span><h2>What the podium wins</h2><p>Awarded when the season board is finalised after <span class="season-end">31 December</span>.</p></div>
   <div class="prizes reveal">
     <div class="prize p2"><div class="medal">🥈</div><div class="rk">Second place</div><div class="amt">₹75,000</div><div class="sum">Cash prize + Bose QuietComfort headphones</div>
       <ul><li>Feature in the Zimyo partner spotlight</li><li>Two conference passes for HRTech 2027</li><li>Silver badge on your leaderboard profile</li></ul></div>
@@ -336,7 +336,7 @@
 
 <section class="wrap reveal">
   <div class="closing">
-    <div><h3>Know an HR team that deserves better?</h3><p>Get your link now. Season 1 closes 31 December.</p></div>
+    <div><h3>Know an HR team that deserves better?</h3><p>Get your link now. Season 1 closes <span class="season-end">31 December</span>.</p></div>
     <a class="btn btn-primary" href="#join">Get my referral link →</a>
   </div>
 </section>
@@ -357,6 +357,7 @@
   /* Zimyo referral backend (api.zimyo.us → zimyo-db). The API already allows this origin. */
   var API = "https://api.zimyo.us/api/v1/referral";
   var SEASON = 1;
+  // Fallback only: the real closing date is set in admin.zimyo.us and fetched below.
   var SEASON_END = new Date('2026-12-31T23:59:59+05:30');
   var STORE = "zimyo-referral-link";
   var LINK_PREFIX = "https://programs.zimyo.co.in/r/?c=";
@@ -384,7 +385,19 @@
   }
 
   /* ---- season countdown ---- */
-  (function(){ var d=Math.ceil((SEASON_END-Date.now())/8.64e7); g('daysLeft').textContent = d>0 ? (d+' day'+(d===1?'':'s')+' left') : 'season closed'; })();
+  /* The closing date comes from admin.zimyo.us (Marketing → Referrers). If the API can't be reached
+     the page keeps the fallback above rather than showing nothing. */
+  function renderSeason(end){
+    var label=end.toLocaleDateString('en-IN',{day:'numeric',month:'long',timeZone:'Asia/Kolkata'});
+    document.querySelectorAll('.season-end').forEach(function(el){ el.textContent=label; });
+    var d=Math.ceil((end-Date.now())/8.64e7);
+    g('daysLeft').textContent = d>0 ? (d+' day'+(d===1?'':'s')+' left') : 'season closed';
+  }
+  renderSeason(SEASON_END);
+  fetch(API+'/season')
+    .then(function(r){ if(!r.ok) throw 0; return r.json(); })
+    .then(function(d){ var end=d && d.data && new Date(d.data.endsAt); if(end && !isNaN(end)){ SEASON_END=end; renderSeason(end); } })
+    .catch(function(){});
 
   /* ---- signup ---- */
   var form=g('signupForm');
