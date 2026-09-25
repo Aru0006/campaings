@@ -333,7 +333,7 @@
       <div class="hc-chip">zimyo.us/r/<b>YOURCODE</b></div>
       <div class="hc-stages">
         <div class="hc-st"><span class="n">1</span><span class="t">Demo booked via your link</span><span class="v">tracked</span></div>
-        <div class="hc-st"><span class="n">2</span><span class="t">Verified genuine by Zimyo</span><span class="v">+100 pts</span></div>
+        <div class="hc-st"><span class="n">2</span><span class="t">Verified genuine by Zimyo</span><span class="v">+<span class="ppl">100</span> pts</span></div>
         <div class="hc-st win"><span class="n">3</span><span class="t">Contract signed</span><span class="v">₹15,000</span></div>
       </div>
     </div>
@@ -366,7 +366,7 @@
         </div>
         <div class="sv-card" data-step="2">
           <div class="sv-tag">Step 3 · Verified genuine</div>
-          <div class="sv-big">+100 <small>pts</small></div>
+          <div class="sv-big">+<span class="ppl">100</span> <small>pts</small></div>
           <div class="sv-rank"><span class="from">#12</span><span class="arrow">→</span><span class="to">#7</span><span class="lbl">you climbed 5 places</span></div>
           <div class="sv-check">✓ Email and phone verified by Zimyo</div>
         </div>
@@ -383,7 +383,7 @@
       <li class="story-line" aria-hidden="true"><span class="fill"></span></li>
       <li class="sstep on" data-step="0"><span class="snum">01</span><div class="sbody"><span class="tm">2 minutes</span><h3>Grab your link</h3><p>Sign up below with your work email and get your personal referral link instantly. We email it to you too.</p></div></li>
       <li class="sstep" data-step="1"><span class="snum">02</span><div class="sbody"><span class="tm">Same day</span><h3>We reach out</h3><p>When someone books a demo through your link, our partnerships team contacts them within one working day.</p></div></li>
-      <li class="sstep" data-step="2"><span class="snum">03</span><div class="sbody"><span class="tm">Instant</span><h3>Earn points</h3><p>Once our team verifies the prospect&rsquo;s email and phone are genuine, you earn 100 points and the leaderboard updates straight away.</p></div></li>
+      <li class="sstep" data-step="2"><span class="snum">03</span><div class="sbody"><span class="tm">Instant</span><h3>Earn points</h3><p>Once our team verifies the prospect&rsquo;s email and phone are genuine, you earn <span class="ppl">100</span> points and the leaderboard updates straight away.</p></div></li>
       <li class="sstep" data-step="3"><span class="snum">04</span><div class="sbody"><span class="tm">18 days avg.</span><h3>Get rewarded</h3><p>Earn a reward for every closed referral, and finish the season in the top three to win a podium prize on top.</p></div></li>
     </ol>
   </div>
@@ -410,7 +410,7 @@
       <div class="row">
         <label for="cRef">Companies you introduce <output id="cRefOut" for="cRef">5</output></label>
         <input type="range" id="cRef" min="1" max="50" value="5" step="1">
-        <p class="hint">Each one verified as genuine by our team earns you 100 points.</p>
+        <p class="hint">Each one verified as genuine by our team earns you <span class="ppl">100</span> points.</p>
       </div>
       <div class="row">
         <label for="cClose">…of those, sign with Zimyo <output id="cCloseOut" for="cClose">1</output></label>
@@ -478,7 +478,7 @@
   <div class="sec-head reveal"><span class="eyebrow">FAQ</span><h2>Good to know</h2></div>
   <div class="faq">
     <details class="reveal" style="transition-delay:0.00s"><summary>Who can take part in the referral program?</summary><p>Anyone outside Zimyo can refer: customers, partners, consultants and alumni. Current Zimyo employees and their immediate family are not eligible for rewards or prizes, though they can still refer for recognition points.</p></details>
-    <details class="reveal" style="transition-delay:0.08s"><summary>How are points calculated?</summary><p>You earn 100 points for every referred prospect our team verifies as genuine, meaning a real business email and a real phone number. Each company can be credited only once per season. The leaderboard updates as soon as a referral is verified.</p></details>
+    <details class="reveal" style="transition-delay:0.08s"><summary>How are points calculated?</summary><p>You earn <span class="ppl">100</span> points for every referred prospect our team verifies as genuine, meaning a real business email and a real phone number. Each company can be credited only once per season. The leaderboard updates as soon as a referral is verified.</p></details>
     <details class="reveal" style="transition-delay:0.16s"><summary>When does a referral count as closed?</summary><p>A referral is closed once the company you introduced signs a contract with Zimyo. Verified referrals earn points toward your rank before that point.</p></details>
     <details class="reveal" style="transition-delay:0.24s"><summary>How and when do I receive my rewards?</summary><p>You earn a reward for every closed referral, without waiting for the season to end. Rewards are issued about 18 days after the contract is signed. Podium prizes for the top three are awarded separately once the board is finalised.</p></details>
   </div>
@@ -507,7 +507,8 @@
   /* Zimyo referral backend (api.zimyo.us → zimyo-db). The API already allows this origin. */
   var API = "https://api.zimyo.us/api/v1/referral";
   var SEASON = 1;
-  // Fallback only: the real closing date is set in admin.zimyo.us and fetched below.
+  // Fallbacks only: the real values are set in admin.zimyo.us and fetched below.
+  var POINTS_PER_LEAD = 100;
   var SEASON_END = new Date('2026-12-31T23:59:59+05:30');
   var STORE = "zimyo-referral-link";
   var LINK_PREFIX = "https://programs.zimyo.co.in/r/?c=";
@@ -546,7 +547,15 @@
   renderSeason(SEASON_END);
   fetch(API+'/season')
     .then(function(r){ if(!r.ok) throw 0; return r.json(); })
-    .then(function(d){ var end=d && d.data && new Date(d.data.endsAt); if(end && !isNaN(end)){ SEASON_END=end; renderSeason(end); } })
+    .then(function(d){
+      var end=d && d.data && new Date(d.data.endsAt); if(end && !isNaN(end)){ SEASON_END=end; renderSeason(end); }
+      var ppl=d && d.data && d.data.pointsPerLead;
+      if(Number.isInteger(ppl) && ppl>=0){
+        POINTS_PER_LEAD=ppl;
+        document.querySelectorAll('.ppl').forEach(function(el){ el.textContent=ppl.toLocaleString('en-IN'); });
+        if(typeof calc==='function') calc();
+      }
+    })
     .catch(function(){});
 
   /* ---- signup ---- */
@@ -690,7 +699,7 @@
   var bump=function(el){ if(reduced) return; el.classList.remove('pop'); void el.offsetWidth; el.classList.add('pop'); };
   function calc(){
     cClose.max=cRef.value; if(+cClose.value>+cRef.value) cClose.value=cRef.value;
-    var refs=+cRef.value, closes=+cClose.value, pts=refs*100, cash=closes*15000;
+    var refs=+cRef.value, closes=+cClose.value, pts=refs*POINTS_PER_LEAD, cash=closes*15000;
     g('cRefOut').textContent=refs; g('cCloseOut').textContent=closes;
     var ptsEl=g('cPts'), cashEl=g('cCash');
     if(ptsEl.textContent!==pts.toLocaleString('en-IN')){ ptsEl.textContent=pts.toLocaleString('en-IN'); bump(ptsEl); }
