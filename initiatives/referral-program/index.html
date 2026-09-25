@@ -92,14 +92,6 @@
   .reveal.in{opacity:1;transform:none}
   @media (prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none}.hcard,.blob{animation:none}}
 
-  .steps{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
-  .step{background:var(--surface);border:1px solid var(--border);border-radius:var(--r-lg);padding:26px;transition:transform .25s var(--ease),box-shadow .25s var(--ease)}
-  .step:hover{transform:translateY(-6px);box-shadow:0 24px 50px rgba(16,40,120,.1)}
-  .step .top{display:flex;justify-content:space-between;align-items:center;margin-bottom:16px}
-  .step .num{font-size:26px;font-weight:900;letter-spacing:-.03em;background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
-  .step .tm{font-size:11px;font-weight:700;color:var(--primary);background:var(--lav);padding:4px 10px;border-radius:999px}
-  .step h3{font-size:18px}
-  .step p{color:var(--ink-2);font-size:14px;margin:10px 0 0}
 
   .prizes{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;align-items:end;margin-bottom:20px}
   .prize{border-radius:var(--r-lg);padding:30px 24px;color:#fff;position:relative;overflow:hidden;box-shadow:0 20px 44px rgba(16,40,120,.14)}
@@ -199,10 +191,9 @@
   footer .brand img{height:24px}
   footer a{color:#CFDCFF;text-decoration:none;font-size:14px}
 
-  @media (max-width:980px){ .steps{grid-template-columns:repeat(2,1fr)} }
   @media (max-width:900px){ .hero .wrap{grid-template-columns:1fr;gap:32px} .hcard{max-width:440px} .prizes{grid-template-columns:1fr} .prize.p1{--lift:0px} }
   @media (max-width:600px){
-    .band .wrap{grid-template-columns:1fr;gap:14px} .steps{grid-template-columns:1fr} .share{grid-template-columns:1fr}
+    .band .wrap{grid-template-columns:1fr;gap:14px} .share{grid-template-columns:1fr}
     .podium{grid-template-columns:1fr;gap:10px} .pod.pod1{transform:none}
     .lb-head,.lb-row{grid-template-columns:48px 1fr 70px;padding:12px 14px} .lb-ref,.lb-head .h-ref{display:none}
     .linkbox{flex-direction:column} .closing{padding:28px}
@@ -240,6 +231,73 @@
   @keyframes pop{0%{transform:scale(1)}40%{transform:scale(1.08)}100%{transform:scale(1)}}
   @media (max-width:820px){ .calc{grid-template-columns:1fr} }
   @media (prefers-reduced-motion:reduce){ [data-tilt]{transition:none} .pop{animation:none} }
+
+  /* ---- scroll storytelling ---- */
+  .from-left{transform:translateX(-46px)} .from-right{transform:translateX(46px)}
+  /* the slide-in start positions must never widen the page (phones zoom out to fit) */
+  #calc{overflow-x:clip}
+  .scale-in{transform:scale(.94)}
+  .reveal.in.from-left,.reveal.in.from-right,.reveal.in.scale-in{transform:none}
+
+  .story-grid{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:start}
+  .story-visual{position:sticky;top:110px}
+  .sv-stage{position:relative;height:330px;border-radius:26px;background:radial-gradient(130% 110% at 10% 0%,#0E3E86 0%,#082452 52%,#03192E 100%);overflow:hidden;box-shadow:0 30px 70px rgba(3,25,46,.28)}
+  .sv-stage::before{content:"";position:absolute;width:260px;height:260px;border-radius:50%;background:#0085FF;filter:blur(80px);opacity:.45;top:-90px;right:-60px}
+  .sv-card{position:absolute;inset:28px;display:flex;flex-direction:column;justify-content:center;gap:14px;color:#fff;opacity:0;transform:translateY(26px) scale(.97);transition:opacity .5s var(--ease),transform .6s var(--ease);pointer-events:none}
+  .sv-card.on{opacity:1;transform:none}
+  .sv-tag{align-self:flex-start;font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#CFDCFF;background:rgba(91,123,255,.24);border:1px solid rgba(130,160,255,.4);padding:6px 12px;border-radius:999px}
+  .sv-title{font-size:22px;font-weight:800;letter-spacing:-.02em}
+  .sv-chip{font-family:ui-monospace,Menlo,monospace;font-size:14px;background:rgba(0,0,0,.28);border:1px dashed rgba(255,255,255,.3);border-radius:12px;padding:13px 15px;color:#CFE0FF;word-break:break-all}
+  .sv-chip b{color:#fff}
+  .sv-row{display:flex;gap:8px;flex-wrap:wrap}
+  .sv-btn,.sv-share{font-size:13px;font-weight:600;padding:9px 14px;border-radius:10px}
+  .sv-btn{background:var(--grad)} .sv-share.wa{background:#25D366} .sv-share.li{background:#0A66C2}
+  .sv-notif{display:flex;gap:12px;align-items:center;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.14);border-radius:16px;padding:14px 16px;font-size:14px;color:#E4ECF8}
+  .sv-notif b{color:#fff} .sv-notif small{display:block;color:#9FB2CC;font-size:12px;margin-top:2px}
+  .sv-notif.dim{opacity:.8;margin-left:22px}
+  .sv-av{flex:none;width:38px;height:38px;border-radius:50%;display:grid;place-items:center;font-weight:800;background:#F9C804;color:#3b2f00}
+  .sv-av.alt{background:var(--grad);color:#fff}
+  .sv-big{font-size:58px;font-weight:900;letter-spacing:-.04em;line-height:1;color:#7FE7A6}
+  .sv-big small{font-size:22px;color:#CFE0FF}
+  .sv-big.cash{background:linear-gradient(100deg,#7FE7A6,#F9C804);-webkit-background-clip:text;background-clip:text;color:transparent}
+  .sv-rank{display:flex;align-items:center;gap:10px;flex-wrap:wrap;font-weight:800;font-size:22px}
+  .sv-rank .from{color:#9FB2CC;text-decoration:line-through} .sv-rank .to{color:#fff} .sv-rank .arrow{color:#7FE7A6}
+  .sv-rank .lbl{font-size:13px;font-weight:600;color:#CFE0FF}
+  .sv-check{font-size:14px;color:#BFF3D0;font-weight:600}
+  .sv-sub{font-size:13.5px;color:#BFCFE6;max-width:34ch}
+  .sv-dots{display:flex;gap:8px;justify-content:center;margin-top:16px}
+  .sv-dots span{width:8px;height:8px;border-radius:999px;background:var(--border-strong);transition:width .35s var(--ease),background .35s}
+  .sv-dots span.on{width:26px;background:var(--primary)}
+
+  .story-steps{list-style:none;margin:0;padding:0;position:relative}
+  .story-line{position:absolute;left:25px;top:30px;bottom:30px;width:3px;border-radius:3px;background:var(--border)}
+  .story-line .fill{position:absolute;inset:0 0 auto 0;height:0;border-radius:3px;background:var(--grad)}
+  .sstep{position:relative;display:flex;gap:22px;padding:34px 0;min-height:33vh;align-items:flex-start}
+  .snum{flex:none;position:relative;z-index:1;width:52px;height:52px;border-radius:16px;display:grid;place-items:center;font-weight:900;font-size:17px;background:var(--surface);border:2px solid var(--border-strong);color:var(--muted);transition:all .4s var(--ease)}
+  .sstep.on .snum,.sstep.done .snum{background:var(--grad);border-color:transparent;color:#fff;box-shadow:0 10px 24px rgba(51,90,255,.35)}
+  .sstep.on .snum{transform:scale(1.08)}
+  .sbody{padding-top:4px;opacity:.45;transform:translateY(6px);transition:opacity .45s var(--ease),transform .45s var(--ease)}
+  .sstep.on .sbody,.sstep.done .sbody{opacity:1;transform:none}
+  .sbody .tm{display:inline-block;font-size:11px;font-weight:700;color:var(--primary);background:var(--lav);padding:4px 10px;border-radius:999px}
+  .sbody h3{font-size:22px;margin-top:10px}
+  .sbody p{color:var(--ink-2);font-size:15px;margin:8px 0 0;max-width:44ch}
+
+  .podium-rise .prize{opacity:0;translate:0 70px}
+  .podium-rise.in .prize{animation:rise .8s var(--ease) forwards}
+  .podium-rise.in .prize.p3{animation-delay:.05s} .podium-rise.in .prize.p2{animation-delay:.2s} .podium-rise.in .prize.p1{animation-delay:.42s}
+  @keyframes rise{to{opacity:1;translate:0 0}}
+
+  @media (max-width:900px){
+    .story-grid{grid-template-columns:1fr;gap:10px}
+    .story-visual{position:relative;top:0}
+    .sv-stage{height:300px}
+    .sstep{min-height:0;padding:22px 0}
+  }
+  @media (prefers-reduced-motion:reduce){
+    .from-left,.from-right,.scale-in{transform:none}
+    .sv-card{transition:none} .sbody{opacity:1;transform:none;transition:none}
+    .podium-rise .prize{opacity:1;translate:0 0} .podium-rise.in .prize{animation:none}
+  }
 </style>
 </head>
 <body>
@@ -259,7 +317,7 @@
 <section class="hero">
   <div class="blob b1"></div><div class="blob b2"></div>
   <div class="wrap">
-    <div>
+    <div class="hero-copy">
       <span class="badge">✦ Zimyo Referral Program · Season 1</span>
       <h1>Refer an HR team.<br>Earn up to <span class="grad">₹2,00,000.</span></h1>
       <p class="sub">Introduce companies that need better HR &amp; payroll. Earn ₹15,000 for every referral that closes, and climb the season leaderboard for a podium prize.</p>
@@ -290,24 +348,55 @@
   </div>
 </div>
 
-<section class="sec wrap">
-  <div class="sec-head reveal"><span class="eyebrow">How it works</span><h2>Four steps from intro to payout</h2></div>
-  <div class="steps">
-    <div class="step reveal"><div class="top"><span class="num">01</span><span class="tm">2 minutes</span></div><h3>Grab your link</h3><p>Sign up below with your work email and get your personal referral link instantly. We email it to you too.</p></div>
-    <div class="step reveal" style="transition-delay:.06s"><div class="top"><span class="num">02</span><span class="tm">Same day</span></div><h3>We reach out</h3><p>When someone books a demo through your link, our partnerships team contacts them within one working day.</p></div>
-    <div class="step reveal" style="transition-delay:.12s"><div class="top"><span class="num">03</span><span class="tm">Nightly updates</span></div><h3>Earn points</h3><p>Once our team verifies the prospect&rsquo;s email and phone are genuine, you earn 100 points. Your rank updates every night.</p></div>
-    <div class="step reveal" style="transition-delay:.18s"><div class="top"><span class="num">04</span><span class="tm">18 days avg.</span></div><h3>Get paid</h3><p>Cash out per closed referral, and finish the season in the top three to collect a podium prize on top.</p></div>
+<section class="sec wrap story" id="how">
+  <div class="sec-head reveal"><span class="eyebrow">How it works</span><h2>Four steps from intro to payout</h2><p>Scroll through a referral, from the moment you share your link to the day you get paid.</p></div>
+  <div class="story-grid">
+    <div class="story-visual" aria-hidden="true">
+      <div class="sv-stage">
+        <div class="sv-card on" data-step="0">
+          <div class="sv-tag">Step 1 · Your link</div>
+          <div class="sv-title">🔗 Your referral link is ready</div>
+          <div class="sv-chip">programs.zimyo.co.in/r/?c=<b>arun-7xk2</b></div>
+          <div class="sv-row"><span class="sv-btn">Copy</span><span class="sv-share wa">WhatsApp</span><span class="sv-share li">LinkedIn</span></div>
+        </div>
+        <div class="sv-card" data-step="1">
+          <div class="sv-tag">Step 2 · A demo is booked</div>
+          <div class="sv-notif"><span class="sv-av">P</span><div><b>Priya at Acme HR</b> booked a demo through your link<small>just now</small></div></div>
+          <div class="sv-notif dim"><span class="sv-av alt">Z</span><div><b>Zimyo partnerships</b> will call Priya today<small>within 1 working day</small></div></div>
+        </div>
+        <div class="sv-card" data-step="2">
+          <div class="sv-tag">Step 3 · Verified genuine</div>
+          <div class="sv-big">+100 <small>pts</small></div>
+          <div class="sv-rank"><span class="from">#12</span><span class="arrow">→</span><span class="to">#7</span><span class="lbl">you climbed 5 places</span></div>
+          <div class="sv-check">✓ Email and phone verified by Zimyo</div>
+        </div>
+        <div class="sv-card" data-step="3">
+          <div class="sv-tag">Step 4 · You get paid</div>
+          <div class="sv-big cash">₹15,000</div>
+          <div class="sv-check">✓ Acme HR signed with Zimyo</div>
+          <div class="sv-sub">Paid about 18 days after the contract is signed, whether or not you make the podium.</div>
+        </div>
+      </div>
+      <div class="sv-dots"><span class="on"></span><span></span><span></span><span></span></div>
+    </div>
+    <ol class="story-steps">
+      <li class="story-line" aria-hidden="true"><span class="fill"></span></li>
+      <li class="sstep on" data-step="0"><span class="snum">01</span><div class="sbody"><span class="tm">2 minutes</span><h3>Grab your link</h3><p>Sign up below with your work email and get your personal referral link instantly. We email it to you too.</p></div></li>
+      <li class="sstep" data-step="1"><span class="snum">02</span><div class="sbody"><span class="tm">Same day</span><h3>We reach out</h3><p>When someone books a demo through your link, our partnerships team contacts them within one working day.</p></div></li>
+      <li class="sstep" data-step="2"><span class="snum">03</span><div class="sbody"><span class="tm">Instant</span><h3>Earn points</h3><p>Once our team verifies the prospect&rsquo;s email and phone are genuine, you earn 100 points and the leaderboard updates straight away.</p></div></li>
+      <li class="sstep" data-step="3"><span class="snum">04</span><div class="sbody"><span class="tm">18 days avg.</span><h3>Get paid</h3><p>Cash out per closed referral, and finish the season in the top three to collect a podium prize on top.</p></div></li>
+    </ol>
   </div>
 </section>
 
 <section class="sec wrap" style="padding-top:0">
   <div class="sec-head reveal"><span class="eyebrow">Season 1 prizes</span><h2>What the podium wins</h2><p>Awarded when the season board is finalised after <span class="season-end">31 December</span>.</p></div>
-  <div class="prizes reveal">
-    <div class="prize p2" data-tilt><div class="medal">🥈</div><div class="rk">Second place</div><div class="amt">₹75,000</div><div class="sum">Cash prize + Bose QuietComfort headphones</div>
+  <div class="prizes podium-rise">
+    <div class="prize p2" data-tilt><div class="medal">🥈</div><div class="rk">Second place</div><div class="amt" data-count-on-rise="75000">₹75,000</div><div class="sum">Cash prize + Bose QuietComfort headphones</div>
       <ul><li>Feature in the Zimyo partner spotlight</li><li>Two conference passes for HRTech 2027</li><li>Silver badge on your leaderboard profile</li></ul></div>
-    <div class="prize p1" data-tilt><div class="medal">🥇</div><div class="rk">First place</div><div class="amt">₹2,00,000</div><div class="sum">Cash prize + 3-night Goa stay for two</div>
+    <div class="prize p1" data-tilt><div class="medal">🥇</div><div class="rk">First place</div><div class="amt" data-count-on-rise="200000">₹2,00,000</div><div class="sum">Cash prize + 3-night Goa stay for two</div>
       <ul><li>Named Referrer Of The Season across our channels</li><li>Dinner with the Zimyo founding team</li><li>Lifetime 2x points multiplier on future referrals</li></ul></div>
-    <div class="prize p3" data-tilt><div class="medal">🥉</div><div class="rk">Third place</div><div class="amt">₹40,000</div><div class="sum">Cash prize + Apple Watch SE</div>
+    <div class="prize p3" data-tilt><div class="medal">🥉</div><div class="rk">Third place</div><div class="amt" data-count-on-rise="40000">₹40,000</div><div class="sum">Cash prize + Apple Watch SE</div>
       <ul><li>Feature in the quarterly referrer newsletter</li><li>One conference pass for HRTech 2027</li><li>Bronze badge on your leaderboard profile</li></ul></div>
   </div>
   <div class="per-close reveal"><span class="em">💸</span><div><b>Plus ₹15,000 for every referral that closes.</b> <span>Paid as each deal closes, not at season end, whether or not you make the podium.</span></div></div>
@@ -316,8 +405,8 @@
 
 <section class="sec wrap" id="calc" style="padding-top:0">
   <div class="sec-head reveal"><span class="eyebrow">Earnings calculator</span><h2>What could your network be worth?</h2><p>Drag the sliders to see what your introductions could add up to this season.</p></div>
-  <div class="calc reveal">
-    <div class="calc-in">
+  <div class="calc">
+    <div class="calc-in reveal from-left">
       <div class="row">
         <label for="cRef">Companies you introduce <output id="cRefOut" for="cRef">5</output></label>
         <input type="range" id="cRef" min="1" max="50" value="5" step="1">
@@ -329,7 +418,7 @@
         <p class="hint">Each company that signs a contract pays you ₹15,000.</p>
       </div>
     </div>
-    <div class="calc-out" aria-live="polite">
+    <div class="calc-out reveal from-right" aria-live="polite">
       <div class="co"><div class="n" id="cPts">500</div><div class="l">leaderboard points</div><small>if every introduction is verified genuine</small></div>
       <div class="co big"><div class="n" id="cCash">₹15,000</div><div class="l">in cash payouts</div><small>paid as each deal closes</small></div>
       <div class="co-note" id="cNote"></div>
@@ -370,7 +459,7 @@
 </section>
 
 <section class="sec wrap" id="leaderboard" style="padding-top:0">
-  <div class="sec-head reveal"><span class="eyebrow">Live standings</span><h2>Season 1 leaderboard</h2><p>Updated every night at 12:00 AM IST. Only referrals our team verifies as genuine count toward points.</p></div>
+  <div class="sec-head reveal"><span class="eyebrow">Live standings</span><h2>Season 1 leaderboard</h2><p>Updates as soon as our team verifies a referral as genuine, and again every night. Only genuine referrals count toward points.</p></div>
   <div class="lb reveal">
     <div class="tabs" role="group" aria-label="Leaderboard range">
       <button type="button" data-range="season" aria-pressed="true">This season</button>
@@ -387,15 +476,15 @@
 
 <section class="sec wrap" style="padding-top:0">
   <div class="sec-head reveal"><span class="eyebrow">FAQ</span><h2>Good to know</h2></div>
-  <div class="faq reveal">
-    <details><summary>Who can take part in the referral program?</summary><p>Anyone outside Zimyo can refer: customers, partners, consultants and alumni. Current Zimyo employees and their immediate family are not eligible for cash prizes, though they can still refer for recognition points.</p></details>
-    <details><summary>How are points calculated?</summary><p>You earn 100 points for every referred prospect our team verifies as genuine, meaning a real business email and a real phone number. Each company can be credited only once per season, and the board recalculates every night at 12:00 AM IST.</p></details>
-    <details><summary>When does a referral count as closed?</summary><p>A referral is closed once the company you introduced signs a contract with Zimyo. Verified referrals earn points toward your rank before that point.</p></details>
-    <details><summary>How and when do I get paid?</summary><p>You cash out per closed referral rather than waiting for the season to end. Payouts take 18 days on average from the contract being signed. Season prizes for the top three are paid separately after the board is finalised.</p></details>
+  <div class="faq">
+    <details class="reveal" style="transition-delay:0.00s"><summary>Who can take part in the referral program?</summary><p>Anyone outside Zimyo can refer: customers, partners, consultants and alumni. Current Zimyo employees and their immediate family are not eligible for cash prizes, though they can still refer for recognition points.</p></details>
+    <details class="reveal" style="transition-delay:0.08s"><summary>How are points calculated?</summary><p>You earn 100 points for every referred prospect our team verifies as genuine, meaning a real business email and a real phone number. Each company can be credited only once per season. The leaderboard updates as soon as a referral is verified.</p></details>
+    <details class="reveal" style="transition-delay:0.16s"><summary>When does a referral count as closed?</summary><p>A referral is closed once the company you introduced signs a contract with Zimyo. Verified referrals earn points toward your rank before that point.</p></details>
+    <details class="reveal" style="transition-delay:0.24s"><summary>How and when do I get paid?</summary><p>You cash out per closed referral rather than waiting for the season to end. Payouts take 18 days on average from the contract being signed. Season prizes for the top three are paid separately after the board is finalised.</p></details>
   </div>
 </section>
 
-<section class="wrap reveal">
+<section class="wrap reveal scale-in">
   <div class="closing">
     <div><h3>Know an HR team that deserves better?</h3><p>Get your link now. Season 1 closes <span class="season-end">31 December</span>.</p></div>
     <a class="btn btn-primary" href="#join">Get my referral link →</a>
@@ -616,6 +705,47 @@
     fill(cRef); fill(cClose);
   }
   cRef.addEventListener('input', calc); cClose.addEventListener('input', calc); calc();
+
+  /* ---- scroll storytelling ---- */
+  // How it works: the step crossing the middle of the screen drives the sticky visual
+  var steps=[].slice.call(document.querySelectorAll('.sstep')), cards=[].slice.call(document.querySelectorAll('.sv-card')),
+      dots=[].slice.call(document.querySelectorAll('.sv-dots span')), lineFill=document.querySelector('.story-line .fill'),
+      active=0;
+  function setStep(n){
+    if(n===active) return; active=n;
+    steps.forEach(function(s,i){ s.classList.toggle('on',i===n); s.classList.toggle('done',i<n); });
+    cards.forEach(function(c,i){ c.classList.toggle('on',i===n); });
+    dots.forEach(function(d,i){ d.classList.toggle('on',i===n); });
+  }
+  function storyScroll(){
+    var mid=innerHeight*0.55, n=0;
+    steps.forEach(function(s,i){ if(s.getBoundingClientRect().top < mid) n=i; });
+    setStep(n);
+    var first=steps[0].getBoundingClientRect(), last=steps[steps.length-1].getBoundingClientRect();
+    var span=last.top-first.top, prog=span>0 ? (mid-(first.top+26))/span : 0;
+    lineFill.style.height=(Math.max(0,Math.min(1,prog))*100)+'%';
+  }
+  addEventListener('scroll', storyScroll, {passive:true}); addEventListener('resize', storyScroll); storyScroll();
+
+  // Prize podium rises (3rd, then 2nd, then 1st highest) and the amounts count up
+  var podium=document.querySelector('.podium-rise');
+  var pio=new IntersectionObserver(function(es){ es.forEach(function(e){
+    if(!e.isIntersecting) return; pio.unobserve(e.target); podium.classList.add('in');
+    podium.querySelectorAll('[data-count-on-rise]').forEach(function(el, i){
+      el.setAttribute('data-count', el.getAttribute('data-count-on-rise')); el.setAttribute('data-prefix','\u20b9');
+      setTimeout(function(){ countUp(el); }, reduced ? 0 : 250 + i*150);
+    });
+  }); },{threshold:.25});
+  pio.observe(podium);
+
+  // Hero copy drifts up and fades as you scroll away
+  var heroCopy=document.querySelector('.hero-copy');
+  if(!reduced && heroCopy){
+    addEventListener('scroll', function(){
+      var y=Math.min(scrollY, 600);
+      heroCopy.style.transform='translateY('+(y*0.18)+'px)'; heroCopy.style.opacity=String(1-y/900);
+    }, {passive:true});
+  }
 
   /* ---- polish ---- */
   var nav=g('nav'); addEventListener('scroll',function(){ nav.classList.toggle('scrolled',scrollY>10); },{passive:true});
