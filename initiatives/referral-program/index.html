@@ -64,7 +64,7 @@
   @keyframes drift{0%,100%{transform:translate(0,0)}50%{transform:translate(-26px,26px)}}
 
   .hcard{position:relative;z-index:2;background:linear-gradient(180deg,rgba(255,255,255,.14),rgba(255,255,255,.05));border:1px solid rgba(255,255,255,.2);border-radius:24px;padding:24px;backdrop-filter:blur(10px);box-shadow:0 40px 90px rgba(0,0,0,.4);animation:float 6s ease-in-out infinite}
-  @keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-12px)}}
+  @keyframes float{0%,100%{translate:0 0}50%{translate:0 -12px}}
   .hc-top{color:#CFDCFF;font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;margin-bottom:12px}
   .hc-chip{display:flex;align-items:center;gap:10px;background:rgba(0,0,0,.24);border:1px dashed rgba(255,255,255,.3);border-radius:12px;padding:12px 14px;color:#CFE0FF;font-family:ui-monospace,Menlo,monospace;font-size:13px}
   .hc-chip b{color:#fff}
@@ -105,7 +105,7 @@
   .prize{border-radius:var(--r-lg);padding:30px 24px;color:#fff;position:relative;overflow:hidden;box-shadow:0 20px 44px rgba(16,40,120,.14)}
   .prize::after{content:"";position:absolute;top:-40%;left:-40%;width:60%;height:180%;background:linear-gradient(90deg,transparent,rgba(255,255,255,.32),transparent);transform:rotate(18deg);animation:shine 5s ease-in-out infinite}
   @keyframes shine{0%,60%{left:-40%}80%,100%{left:130%}}
-  .prize.p1{background:linear-gradient(160deg,#F0B400,#C98A00);transform:translateY(-14px)}
+  .prize.p1{background:linear-gradient(160deg,#F0B400,#C98A00);--lift:-14px}
   .prize.p2{background:linear-gradient(160deg,#8C9DB4,#5E708A)}
   .prize.p3{background:linear-gradient(160deg,#D2842F,#A05A12)}
   .prize .medal{font-size:40px}
@@ -200,16 +200,51 @@
   footer a{color:#CFDCFF;text-decoration:none;font-size:14px}
 
   @media (max-width:980px){ .steps{grid-template-columns:repeat(2,1fr)} }
-  @media (max-width:900px){ .hero .wrap{grid-template-columns:1fr;gap:32px} .hcard{max-width:440px} .prizes{grid-template-columns:1fr} .prize.p1{transform:none} }
+  @media (max-width:900px){ .hero .wrap{grid-template-columns:1fr;gap:32px} .hcard{max-width:440px} .prizes{grid-template-columns:1fr} .prize.p1{--lift:0px} }
   @media (max-width:600px){
     .band .wrap{grid-template-columns:1fr;gap:14px} .steps{grid-template-columns:1fr} .share{grid-template-columns:1fr}
     .podium{grid-template-columns:1fr;gap:10px} .pod.pod1{transform:none}
     .lb-head,.lb-row{grid-template-columns:48px 1fr 70px;padding:12px 14px} .lb-ref,.lb-head .h-ref{display:none}
     .linkbox{flex-direction:column} .closing{padding:28px}
   }
+
+  /* ---- interactivity ---- */
+  .scroll-progress{position:fixed;top:0;left:0;right:0;height:3px;background:var(--grad);transform-origin:0 50%;transform:scaleX(0);z-index:80;pointer-events:none}
+  [data-tilt]{transform:perspective(900px) rotateX(var(--rx,0deg)) rotateY(var(--ry,0deg)) translateY(var(--lift,0px));transition:transform .3s var(--ease);will-change:transform}
+  .link-preview{margin-top:7px;font-size:12.5px;color:var(--muted);font-family:ui-monospace,SFMono-Regular,Menlo,monospace;word-break:break-all}
+  .link-preview b{color:var(--primary);font-weight:700}
+
+  .calc{display:grid;grid-template-columns:1.1fr .9fr;gap:22px;align-items:stretch}
+  .calc-in,.calc-out{background:var(--surface);border:1px solid var(--border);border-radius:var(--r-lg);padding:30px;box-shadow:0 20px 50px rgba(var(--shadow),.08)}
+  .calc-in label{display:flex;justify-content:space-between;align-items:baseline;font-weight:600;font-size:14.5px;color:var(--ink-2)}
+  .calc-in label output{font-size:30px;font-weight:900;letter-spacing:-.03em;color:var(--primary);font-variant-numeric:tabular-nums}
+  .calc-in{display:flex;flex-direction:column;justify-content:center}
+  .calc-in .row{margin-top:26px}
+  .calc-in .row:first-child{margin-top:0}
+  .calc-in .hint{font-size:12.5px;color:var(--muted);margin-top:6px}
+  input[type=range]{-webkit-appearance:none;appearance:none;width:100%;height:8px;border-radius:999px;margin-top:14px;cursor:pointer;
+    background:linear-gradient(90deg,var(--primary) 0 var(--fill,10%),var(--surface-2) var(--fill,10%) 100%)}
+  input[type=range]:focus-visible{outline:3px solid rgba(51,90,255,.35);outline-offset:4px}
+  input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:26px;height:26px;border-radius:50%;background:#fff;border:3px solid var(--primary);box-shadow:0 4px 12px rgba(51,90,255,.35);transition:transform .15s}
+  input[type=range]::-webkit-slider-thumb:hover{transform:scale(1.12)}
+  input[type=range]::-moz-range-thumb{width:22px;height:22px;border-radius:50%;background:#fff;border:3px solid var(--primary);box-shadow:0 4px 12px rgba(51,90,255,.35)}
+  .calc-out{background:radial-gradient(130% 110% at 0% 0%,#0E3E86 0%,#082452 55%,#03192E 100%);color:#fff;border:0;display:flex;flex-direction:column;gap:18px}
+  .co .n{font-size:clamp(30px,4vw,42px);font-weight:900;letter-spacing:-.03em;font-variant-numeric:tabular-nums;line-height:1.05}
+  .co.big .n{background:linear-gradient(100deg,#7FE7A6,#F9C804);-webkit-background-clip:text;background-clip:text;color:transparent}
+  .co .l{font-size:14px;font-weight:600;color:#DEE8F6;margin-top:4px}
+  .co small{display:block;font-size:12px;color:#9FB2CC;margin-top:2px}
+  .co-note{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.14);border-radius:12px;padding:12px 14px;font-size:13.5px;color:#DEE8F6;min-height:48px}
+  .calc-out .btn{margin-top:auto}
+  .calc-fine{text-align:center;color:var(--muted);font-size:12.5px;margin:16px auto 0;max-width:70ch}
+  .pop{animation:pop .35s var(--ease)}
+  @keyframes pop{0%{transform:scale(1)}40%{transform:scale(1.08)}100%{transform:scale(1)}}
+  @media (max-width:820px){ .calc{grid-template-columns:1fr} }
+  @media (prefers-reduced-motion:reduce){ [data-tilt]{transition:none} .pop{animation:none} }
 </style>
 </head>
 <body>
+
+<div class="scroll-progress" id="scrollProg" aria-hidden="true"></div>
 
 <header class="nav" id="nav">
   <div class="wrap">
@@ -235,7 +270,7 @@
       <p class="ends">Season 1 closes <b class="season-end">31 December</b> · <span id="daysLeft"></span></p>
     </div>
 
-    <div class="hcard" aria-hidden="true">
+    <div class="hcard" aria-hidden="true" data-tilt>
       <div class="hc-top">🔗 Your personal referral link</div>
       <div class="hc-chip">zimyo.us/r/<b>YOURCODE</b></div>
       <div class="hc-stages">
@@ -249,9 +284,9 @@
 
 <div class="band">
   <div class="wrap">
-    <div class="st"><div class="n">₹2,00,000</div><div class="l">Top prize this season</div></div>
-    <div class="st"><div class="n">₹15,000</div><div class="l">Per closed referral</div></div>
-    <div class="st"><div class="n">3</div><div class="l">Podium places</div></div>
+    <div class="st"><div class="n" data-count="200000" data-prefix="₹">₹2,00,000</div><div class="l">Top prize this season</div></div>
+    <div class="st"><div class="n" data-count="15000" data-prefix="₹">₹15,000</div><div class="l">Per closed referral</div></div>
+    <div class="st"><div class="n" data-count="3">3</div><div class="l">Podium places</div></div>
   </div>
 </div>
 
@@ -268,21 +303,47 @@
 <section class="sec wrap" style="padding-top:0">
   <div class="sec-head reveal"><span class="eyebrow">Season 1 prizes</span><h2>What the podium wins</h2><p>Awarded when the season board is finalised after <span class="season-end">31 December</span>.</p></div>
   <div class="prizes reveal">
-    <div class="prize p2"><div class="medal">🥈</div><div class="rk">Second place</div><div class="amt">₹75,000</div><div class="sum">Cash prize + Bose QuietComfort headphones</div>
+    <div class="prize p2" data-tilt><div class="medal">🥈</div><div class="rk">Second place</div><div class="amt">₹75,000</div><div class="sum">Cash prize + Bose QuietComfort headphones</div>
       <ul><li>Feature in the Zimyo partner spotlight</li><li>Two conference passes for HRTech 2027</li><li>Silver badge on your leaderboard profile</li></ul></div>
-    <div class="prize p1"><div class="medal">🥇</div><div class="rk">First place</div><div class="amt">₹2,00,000</div><div class="sum">Cash prize + 3-night Goa stay for two</div>
+    <div class="prize p1" data-tilt><div class="medal">🥇</div><div class="rk">First place</div><div class="amt">₹2,00,000</div><div class="sum">Cash prize + 3-night Goa stay for two</div>
       <ul><li>Named Referrer Of The Season across our channels</li><li>Dinner with the Zimyo founding team</li><li>Lifetime 2x points multiplier on future referrals</li></ul></div>
-    <div class="prize p3"><div class="medal">🥉</div><div class="rk">Third place</div><div class="amt">₹40,000</div><div class="sum">Cash prize + Apple Watch SE</div>
+    <div class="prize p3" data-tilt><div class="medal">🥉</div><div class="rk">Third place</div><div class="amt">₹40,000</div><div class="sum">Cash prize + Apple Watch SE</div>
       <ul><li>Feature in the quarterly referrer newsletter</li><li>One conference pass for HRTech 2027</li><li>Bronze badge on your leaderboard profile</li></ul></div>
   </div>
   <div class="per-close reveal"><span class="em">💸</span><div><b>Plus ₹15,000 for every referral that closes.</b> <span>Paid as each deal closes, not at season end, whether or not you make the podium.</span></div></div>
+</section>
+
+
+<section class="sec wrap" id="calc" style="padding-top:0">
+  <div class="sec-head reveal"><span class="eyebrow">Earnings calculator</span><h2>What could your network be worth?</h2><p>Drag the sliders to see what your introductions could add up to this season.</p></div>
+  <div class="calc reveal">
+    <div class="calc-in">
+      <div class="row">
+        <label for="cRef">Companies you introduce <output id="cRefOut" for="cRef">5</output></label>
+        <input type="range" id="cRef" min="1" max="50" value="5" step="1">
+        <p class="hint">Each one verified as genuine by our team earns you 100 points.</p>
+      </div>
+      <div class="row">
+        <label for="cClose">…of those, sign with Zimyo <output id="cCloseOut" for="cClose">1</output></label>
+        <input type="range" id="cClose" min="0" max="5" value="1" step="1">
+        <p class="hint">Each company that signs a contract pays you ₹15,000.</p>
+      </div>
+    </div>
+    <div class="calc-out" aria-live="polite">
+      <div class="co"><div class="n" id="cPts">500</div><div class="l">leaderboard points</div><small>if every introduction is verified genuine</small></div>
+      <div class="co big"><div class="n" id="cCash">₹15,000</div><div class="l">in cash payouts</div><small>paid as each deal closes</small></div>
+      <div class="co-note" id="cNote"></div>
+      <a class="btn btn-primary block" href="#join">Get my referral link →</a>
+    </div>
+  </div>
+  <p class="calc-fine">An illustration, not a promise. Points count once our team verifies a referral as genuine, cash is paid per signed contract, and podium prizes go to the top three on the final Season 1 leaderboard.</p>
 </section>
 
 <section class="sec wrap" id="join" style="padding-top:0">
   <div class="sec-head reveal"><span class="eyebrow" id="joinEyebrow">Join the program</span><h2 id="joinTitle">Get your referral link</h2><p id="joinSub">Takes under a minute. Business email required.</p></div>
   <div class="panel reveal">
     <form id="signupForm" novalidate>
-      <div class="field" data-f="name"><label for="fName">Full name</label><input id="fName" name="name" type="text" placeholder="Your name" autocomplete="name" maxlength="120"><div class="err">Please enter your name.</div></div>
+      <div class="field" data-f="name"><label for="fName">Full name</label><input id="fName" name="name" type="text" placeholder="Your name" autocomplete="name" maxlength="120"><div class="err">Please enter your name.</div><div class="link-preview" aria-live="polite">Your link: programs.zimyo.co.in/r/?c=<b id="lpSlug">your-name</b>-••••</div></div>
       <div class="field" data-f="email"><label for="fEmail">Work email</label><input id="fEmail" name="email" type="email" placeholder="you@company.com" autocomplete="email"><div class="err">Please use a business email address (no Gmail, Yahoo, etc.).</div></div>
       <div class="field" data-f="phone"><label for="fPhone">Phone number</label><input id="fPhone" name="phone" type="tel" placeholder="+91 98765 43210" autocomplete="tel" maxlength="25"><div class="err">Please enter a valid phone number.</div></div>
       <label class="consent"><input id="fConsent" type="checkbox"> <span>Show my name on the public leaderboard. If you leave this unticked you'll appear as "Anonymous".</span></label>
@@ -499,6 +560,62 @@
     });
   });
   loadBoard();
+
+  /* ---- interactivity ---- */
+  var reduced = window.matchMedia && matchMedia('(prefers-reduced-motion:reduce)').matches;
+  var inr = function(n){ return '\u20b9' + Math.round(n).toLocaleString('en-IN'); };
+
+  // Reading progress bar
+  var prog = g('scrollProg');
+  var onScroll = function(){ var max=document.documentElement.scrollHeight-innerHeight; prog.style.transform='scaleX('+(max>0?Math.min(1,scrollY/max):0)+')'; };
+  addEventListener('scroll', onScroll, {passive:true}); onScroll();
+
+  // Gentle 3D tilt toward the pointer — mouse only, off for reduced motion
+  if(!reduced && window.matchMedia && matchMedia('(hover:hover) and (pointer:fine)').matches){
+    document.querySelectorAll('[data-tilt]').forEach(function(el){
+      el.addEventListener('mousemove', function(e){
+        var r=el.getBoundingClientRect(), x=(e.clientX-r.left)/r.width-.5, y=(e.clientY-r.top)/r.height-.5;
+        el.style.setProperty('--ry', (x*9).toFixed(2)+'deg'); el.style.setProperty('--rx', (-y*9).toFixed(2)+'deg');
+      });
+      el.addEventListener('mouseleave', function(){ el.style.setProperty('--rx','0deg'); el.style.setProperty('--ry','0deg'); });
+    });
+  }
+
+  // Count the headline numbers up when they scroll into view
+  var countUp = function(el){
+    var target=+el.getAttribute('data-count'), pre=el.getAttribute('data-prefix')||'', t0=null, dur=1100;
+    var fmt=function(v){ return pre+Math.round(v).toLocaleString('en-IN'); };
+    if(reduced){ el.textContent=fmt(target); return; }
+    (function step(ts){ if(!t0) t0=ts; var k=Math.min(1,(ts-t0)/dur); el.textContent=fmt(target*(1-Math.pow(1-k,3))); if(k<1) requestAnimationFrame(step); })(performance.now());
+  };
+  var cio=new IntersectionObserver(function(es){ es.forEach(function(e){ if(e.isIntersecting){ countUp(e.target); cio.unobserve(e.target); } }); },{threshold:.6});
+  document.querySelectorAll('[data-count]').forEach(function(el){ cio.observe(el); });
+
+  // Live preview of the referral link while typing a name (mirrors the backend's slug rules)
+  var slugify=function(s){ return s.toLowerCase().normalize('NFKD').replace(/[\u0300-\u036f]/g,'').replace(/[^a-z0-9]+/g,'-').replace(/^-+|-+$/g,'').slice(0,24).replace(/-+$/g,''); };
+  g('fName').addEventListener('input', function(){ g('lpSlug').textContent = slugify(this.value) || 'your-name'; });
+
+  // Earnings calculator
+  var cRef=g('cRef'), cClose=g('cClose');
+  var fill=function(el){ el.style.setProperty('--fill', ((el.value-el.min)/((el.max-el.min)||1)*100)+'%'); };
+  var bump=function(el){ if(reduced) return; el.classList.remove('pop'); void el.offsetWidth; el.classList.add('pop'); };
+  function calc(){
+    cClose.max=cRef.value; if(+cClose.value>+cRef.value) cClose.value=cRef.value;
+    var refs=+cRef.value, closes=+cClose.value, pts=refs*100, cash=closes*15000;
+    g('cRefOut').textContent=refs; g('cCloseOut').textContent=closes;
+    var ptsEl=g('cPts'), cashEl=g('cCash');
+    if(ptsEl.textContent!==pts.toLocaleString('en-IN')){ ptsEl.textContent=pts.toLocaleString('en-IN'); bump(ptsEl); }
+    if(cashEl.textContent!==inr(cash)){ cashEl.textContent=inr(cash); bump(cashEl); }
+    var note;
+    if(closes===0) note='Even without a signed deal, every genuine introduction moves you up the leaderboard.';
+    else if(cash>=200000) note='\ud83e\udd2f Your payouts alone would match the \u20b92,00,000 first prize, and you\u2019d be in the running for it too.';
+    else if(cash>=75000) note='\ud83d\ude80 That beats the second-place prize of \u20b975,000, before any podium prize.';
+    else if(cash>=40000) note='\ud83d\udd25 That\u2019s more than the \u20b940,000 third-place prize, and you keep it either way.';
+    else note='\ud83d\udca1 Finish in the top three and a podium prize of up to \u20b92,00,000 comes on top.';
+    g('cNote').textContent=note;
+    fill(cRef); fill(cClose);
+  }
+  cRef.addEventListener('input', calc); cClose.addEventListener('input', calc); calc();
 
   /* ---- polish ---- */
   var nav=g('nav'); addEventListener('scroll',function(){ nav.classList.toggle('scrolled',scrollY>10); },{passive:true});
